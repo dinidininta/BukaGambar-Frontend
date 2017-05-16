@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/atribut_list_kategori"
+        android:text="@string/s1_kategoribarang"
+        android:textSize="@dimen/text_size"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="@dimen/cards_button_width"
+        android:layout_height="@dimen/cards_button_height"
+        android:id="@+id/chevron_step_satu"
+        style="?android:attr/borderlessButtonStyle"
+        android:src="@drawable/ic_chevron_right_black_24dp"
+        android:tint="@color/grey"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+</RelativeLayout>

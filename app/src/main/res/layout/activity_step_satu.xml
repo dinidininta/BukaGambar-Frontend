@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_lighten_5"
+    tools:context="com.example.bukagambar.StepSatuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_above="@+id/footer">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/grey_lighten_4"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:contentInsetLeft="0dp"
+            app:contentInsetStart="0dp">
+
+            <ImageButton
+                android:id="@+id/close_button"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="@dimen/exit_button_width"
+                android:layout_height="@dimen/exit_button_height"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="start"
+                android:src="@drawable/ic_close_black_24dp"
+                android:tint="@color/grey"/>
+
+            <Button
+                android:id="@+id/lanjutkan_1_button"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:text="@string/lanjutkan_button"
+                android:textSize="@dimen/text_size"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_gravity="end"
+                android:textColor="@color/grey"
+                android:textAllCaps="false"/>
+        </android.support.v7.widget.Toolbar>
+
+        <include layout="@layout/content_step_satu"/>
+    </LinearLayout>
+
+
+    <LinearLayout android:id="@+id/footer" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:layout_alignParentBottom="true" style="@android:style/ButtonBar"
+        android:background="@color/grey_lighten_4">
+
+        <Button android:id="@+id/saveButton" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="@string/simpan_button"
+            android:textColor="@color/grey_lighten_5"
+            android:backgroundTint="@color/pinkdarken2"/>
+
+    </LinearLayout>
+
+
+    <!--<android.support.design.widget.BottomNavigationView-->
+            <!--android:id="@+id/bottom_navigation"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--app:itemBackground="@color/pinkdarken2"-->
+            <!--app:layout_scrollFlags="scroll|enterAlways"-->
+            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+            <!--app:contentInsetLeft="0dp"-->
+            <!--app:contentInsetStart="0dp"/>-->
+
+    <!--<TextView-->
+        <!--android:id="@+id/nam_barangTeks"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/nama_barang"-->
+        <!--android:textColor="@color/grey_darken"-->
+        <!--android:layout_below="@id/ket_barangTeks"-->
+        <!--android:textSize="17sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tul_namabarangTeks"-->
+        <!--android:text="@string/ket_nama_barang"-->
+        <!--android:textSize="16sp"-->
+        <!--android:layout_below="@id/nam_barangTeks"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:id="@+id/kat_barangTeks"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/kategori_barang"-->
+        <!--android:textColor="@color/grey_darken"-->
+        <!--android:layout_below="@id/tul_namabarangTeks"-->
+        <!--android:textSize="17sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tul_kategoribarangTeks"-->
+        <!--android:text="@string/ket_kategori_barang"-->
+        <!--android:textSize="16sp"-->
+        <!--android:layout_below="@id/kat_barangTeks"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:id="@+id/des_barangTeks"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/deskripsi_barang"-->
+        <!--android:textColor="@color/grey_darken"-->
+        <!--android:layout_below="@id/tul_kategoribarangTeks"-->
+        <!--android:textSize="17sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tul_deskripsibarangTeks"-->
+        <!--android:text="@string/ket_deskripsi_barang"-->
+        <!--android:textSize="16sp"-->
+        <!--android:layout_below="@id/des_barangTeks"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:id="@+id/det_barangTeks"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/detail_barang"-->
+        <!--android:textColor="@color/grey_darken"-->
+        <!--android:layout_below="@id/tul_deskripsibarangTeks"-->
+        <!--android:textSize="17sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tul_detailbarangTeks"-->
+        <!--android:text="@string/ket_detail_barang"-->
+        <!--android:textSize="16sp"-->
+        <!--android:layout_below="@id/det_barangTeks"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+    <!--<TextView-->
+        <!--android:id="@+id/pen_barangTeks"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/pengiriman"-->
+        <!--android:textColor="@color/grey_darken"-->
+        <!--android:layout_below="@id/tul_detailbarangTeks"-->
+        <!--android:textSize="17sp"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/tul_detailbarangTeks"-->
+        <!--android:text="@string/ket_detail_barang"-->
+        <!--android:textSize="16sp"-->
+        <!--android:layout_below="@id/det_barangTeks"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_marginLeft="10dp"/>-->
+
+</RelativeLayout>

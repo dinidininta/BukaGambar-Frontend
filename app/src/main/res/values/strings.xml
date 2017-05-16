@@ -1,0 +1,62 @@
+<resources>
+    <string name="app_name">BukaGambar</string>
+    <string name="jual_barang">Mulai Jualan</string>
+    <string name="lanjutkan_button">Lanjutkan</string>
+    <string name="simpan_button">Simpan</string>
+    <string name="simpandraf_button">Simpan Draf</string>
+    <string name="uploadgambar_button">Upload dari Galeri</string>
+    <string name="jual_button">Jual</string>
+    <string name="keterangan_barang">Keterangan Barang</string>
+    <string name="nama_barang">Nama Barang</string>
+    <string name="ket_nama_barang">Tuliskan nama barang yang dijual</string>
+    <string name="kategori_barang">Kategori Barang</string>
+    <string name="ket_kategori_barang">Atur kategori barang yang dijual</string>
+    <string name="deskripsi_barang">Deskripsi Barang</string>
+    <string name="ket_deskripsi_barang">Tuliskan keterangan barang yang dijual</string>
+    <string name="detail_barang">Detail Barang</string>
+    <string name="ket_detail_barang">Atur detail barang yang dijual</string>
+    <string name="pengiriman">Pengiriman (Optional)</string>
+    <string name="ket_pengiriman">Atur jasa pengiriman barang yang dijual</string>
+    <string name="text_favorites">Favorites</string>
+    <string name="text_schedules">Schedules</string>
+    <string name="text_music">Music</string>
+    <string name="harga_barang">Harga Barang</string>
+    <string name="ket_harga_barang">Tuliskan harga barang yang dijual</string>
+    <string name="kualitas_barang">Kualitas Barang</string>
+    <string name="ket_kul_barang">Tuliskan kualitas barang yang dijual</string>
+    <string name="T1_namabarang">Masukkan nama barang jualan kamu</string>
+    <string name="T2_namabarang">Nama barang ini akan muncul di daftar barang jualan kamu</string>
+    <string name="hint_namabarang">Contoh, iPhone 5S Gold 16GB</string>
+    <string name="T1_deskripsibarang">Tuliskan deskripsi barang jualan kamu</string>
+    <string name="T2_deskripsibarang">iphone 6s</string>
+    <string name="T3_deskripsibarang">Handphone/HP &amp; Smartphone</string>
+    <string name="hint_deskripsibarang">Tulis deskripsi barang di sini</string>
+    <string name="T1_kategoribarang">Pilih kategori jualan kamu</string>
+    <string name="T2_kategoribarang">Pilih kategori sesuai dengan nama barang jualan kamu</string>
+    <string name="T3_kategoribarang">Saran Kategori</string>
+    <string name="s1_kategoribarang">Handphone / Aksesoris handphone / Casing &amp; Cover</string>
+    <string name="s2_kategoribarang">Handphone / Spare Part &amp; Tools Handphone</string>
+    <string name="s3_kategoribarang">Handphone / Aksesoris handphone / Screen Guard</string>
+    <string name="s4_kategoribarang">Handphone / Aksesoris handphone / Aksesoris Lain</string>
+    <string name="s5_kategoribarang">Handphone / HP &amp; Smartphone</string>
+    <string name="T4_kategoribarang">Semua Kategori </string>
+    <!--<string name="s6_kategoribarang">Perawatan &amp; Kecantikan</string>-->
+    <!--<string name="s7_kategoribarang">Kesehatan</string>-->
+    <!--<string name="s8_kategoribarang">Fashion Wanita</string>-->
+    <!--<string name="s9_kategoribarang">Fashion Pria</string>-->
+    <!--<string name="s10_kategoribarang">Handphone</string>-->
+    <!--<string name="s11_kategoribarang">Komputer</string>-->
+    <!--<string name="s12_kategoribarang">Elektronik</string>-->
+
+
+    <string-array name="daftar_kategori">
+        <item name="s6_kategoribarang">Perawatan &amp; Kecantikan</item>
+        <item name="s7_kategoribarang">Kesehatan</item>
+        <item name="s8_kategoribarang">Fashion Wanita</item>
+        <item name="s9_kategoribarang">Fashion Pria</item>
+        <item name="s10_kategoribarang">Handphone</item>
+        <item name="s11_kategoribarang">Komputer</item>
+        <item name="s12_kategoribarang">Elektronik</item>
+    </string-array>
+
+</resources>
