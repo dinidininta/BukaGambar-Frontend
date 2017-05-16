@@ -1,4 +1,4 @@
-package com.example.bukagambar;
+package com.example.bukagambarfrontend;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class DeskripsiBarang extends AppCompatActivity {
+public class DeskripsiBarangActivity extends AppCompatActivity {
 
     ImageButton buttonCloseDeskrispiBarang;
     Button buttonLanjutkanDeskripsiBarang;
@@ -34,7 +34,7 @@ public class DeskripsiBarang extends AppCompatActivity {
         buttonLanjutkanDeskripsiBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), StepSatuActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DetailBarangActivity.class);
                 startActivity(intent);
             }
         });

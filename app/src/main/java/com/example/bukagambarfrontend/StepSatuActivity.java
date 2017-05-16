@@ -1,4 +1,4 @@
-package com.example.bukagambar;
+package com.example.bukagambarfrontend;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,9 +14,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.support.design.widget.BottomNavigationView;
-
-import org.w3c.dom.Text;
 
 public class StepSatuActivity extends AppCompatActivity {
 
@@ -58,7 +55,7 @@ public class StepSatuActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NamaBarang.class);
+                Intent intent = new Intent(getApplicationContext(), NamaBarangActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,7 +125,7 @@ public class StepSatuActivity extends AppCompatActivity {
                     Intent intent;
                     switch (judul_step[position]) {
                         case 2131099712:
-                            intent = new Intent(context, NamaBarang.class);
+                            intent = new Intent(context, NamaBarangActivity.class);
                             context.startActivity(intent);
                             break;
                         case 2131099701:
@@ -136,19 +133,19 @@ public class StepSatuActivity extends AppCompatActivity {
                             context.startActivity(intent);
                             break;
                         case 2131099694:
-                            intent = new Intent(context, DeskripsiBarang.class);
+                            intent = new Intent(context, DeskripsiBarangActivity.class);
                             context.startActivity(intent);
                             break;
                         case 2131099695:
-                            intent = new Intent(context, DetailBarang.class);
+                            intent = new Intent(context, DetailBarangActivity.class);
                             context.startActivity(intent);
                             break;
                         case 2131099713:
-                            intent = new Intent(context, PengirimanBarang.class);
+                            intent = new Intent(context, PengirimanBarangActivity.class);
                             context.startActivity(intent);
                             break;
                         default:
-                            intent = new Intent(context, NamaBarang.class);
+                            intent = new Intent(context, NamaBarangActivity.class);
                             context.startActivity(intent);
                             break;
                     }

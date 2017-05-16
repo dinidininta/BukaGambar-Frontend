@@ -1,18 +1,22 @@
-package com.example.bukagambar;
+package com.example.bukagambarfrontend;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class KategoriBarangActivity extends AppCompatActivity {
 
+
+    Button buttonLanjutkanKategoriBarang;
     String[] list_kategori;
     ListView listView;
 
@@ -24,6 +28,17 @@ public class KategoriBarangActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_of_kategori_saran);
         KategoriBarangListAdapter adapter = new KategoriBarangListAdapter(this, list_kategori);
         listView.setAdapter(adapter);
+
+        //button lanjutkan
+        buttonLanjutkanKategoriBarang = (Button) findViewById(R.id.lanjutkan_kategoribarang_button);
+
+        buttonLanjutkanKategoriBarang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DeskripsiBarangActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public static class KategoriBarangListAdapter extends BaseAdapter {

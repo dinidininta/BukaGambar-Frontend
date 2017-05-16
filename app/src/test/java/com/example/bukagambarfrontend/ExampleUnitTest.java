@@ -1,4 +1,4 @@
-package com.example.bukagambar;
+package com.example.bukagambarfrontend;
 
 import org.junit.Test;
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_lighten_5"
-    tools:context="com.example.bukagambar.StepSatuActivity">
+    tools:context="com.example.bukagambarfrontend.StepSatuActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

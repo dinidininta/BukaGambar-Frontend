@@ -1,9 +1,9 @@
-package com.example.bukagambar;
+package com.example.bukagambarfrontend;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class PengirimanBarang extends AppCompatActivity {
+public class PengirimanBarangActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

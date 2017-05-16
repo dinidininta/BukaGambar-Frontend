@@ -39,16 +39,7 @@
     <string name="s3_kategoribarang">Handphone / Aksesoris handphone / Screen Guard</string>
     <string name="s4_kategoribarang">Handphone / Aksesoris handphone / Aksesoris Lain</string>
     <string name="s5_kategoribarang">Handphone / HP &amp; Smartphone</string>
-    <string name="T4_kategoribarang">Semua Kategori </string>
-    <!--<string name="s6_kategoribarang">Perawatan &amp; Kecantikan</string>-->
-    <!--<string name="s7_kategoribarang">Kesehatan</string>-->
-    <!--<string name="s8_kategoribarang">Fashion Wanita</string>-->
-    <!--<string name="s9_kategoribarang">Fashion Pria</string>-->
-    <!--<string name="s10_kategoribarang">Handphone</string>-->
-    <!--<string name="s11_kategoribarang">Komputer</string>-->
-    <!--<string name="s12_kategoribarang">Elektronik</string>-->
-
-
+    <string name="T4_kategoribarang">Semua Kategori</string>
     <string-array name="daftar_kategori">
         <item name="s6_kategoribarang">Perawatan &amp; Kecantikan</item>
         <item name="s7_kategoribarang">Kesehatan</item>
@@ -58,5 +49,16 @@
         <item name="s11_kategoribarang">Komputer</item>
         <item name="s12_kategoribarang">Elektronik</item>
     </string-array>
+    <string name="T1_detailbarang">Atur detail barang jualan kamu</string>
+    <string name="T2_detailbarang">Perkiraan Berat</string>
+    <string name="T3_detailbarang">Stok Barang</string>
+    <string name="T4_detailbarang">Harga Barang Satuan</string>
+    <string name="gram">Gram</string>
+    <string name="buah">Buah</string>
+    <string name="rupiah">Rp</string>
+    <string name="grosir">Harga Grosir</string>
+    <string name="barangbaru">Barang Baru</string>
+    <string name="Label">Label Barang</string>
+
 
 </resources>

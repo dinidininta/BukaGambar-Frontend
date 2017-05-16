@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_lighten_5"
-    tools:context="com.example.bukagambar.NamaBarang">
+    tools:context="com.example.bukagambarfrontend.NamaBarangActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -29,7 +29,7 @@
             android:tint="@color/grey_darken" />
 
         <Button
-            android:id="@+id/lanjutkan_deskrispibarang_button"
+            android:id="@+id/lanjutkan_kategoribarang_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize"
@@ -75,15 +75,18 @@
         android:layout_below="@id/teks_2_kategoribarang"
         android:paddingStart="@dimen/margin_start"
         android:paddingEnd="@dimen/margin_end"
-        android:text="@string/T3_kategoribarang"
+        android:text="@string/T4_kategoribarang"
         android:textColor="@color/grey"
         android:textAllCaps="false"
-        android:textSize="@dimen/list_size"/>
+        android:textSize="@dimen/list_size"
+        android:layout_marginBottom="@dimen/margin_start"/>
 
 
     <ListView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_start"
+        android:paddingEnd="@dimen/margin_end"
         android:id="@+id/list_of_kategori_saran"
         android:layout_below="@+id/teks_3_kategoribarang"/>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bukagambar">
+    package="com.example.bukagambarfrontend">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".StepSatuActivity" />
-        <activity android:name=".NamaBarang" />
+        <activity android:name=".NamaBarangActivity" />
         <activity android:name=".KategoriBarangActivity" />
-        <activity android:name=".DeskripsiBarang" />
-        <activity android:name=".DetailBarang" />
-        <activity android:name=".SpesifikasiBarang" />
-        <activity android:name=".PengirimanBarang" />
-        <activity android:name=".Test_Gallery_Activity"></activity>
+        <activity android:name=".DeskripsiBarangActivity" />
+        <activity android:name=".DetailBarangActivity" />
+        <activity android:name=".SpesifikasiBarangActivity" />
+        <activity android:name=".Test_Gallery_Activity" />
+        <activity android:name=".PengirimanBarangActivity"></activity>
     </application>
 
 </manifest>
