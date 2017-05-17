@@ -61,7 +61,7 @@ public class StepSatuActivity extends AppCompatActivity {
         });
 
         //adding Toolbar to Step satu
-        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setNavigationIcon(R.drawable.ic_toolbar);

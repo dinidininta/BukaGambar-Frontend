@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_lighten_5"
+    tools:context="com.example.bukagambarfrontend.NamaBarangActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_editextDeskrispiActivity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/grey_lighten_4"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_marginBottom="@dimen/margin_bottom">
+
+        <ImageButton
+            android:id="@+id/back_edittextDeskripsi_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/exit_button_width"
+            android:layout_height="@dimen/exit_button_height"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:tint="@color/grey_darken" />
+
+        <Button
+            android:id="@+id/simpan_edittextDeskripsi_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="end"
+            android:text="@string/simpan_button"
+            android:textAllCaps="false"
+            android:textColor="@color/pinkdarken2"
+            android:textSize="@dimen/text_size" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <EditText
+        android:id="@+id/deskripsibarang_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_editextDeskrispiActivity"
+        android:background="@android:color/transparent"
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end"
+        android:hint="@string/hint_deskripsibarang"
+        android:textAlignment="textStart"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/list_size"
+        android:scrollbars="vertical"
+        android:maxHeight="100dp"
+        android:inputType="textCapSentences|textMultiLine"
+        android:fontFamily="sans-serif-condensed"/>
+
+
+</RelativeLayout>

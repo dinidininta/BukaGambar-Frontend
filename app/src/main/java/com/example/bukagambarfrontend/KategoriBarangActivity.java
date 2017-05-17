@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +30,16 @@ public class KategoriBarangActivity extends AppCompatActivity {
         KategoriBarangListAdapter adapter = new KategoriBarangListAdapter(this, list_kategori);
         listView.setAdapter(adapter);
 
+        //adding Toolbar to Step satu
+        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_kategoriActivity);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
+        toolbar.setTitle("");
+        toolbar.setSubtitle("");
+
         //button lanjutkan
         buttonLanjutkanKategoriBarang = (Button) findViewById(R.id.lanjutkan_kategoribarang_button);
-
         buttonLanjutkanKategoriBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

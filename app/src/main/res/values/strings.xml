@@ -59,6 +59,29 @@
     <string name="grosir">Harga Grosir</string>
     <string name="barangbaru">Barang Baru</string>
     <string name="Label">Label Barang</string>
-
+    <string name="T1_pengirimanbarang">Atur pengiriman penjualan kamu</string>
+    <string name="T2_pengirimanbarang">Pengaturan jasa pengiriman termasuk asuransi dari pengaturan gratis biaya kirim</string>
+    <string name="wajibasuransi">Wajib Asuransi</string>
+    <string name="gratisbiaya">Gratis Biaya Kirim</string>
+    <string-array name="daftar_daerah">
+        <item name="d1">Seluruh Indonesia</item>
+        <item name="d2">Pulau Jawa</item>
+        <item name="d3">Jabodetabekkar</item>
+        <item name="d4">Bali</item>
+        <item name="d5">Banten</item>
+        <item name="d6">Bengkulu</item>
+        <item name="d7">Daerah Istimewa Yogyakarta</item>
+        <item name="d8">DKI Jakarta</item>
+        <item name="d9">Gorontalo</item>
+        <item name="d10">Jambi</item>
+        <item name="d11">Jawa Barat</item>
+        <item name="d12">Jawa Tengah</item>
+        <item name="d13">Jawa Timur</item>
+        <item name="d14">Kalimantan Barat</item>
+        <item name="d15">Kalimantan Selatan</item>
+        <item name="d16">Kalimantan Tengah</item>
+        <item name="d17">Kalimantan Timur</item>
+        <item name="d18">Kalimantan Utara</item>
+    </string-array>
 
 </resources>

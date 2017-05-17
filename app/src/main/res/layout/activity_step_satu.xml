@@ -15,7 +15,7 @@
         android:layout_above="@+id/footer">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_stepsatu"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/grey_lighten_4"

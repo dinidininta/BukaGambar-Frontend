@@ -13,5 +13,9 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/grey</item>
     </style>
+    <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
+        <item name="colorAccent">@color/pinkdarken2</item>
+        <item name="android:textColorSecondary">@color/pinkdarken2</item>
+    </style>
 
 </resources>

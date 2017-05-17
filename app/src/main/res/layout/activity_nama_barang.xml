@@ -9,7 +9,7 @@
     tools:context="com.example.bukagambarfrontend.NamaBarangActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_namabarangActivity"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/grey_lighten_4"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/T1_namabarang"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/toolbar_namabarangActivity"
         android:textSize="@dimen/text_size_big"
         android:textColor="@color/grey"
         android:layout_marginTop="@dimen/margin_top"
