@@ -29,7 +29,7 @@ public class PengirimanBarangActivity extends AppCompatActivity {
         toolbar.setSubtitle("");
 
         //button gratis pengiriman
-        gratistextbutton = (TextView) findViewById(R.id.gratis_textview);
+        gratistextbutton = (TextView) findViewById(R.id.textView);
         gratistextbutton.setOnClickListener(new View.OnClickListener()
         {
             @Override

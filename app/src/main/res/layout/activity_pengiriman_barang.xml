@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/grey_lighten_5"
     tools:context="com.example.bukagambarfrontend.NamaBarangActivity"
     android:weightSum="1">
 
@@ -17,7 +16,8 @@
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
         app:layout_scrollFlags="scroll|enterAlways"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_marginBottom="@dimen/margin_bottom">
 
         <ImageButton
             android:id="@+id/close_pengiriman_button"
@@ -41,94 +41,80 @@
             android:textSize="@dimen/text_size" />
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/teks_1_pengirimanbarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/T1_pengirimanbarang"
-        android:layout_below="@id/toolbar_pengirimanActivity"
-        android:textSize="@dimen/text_size_big"
-        android:textColor="@color/grey"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:textStyle="normal"/>
+        <TextView
+            android:id="@+id/teks_1_pengirimanbarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/T1_pengirimanbarang"
+            android:textSize="@dimen/text_size_big"
+            android:textColor="@color/grey"
+            android:paddingStart="@dimen/margin_start"
+            android:paddingEnd="@dimen/margin_end"
+            android:textStyle="normal"
+            android:layout_marginBottom="@dimen/margin_bottom"/>
 
-    <TextView
-        android:id="@+id/teks_2_pengirimanbarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/teks_1_pengirimanbarang"
-        android:layout_marginBottom="@dimen/margin_start"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:text="@string/T2_pengirimanbarang"
-        android:textColor="@color/grey"
-        android:textAllCaps="false"
-        android:textSize="@dimen/list_size"/>
+        <TextView
+            android:id="@+id/teks_2_pengirimanbarang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/margin_start"
+            android:paddingEnd="@dimen/margin_end"
+            android:text="@string/T2_pengirimanbarang"
+            android:textColor="@color/grey"
+            android:textAllCaps="false"
+            android:textSize="@dimen/list_size"
+            android:layout_marginBottom="@dimen/margin_bottom"/>
 
 
-    <View style="@style/Divider"/>
+        <View style="@style/Divider"/>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:paddingEnd="@dimen/margin_end"
-        android:paddingStart="@dimen/margin_start"
-        android:layout_marginBottom="@dimen/margin_bottom">
 
         <android.support.v7.widget.AppCompatCheckBox
-            android:id="@+id/asuransibutton"
+            android:id="@+id/appCompatCheckBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:button="@null"
             android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/wajibasuransi"
             android:textColor="@color/grey"
             android:textSize="@dimen/text_size"
-            android:theme="@style/checkBoxStyle"/>
+            android:theme="@style/checkBoxStyle"
+            android:paddingStart="@dimen/margin_start"
+            android:paddingEnd="@dimen/margin_end"
+            android:layout_marginBottom="@dimen/margin_bottom"/>
 
-    </LinearLayout>
-
-    <View style="@style/Divider"/>
+    <View style="@style/Divider" />
 
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="10dp"
+        android:paddingEnd="@dimen/margin_end"
+        android:paddingStart="@dimen/margin_start"
+        android:layout_marginBottom="@dimen/margin_bottom">
 
         <TextView
-            android:id="@+id/gratis_textview"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/margin_end"
-            android:paddingStart="@dimen/margin_start"
             android:text="@string/gratisbiaya"
             android:textColor="@color/grey"
-            android:textSize="@dimen/text_size"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true" />
+            android:textSize="@dimen/text_size" />
+
 
         <ImageButton
             android:id="@+id/chevron_pengiriman"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/cards_button_width"
             android:layout_height="@dimen/cards_button_height"
-            android:layout_alignBottom="@+id/gratis_textview"
+            android:layout_alignBottom="@+id/textView"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/margin_end"
+            android:layout_alignTop="@+id/textView"
             android:src="@drawable/ic_chevron_right_black_24dp"
             android:tint="@color/grey" />
 
-
     </RelativeLayout>
-
     <View style="@style/Divider" />
 
 </LinearLayout>

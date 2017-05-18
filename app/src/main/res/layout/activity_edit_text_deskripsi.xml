@@ -56,7 +56,7 @@
         android:scrollbars="vertical"
         android:maxHeight="100dp"
         android:inputType="textCapSentences|textMultiLine"
-        android:fontFamily="sans-serif-condensed"/>
+        android:fontFamily="roboto"/>
 
 
 </RelativeLayout>
