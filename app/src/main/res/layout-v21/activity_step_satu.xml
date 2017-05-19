@@ -59,7 +59,7 @@
             android:layout_height="wrap_content" android:layout_weight="1"
             android:text="@string/simpan_button"
             android:textColor="@color/grey_lighten_5"
-            android:background="@color/pinkdarken2"/>
+            android:backgroundTint="@color/pinkdarken2"/>
 
     </LinearLayout>
 

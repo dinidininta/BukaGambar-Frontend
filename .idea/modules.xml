@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BukaGambarFrontEnd.iml" filepath="$PROJECT_DIR$/BukaGambarFrontEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bukagambarfrontend.iml" filepath="$PROJECT_DIR$/bukagambarfrontend.iml" />
     </modules>
   </component>
 </project>

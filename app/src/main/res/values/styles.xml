@@ -7,20 +7,31 @@
         <item name="colorPrimaryDark">@color/grey_darken</item>
         <item name="colorAccent">@color/grey</item>
     </style>
+
     <style name="AppTheme" parent="AppTheme.base"></style>
+
     <style name="Divider">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/grey</item>
     </style>
+
     <style name="checkBoxStyle" parent="Base.Theme.AppCompat">
         <item name="colorAccent">@color/pinkdarken2</item>
         <item name="android:textColorSecondary">@color/pinkdarken2</item>
     </style>
 
+<<<<<<< Updated upstream
     <style name="fontStyle">
 
         <item name="android:fontFamily"></item>
+=======
+    <style name="FilePickerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/pinkdarken2</item>
+        <item name="colorPrimaryDark">@color/pinkdarken2</item>
+        <item name="colorAccent">@color/white</item>
+>>>>>>> Stashed changes
     </style>
 
 </resources>
