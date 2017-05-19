@@ -10,13 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class KategoriBarangActivity extends AppCompatActivity {
 
-
+    ImageButton buttoncloseKategoriBarang;
     Button buttonLanjutkanKategoriBarang;
     String[] list_kategori;
     ListView listView;
@@ -37,6 +38,16 @@ public class KategoriBarangActivity extends AppCompatActivity {
         //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
+
+        //button close
+        buttoncloseKategoriBarang = (ImageButton) findViewById(R.id.close_kategoribarang_button);
+        buttoncloseKategoriBarang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), StepSatuActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //button lanjutkan
         buttonLanjutkanKategoriBarang = (Button) findViewById(R.id.lanjutkan_kategoribarang_button);

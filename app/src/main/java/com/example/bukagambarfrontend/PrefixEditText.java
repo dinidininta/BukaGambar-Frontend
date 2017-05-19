@@ -2,15 +2,18 @@ package com.example.bukagambarfrontend;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 
 /**
- * Created by User-pc on 16/05/2017.
+ * Created by User-pc on 20/05/2017.
  */
 
 public class PrefixEditText extends AppCompatEditText {
-    float mOriginalRightPadding = -1;
+    float mOriginalLeftPadding = -1;
+    Paint paint;
 
     public PrefixEditText(Context context) {
         super(context);
@@ -33,7 +36,7 @@ public class PrefixEditText extends AppCompatEditText {
     }
 
     private void calculatePrefix() {
-        if (mOriginalRightPadding == -1) {
+        if (mOriginalLeftPadding == -1) {
             String prefix = (String) getTag();
             float[] widths = new float[prefix.length()];
             getPaint().getTextWidths(prefix, widths);
@@ -41,9 +44,9 @@ public class PrefixEditText extends AppCompatEditText {
             for (float w : widths) {
                 textWidth += w;
             }
-            mOriginalRightPadding = getCompoundPaddingStart();
-            setPadding((int) (textWidth + mOriginalRightPadding),
-                    getPaddingEnd(), getPaddingTop(),
+            mOriginalLeftPadding = getCompoundPaddingLeft();
+            setPadding((int) (textWidth + mOriginalLeftPadding),
+                    getPaddingRight(), getPaddingTop(),
                     getPaddingBottom());
         }
     }
@@ -52,7 +55,10 @@ public class PrefixEditText extends AppCompatEditText {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         String prefix = (String) getTag();
-        canvas.drawText(prefix, mOriginalRightPadding,
-                getLineBounds(0, null), getPaint());
+        this.paint = new Paint();
+        paint.setColor(Color.BLACK);
+        paint.setTextSize(40f);
+        canvas.drawText(prefix, mOriginalLeftPadding,
+                getLineBounds(0, null), paint);
     }
 }

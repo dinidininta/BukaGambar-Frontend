@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.bukagambarfrontend.NamaBarangActivity"
-    android:weightSum="1">
+    android:background="@color/grey_lighten_5">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_pengirimanActivity"

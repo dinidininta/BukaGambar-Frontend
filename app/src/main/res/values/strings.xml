@@ -83,5 +83,7 @@
         <item name="d17">Kalimantan Timur</item>
         <item name="d18">Kalimantan Utara</item>
     </string-array>
+    <string name="nol">0</string>
+    <string name="nol_rupiah">0,-</string>
 
 </resources>

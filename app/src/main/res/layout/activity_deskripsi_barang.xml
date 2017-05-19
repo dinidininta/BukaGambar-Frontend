@@ -124,7 +124,7 @@
             android:id="@+id/editText_deskripsibarang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/teks_4_deskripsibarang"
+            android:layout_below="@id/teks_5_deskripsibarang"
             android:backgroundTint="@color/grey"
             android:hint="@string/hint_deskripsibarang"
             android:textAlignment="textStart"

@@ -18,4 +18,9 @@
         <item name="android:textColorSecondary">@color/pinkdarken2</item>
     </style>
 
+    <style name="fontStyle">
+
+        <item name="android:fontFamily"></item>
+    </style>
+
 </resources>
