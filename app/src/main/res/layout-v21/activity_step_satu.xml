@@ -39,7 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?attr/actionBarSize"
                 android:text="@string/lanjutkan_button"
-                android:textSize="@dimen/text_size"
+                android:textSize="@dimen/text_size_normal"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_gravity="end"
                 android:textColor="@color/grey"
@@ -62,119 +62,5 @@
             android:backgroundTint="@color/pinkdarken2"/>
 
     </LinearLayout>
-
-
-    <!--<android.support.design.widget.BottomNavigationView-->
-            <!--android:id="@+id/bottom_navigation"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="?attr/actionBarSize"-->
-            <!--android:layout_alignParentBottom="true"-->
-            <!--app:itemBackground="@color/pinkdarken2"-->
-            <!--app:layout_scrollFlags="scroll|enterAlways"-->
-            <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-            <!--app:contentInsetLeft="0dp"-->
-            <!--app:contentInsetStart="0dp"/>-->
-
-    <!--<TextView-->
-        <!--android:id="@+id/nam_barangTeks"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/nama_barang"-->
-        <!--android:textColor="@color/grey_darken"-->
-        <!--android:layout_below="@id/ket_barangTeks"-->
-        <!--android:textSize="17sp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/tul_namabarangTeks"-->
-        <!--android:text="@string/ket_nama_barang"-->
-        <!--android:textSize="16sp"-->
-        <!--android:layout_below="@id/nam_barangTeks"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/kat_barangTeks"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/kategori_barang"-->
-        <!--android:textColor="@color/grey_darken"-->
-        <!--android:layout_below="@id/tul_namabarangTeks"-->
-        <!--android:textSize="17sp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/tul_kategoribarangTeks"-->
-        <!--android:text="@string/ket_kategori_barang"-->
-        <!--android:textSize="16sp"-->
-        <!--android:layout_below="@id/kat_barangTeks"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/des_barangTeks"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/deskripsi_barang"-->
-        <!--android:textColor="@color/grey_darken"-->
-        <!--android:layout_below="@id/tul_kategoribarangTeks"-->
-        <!--android:textSize="17sp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/tul_deskripsibarangTeks"-->
-        <!--android:text="@string/ket_deskripsi_barang"-->
-        <!--android:textSize="16sp"-->
-        <!--android:layout_below="@id/des_barangTeks"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/det_barangTeks"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/detail_barang"-->
-        <!--android:textColor="@color/grey_darken"-->
-        <!--android:layout_below="@id/tul_deskripsibarangTeks"-->
-        <!--android:textSize="17sp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/tul_detailbarangTeks"-->
-        <!--android:text="@string/ket_detail_barang"-->
-        <!--android:textSize="16sp"-->
-        <!--android:layout_below="@id/det_barangTeks"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-    <!--<TextView-->
-        <!--android:id="@+id/pen_barangTeks"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/pengiriman"-->
-        <!--android:textColor="@color/grey_darken"-->
-        <!--android:layout_below="@id/tul_detailbarangTeks"-->
-        <!--android:textSize="17sp"-->
-        <!--android:textStyle="bold"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/tul_detailbarangTeks"-->
-        <!--android:text="@string/ket_detail_barang"-->
-        <!--android:textSize="16sp"-->
-        <!--android:layout_below="@id/det_barangTeks"-->
-        <!--android:layout_marginBottom="10dp"-->
-        <!--android:layout_marginLeft="10dp"/>-->
 
 </RelativeLayout>

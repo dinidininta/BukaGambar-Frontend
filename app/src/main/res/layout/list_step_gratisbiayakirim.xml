@@ -6,10 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/atribut_list_gratisbiaya"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/text_size_normal"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginBottom="@dimen/top"
+        android:layout_marginTop="@dimen/bottom"/>
 
 </RelativeLayout>

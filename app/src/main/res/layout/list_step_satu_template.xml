@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/detail_atribut"
         android:text="@string/ket_nama_barang"
-        android:textSize="@dimen/text_size"
+        android:textSize="@dimen/text_size_normal"
         android:layout_below="@id/judul_atribut"
         android:layout_marginBottom="20dp"
         android:layout_marginStart="10dp"/>
@@ -31,9 +31,9 @@
         style="?android:attr/borderlessButtonStyle"
         android:src="@drawable/ic_chevron_right_black_24dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="@dimen/top"
+        android:layout_marginBottom="@dimen/bottom"
+        android:layout_marginStart="@dimen/bottom"
         android:tint="@color/grey"/>
 
 </RelativeLayout>

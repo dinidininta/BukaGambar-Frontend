@@ -74,6 +74,7 @@ public class StepSatuActivity extends AppCompatActivity {
 
         StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
         listView.setAdapter(adapter);
+
     }
 
     public static class StepSatuListAdapter extends BaseAdapter{

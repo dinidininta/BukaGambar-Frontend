@@ -37,72 +37,43 @@
             android:text="@string/lanjutkan_button"
             android:textAllCaps="false"
             android:textColor="@color/grey_darken"
-            android:textSize="@dimen/text_size" />
+            android:textSize="@dimen/text_size_normal" />
     </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/teks_1_kategoribarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:text="@string/T1_kategoribarang"
         android:layout_below="@id/toolbar_kategoriActivity"
-        android:textSize="25sp"
+        android:textSize="@dimen/text_size_big"
         android:textColor="@color/grey"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:textStyle="normal"/>
+        android:layout_marginTop="@dimen/top"
+        android:textStyle="normal"
+        style="@style/textStyle"/>
 
 
     <TextView
         android:id="@+id/teks_2_kategoribarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/teks_1_kategoribarang"
-        android:layout_marginBottom="@dimen/margin_start"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
         android:text="@string/T2_kategoribarang"
         android:textColor="@color/grey"
         android:textAllCaps="false"
-        android:textSize="@dimen/list_size"/>
+        android:textSize="@dimen/list_size"
+        style="@style/textStyle"/>
 
     <TextView
         android:id="@+id/teks_3_kategoribarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/teks_2_kategoribarang"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
         android:text="@string/T4_kategoribarang"
         android:textColor="@color/grey"
         android:textAllCaps="false"
         android:textSize="@dimen/list_size"
-        android:layout_marginBottom="@dimen/margin_start"/>
+        style="@style/textStyle"/>
 
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
         android:id="@+id/list_of_kategori_saran"
-        android:layout_below="@+id/teks_3_kategoribarang"/>
-
-    <!--<TextView-->
-        <!--android:id="@+id/teks_4_kategoribarang"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/list_of_kategori_saran"-->
-        <!--android:paddingStart="@dimen/margin_start"-->
-        <!--android:paddingEnd="@dimen/margin_end"-->
-        <!--android:text="@string/T4_kategoribarang"-->
-        <!--android:textColor="@color/grey"-->
-        <!--android:textAllCaps="false"-->
-        <!--android:textSize="@dimen/list_size"/>-->
-
-
+        android:layout_below="@+id/teks_3_kategoribarang"
+        style="@style/textStyle"/>
 
 
 

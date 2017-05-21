@@ -13,27 +13,11 @@
       android:id="@+id/button_jualbarang"
       android:layout_centerHorizontal="true"
       android:layout_alignParentBottom="true"
-      android:layout_marginBottom="35dp"
+      android:layout_marginBottom="@dimen/bottom"
       android:text="@string/jual_barang"
-      android:textSize="18sp"
+      android:textSize="@dimen/button_main"
       android:textAllCaps="false"
       android:textColor="@color/pinkdarken2"
-      android:background="@drawable/button_bg_rounded_corners"
-      android:padding="15dp"/>
-
-  <!--<ImageView-->
-      <!--android:layout_width="match_parent"-->
-      <!--android:layout_height="match_parent"-->
-      <!--android:id="@+id/background_main"-->
-      <!--android:src="@drawable/background"-->
-      <!--android:scaleType="centerCrop"/>-->
-
-    <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:background="?attr/colorPrimary"-->
-        <!--app:layout_scrollFlags="scroll|enterAlways"-->
-        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />-->
+      android:background="@drawable/button_bg_rounded_corners"/>
 
 </RelativeLayout>

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="com.example.bukagambarfrontend.NamaBarangActivity"
     android:background="@color/grey_lighten_5">
 
@@ -17,7 +16,7 @@
         app:contentInsetStart="0dp"
         app:layout_scrollFlags="scroll|enterAlways"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:layout_marginBottom="@dimen/margin_bottom">
+        android:layout_marginBottom="@dimen/bottom">
 
         <ImageButton
             android:id="@+id/close_pengiriman_button"
@@ -38,84 +37,78 @@
             android:text="@string/simpan_button"
             android:textAllCaps="false"
             android:textColor="@color/pinkdarken2"
-            android:textSize="@dimen/text_size" />
+            android:textSize="@dimen/text_size_normal" />
     </android.support.v7.widget.Toolbar>
 
         <TextView
             android:id="@+id/teks_1_pengirimanbarang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar_pengirimanActivity"
             android:text="@string/T1_pengirimanbarang"
             android:textSize="@dimen/text_size_big"
             android:textColor="@color/grey"
-            android:paddingStart="@dimen/margin_start"
-            android:paddingEnd="@dimen/margin_end"
             android:textStyle="normal"
-            android:layout_marginBottom="@dimen/margin_bottom"/>
+            style="@style/textStyle"/>
 
         <TextView
             android:id="@+id/teks_2_pengirimanbarang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/margin_start"
-            android:paddingEnd="@dimen/margin_end"
+            android:layout_below="@+id/teks_1_pengirimanbarang"
             android:text="@string/T2_pengirimanbarang"
             android:textColor="@color/grey"
             android:textAllCaps="false"
             android:textSize="@dimen/list_size"
-            android:layout_marginBottom="@dimen/margin_bottom"/>
+            style="@style/textStyle"/>
 
 
-        <View style="@style/Divider"/>
+        <View
+            style="@style/Divider"
+            android:id="@+id/Div_1"
+            android:layout_below="@+id/teks_2_pengirimanbarang"/>
 
 
         <android.support.v7.widget.AppCompatCheckBox
             android:id="@+id/appCompatCheckBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_below="@+id/Div_1"
             android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+            android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
             android:text="@string/wajibasuransi"
             android:textColor="@color/grey"
-            android:textSize="@dimen/text_size"
-            android:theme="@style/checkBoxStyle"
-            android:paddingStart="@dimen/margin_start"
-            android:paddingEnd="@dimen/margin_end"
-            android:layout_marginBottom="@dimen/margin_bottom"/>
+            android:textSize="@dimen/text_size_normal"
+            style="@style/textStyle"
+            app:buttonTint="@color/pinkdarken2"/>
 
-    <View style="@style/Divider" />
+    <View
+        style="@style/Divider"
+        android:id="@+id/Div_2"
+        android:layout_below="@+id/appCompatCheckBox"/>
 
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:paddingEnd="@dimen/margin_end"
-        android:paddingStart="@dimen/margin_start"
-        android:layout_marginBottom="@dimen/margin_bottom">
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_below="@id/Div_2"
             android:text="@string/gratisbiaya"
             android:textColor="@color/grey"
-            android:textSize="@dimen/text_size" />
+            android:textSize="@dimen/text_size_normal"
+            android:layout_marginTop="@dimen/top"
+            style="@style/textStyle"/>
 
 
         <ImageButton
             android:id="@+id/chevron_pengiriman"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="@dimen/cards_button_width"
-            android:layout_height="@dimen/cards_button_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/start"
+            android:paddingEnd="@dimen/tile_padding"
             android:layout_alignBottom="@+id/textView"
             android:layout_alignParentEnd="true"
             android:layout_alignTop="@+id/textView"
             android:src="@drawable/ic_chevron_right_black_24dp"
             android:tint="@color/grey" />
 
-    </RelativeLayout>
-    <View style="@style/Divider" />
+    <View
+        style="@style/Divider"
+        android:id="@+id/Div_3"
+        android:layout_below="@+id/textView"/>
 
-</LinearLayout>
+</RelativeLayout>
 

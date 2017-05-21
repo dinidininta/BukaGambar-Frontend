@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 public class DeskripsiBarangActivity extends AppCompatActivity {
 
-    TextView tv1, tv2, tv3, tv4, tv5;
     ImageButton buttonCloseDeskrispiBarang;
     Button buttonLanjutkanDeskripsiBarang;
     EditText buttondeskripsiedit;
@@ -22,28 +21,6 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deskripsi_barang);
-
-        //set font
-        tv1=(TextView)findViewById(R.id.teks_1_deskripsibarang);
-        tv2=(TextView)findViewById(R.id.teks_2_deskripsibarang);
-        tv3=(TextView)findViewById(R.id.teks_3_deskripsibarang);
-        tv4=(TextView)findViewById(R.id.teks_4_deskripsibarang);
-        tv5=(TextView)findViewById(R.id.teks_5_deskripsibarang);
-
-        Typeface face= Typeface.createFromAsset(getAssets(), "font/Roboto-Thin.ttf");
-        tv1.setTypeface(face);
-
-        Typeface face1= Typeface.createFromAsset(getAssets(), "font/Roboto-Bold.ttf");
-        tv2.setTypeface(face1);
-
-        Typeface face2= Typeface.createFromAsset(getAssets(), "font/Roboto-Regular.ttf");
-        tv3.setTypeface(face2);
-
-        Typeface face3= Typeface.createFromAsset(getAssets(), "font/Roboto-Bold.ttf");
-        tv4.setTypeface(face3);
-
-        Typeface face4= Typeface.createFromAsset(getAssets(), "font/Roboto-Regular.ttf");
-        tv5.setTypeface(face4);
 
         //adding Toolbar to Step satu
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_deskripsiActivity);

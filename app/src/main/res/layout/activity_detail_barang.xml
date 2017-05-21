@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/grey_lighten_5"
     tools:context="com.example.bukagambarfrontend.NamaBarangActivity">
 
@@ -21,6 +20,7 @@
         <ImageButton
             android:id="@+id/close_detailbarang_button"
             style="?android:attr/borderlessButtonStyle"
+            android:contentDescription="@string/Label"
             android:layout_width="@dimen/exit_button_width"
             android:layout_height="@dimen/exit_button_height"
             android:layout_alignParentTop="true"
@@ -37,124 +37,93 @@
             android:text="@string/lanjutkan_button"
             android:textAllCaps="false"
             android:textColor="@color/grey_darken"
-            android:textSize="@dimen/text_size" />
+            android:textSize="@dimen/text_size_normal" />
     </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/teks_1_detailbarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
+        android:layout_below="@+id/toolbar_detailActivity"
         android:text="@string/T1_detailbarang"
         android:textSize="@dimen/text_size_big"
         android:textColor="@color/grey"
-        android:layout_marginTop="@dimen/margin_top"
-        android:layout_marginBottom="@dimen/margin_bottom"
-        android:textStyle="normal"/>
+        android:textStyle="normal"
+        style="@style/textStyle"/>
 
 
     <TextView
         android:id="@+id/teks_2_detailbarang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
+        android:layout_below="@+id/teks_1_detailbarang"
         android:text="@string/T2_detailbarang"
         android:textColor="@color/grey_darken"
         android:textAllCaps="true"
         android:textStyle="bold"
-        android:textSize="@dimen/list_size"/>
+        android:textSize="@dimen/list_size"
+        style="@style/textStyle"/>
 
     <EditText
         android:id="@+id/editText_gram"
         android:inputType="number"
+        android:layout_below="@+id/teks_2_detailbarang"
         android:hint="@string/nol"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
         android:backgroundTint="@color/grey"
         android:textAlignment="textStart"
-        android:textColor="@color/grey" />
+        android:textColor="@color/grey"
+        style="@style/textStyle"/>
 
     <EditText
         android:id="@+id/editText_buah"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_gram"
         android:textAlignment="textStart"
         android:inputType="number"
         android:backgroundTint="@color/grey"
-        android:hint="@string/nol"/>
+        android:hint="@string/nol"
+        style="@style/textStyle"/>
 
 
     <com.example.bukagambarfrontend.PrefixEditText
         android:id="@+id/editText_satuan"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:layout_width="match_parent"
+        style="@style/textStyle"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/editText_buah"
         android:inputType="number"
         android:backgroundTint="@color/grey"
         android:tag="Rp "
-        android:hint="@string/nol_rupiah"
-        android:layout_marginBottom="@dimen/margin_bottom"/>
-
-    <View style="@style/Divider" />
+        android:hint="@string/nol_rupiah"/>
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/grosir_checkBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_below="@id/editText_satuan"
         android:button="@null"
-        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
         android:text="@string/grosir"
         android:textColor="@color/grey"
         android:textSize="@dimen/list_size"
         android:theme="@style/checkBoxStyle"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:layout_marginBottom="@dimen/margin_bottom"/>
-
-    <View style="@style/Divider" />
+        style="@style/textStyle"/>
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/baru_checkBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/grosir_checkBox"
         android:button="@null"
-        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
         android:text="@string/barangbaru"
         android:textColor="@color/grey"
         android:textSize="@dimen/list_size"
         android:theme="@style/checkBoxStyle"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:layout_marginBottom="@dimen/margin_bottom"/>
+        style="@style/textStyle"/>
 
-
-    <View style="@style/Divider" />
 
     <android.support.v7.widget.AppCompatCheckBox
         android:id="@+id/label_checkBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_below="@+id/baru_checkBox"
         android:button="@null"
-        android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
+        android:drawableEnd="?android:attr/listChoiceIndicatorMultiple"
         android:text="@string/Label"
         android:textColor="@color/grey"
         android:textSize="@dimen/list_size"
         android:theme="@style/checkBoxStyle"
-        android:paddingStart="@dimen/margin_start"
-        android:paddingEnd="@dimen/margin_end"
-        android:layout_marginBottom="@dimen/margin_bottom"/>
+        style="@style/textStyle"/>
 
 
-
-    <View style="@style/Divider" />
-
-
-</LinearLayout>
+</RelativeLayout>
 
