@@ -15,8 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.common.time.SystemClock;
-
 public class StepSatuActivity extends AppCompatActivity {
 
     Button simpanButton;
@@ -32,18 +30,37 @@ public class StepSatuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_satu);
 
-        //button simpan
+        //Instansiasi button simpan
         simpanButton = (Button) findViewById(R.id.saveButton);
+        //Instansiasi button exit
+        closeButton = (ImageButton) findViewById(R.id.close_button);
+        //Instansiasi button lanjutkan
+        lanjutkanButton = (Button) findViewById(R.id.lanjutkan_1_button);
+        //Instansiasi Toolbar
+        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
+        //Instansiasi ListView
+        listView = (ListView) findViewById(R.id.list_of_step_satu);
+
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
+        toolbar.setTitle("");
+        toolbar.setSubtitle("");
+        //toolbar.setLogo(R.drawable.ic_toolbar);
+        StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
+        listView.setAdapter(adapter);
+
+
         simpanButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Test_Gallery_Activity.class);
+                Intent intent = new Intent(getApplicationContext(), Upload_Gambar_Activity.class);
                 startActivity(intent);
             }
         });
 
-        //button exit
-        closeButton = (ImageButton) findViewById(R.id.close_button);
+
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,8 +68,7 @@ public class StepSatuActivity extends AppCompatActivity {
             }
         });
 
-        //button lanjutkan
-        lanjutkanButton = (Button) findViewById(R.id.lanjutkan_1_button);
+
         lanjutkanButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -61,19 +77,6 @@ public class StepSatuActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //adding Toolbar to Step satu
-        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
-        toolbar.setTitle("");
-        toolbar.setSubtitle("");
-        //toolbar.setLogo(R.drawable.ic_toolbar);
-        listView = (ListView) findViewById(R.id.list_of_step_satu);
-
-        StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
-        listView.setAdapter(adapter);
 
     }
 

@@ -20,16 +20,23 @@ public class PengirimanBarangActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pengiriman_barang);
 
-        //adding Toolbar to Step satu
+        //Instansiasi Toolbar
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_pengirimanActivity);
+        //button gratis pengiriman
+        gratistextbutton = (TextView) findViewById(R.id.textView);
+        //button close
+        closepengiriman = (ImageButton) findViewById(R.id.close_pengiriman_button);
+        //button simpan
+        simpanpengiriman = (Button) findViewById(R.id.simpan_pengiriman_button);
+
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-        //button gratis pengiriman
-        gratistextbutton = (TextView) findViewById(R.id.textView);
+
         gratistextbutton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -39,8 +46,7 @@ public class PengirimanBarangActivity extends AppCompatActivity {
             }
         });
 
-        //button close
-        closepengiriman = (ImageButton) findViewById(R.id.close_pengiriman_button);
+
 
        closepengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,8 +56,7 @@ public class PengirimanBarangActivity extends AppCompatActivity {
             }
         });
 
-        //button simpan
-       simpanpengiriman = (Button) findViewById(R.id.simpan_pengiriman_button);
+
 
        simpanpengiriman.setOnClickListener(new View.OnClickListener() {
             @Override

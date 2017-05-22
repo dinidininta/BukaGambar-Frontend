@@ -85,5 +85,10 @@
     </string-array>
     <string name="nol">0</string>
     <string name="nol_rupiah">0,-</string>
+    <string name="T1_uploadgambar">Upload gambar jualan kamu</string>
+    <string name="T2_uploadgambar">Ukuran foto minimal 300x300px, dengan format JPG, JPEG, PNG, BMP, dan GIF.</string>
+    <string name="gambar_utama">Gambar Utama</string>
+    <string name="gambar_lainnya">Gambar Lainnya</string>
+    <string name="upload_galeri">Upload dari Gallery</string>
 
 </resources>

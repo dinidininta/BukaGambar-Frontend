@@ -27,8 +27,17 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gratis_biaya_kirim);
 
-        //button back
+        //Instansiasi Toolbar
+        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_gratisbiayaActivity);
+        //Instansiasi Tittle Toolbar
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_tittle);
+        //Instansiasi button back
         buttonbackPengiriman = (ImageButton) findViewById(R.id.back_gratisbiaya_button);
+        //Instansiasi button simpan
+        buttonsimpanpengiriman = (Button) findViewById(R.id.simpan_gratisbiaya_button);
+        //Instansiasi ListView
+        listView = (ListView) findViewById(R.id.list_of_gratisbiaya);
+
         buttonbackPengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,8 +46,7 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
             }
         });
 
-        //button simpan
-        buttonsimpanpengiriman = (Button) findViewById(R.id.simpan_gratisbiaya_button);
+
         buttonsimpanpengiriman.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,17 +54,14 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
             }
         });
 
-        //adding Toolbar to Step satu
-        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_gratisbiayaActivity);
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_tittle);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
+
         list_daerah = getResources().getStringArray(R.array.daftar_daerah);
-        listView = (ListView) findViewById(R.id.list_of_gratisbiaya);
         GratisBiayaListAdapter adapter = new GratisBiayaListAdapter(this, list_daerah);
         listView.setAdapter(adapter);
 

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bukagambarfrontend.Upload_Gambar_Activity"
+    android:background="@color/grey_lighten_5">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_uploadGambarActivity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/grey_lighten_4"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageButton
+            android:id="@+id/close_uploadgambar_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/exit_button_width"
+            android:layout_height="@dimen/exit_button_height"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_close_black_24dp"
+            android:tint="@color/grey_darken"/>
+
+        <Button
+            android:id="@+id/simpan_uploadgambar_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="end"
+            android:text="@string/simpan_button"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_darken"
+            android:textSize="@dimen/text_size_normal" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/teks_1_uploadgambar"
+        android:text="@string/T1_uploadgambar"
+        android:layout_below="@id/toolbar_uploadGambarActivity"
+        android:textSize="@dimen/text_size_big"
+        android:textColor="@color/grey"
+        android:layout_marginTop="@dimen/top"
+        android:textStyle="normal"
+        style="@style/textStyle"/>
+
+
+    <TextView
+        android:id="@+id/teks_2_uploadgambar"
+        android:layout_below="@id/teks_1_uploadgambar"
+        android:text="@string/T2_uploadgambar"
+        android:textColor="@color/grey"
+        android:textAllCaps="false"
+        android:textSize="@dimen/list_size"
+        style="@style/textStyle"/>
+
+
+
+
+
+    <!--<Button-->
+        <!--android:id="@+id/button_gallery"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/image0"-->
+        <!--android:paddingStart="@dimen/start"-->
+        <!--android:text="@string/upload_galeri"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:onClick="uploadOnClick"/>-->
+
+    <TextView
+        android:id="@+id/teks_3_uploadbarang"
+        android:layout_below="@id/teks_2_uploadgambar"
+        android:text="@string/gambar_utama"
+        android:textColor="@color/grey"
+        android:textAllCaps="false"
+        android:textSize="@dimen/list_size"
+        style="@style/textStyle"/>
+
+
+    <ImageView
+        android:id="@+id/image0"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_below="@+id/teks_3_uploadbarang"
+        android:src="@color/bg_gray"
+        android:layout_marginStart="10dp"/>
+
+    <TextView
+        android:id="@+id/size0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_below="@+id/image0"
+        android:layout_marginStart="10dp"/>
+
+    <!--<GridView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/grid_view"-->
+        <!--android:numColumns="auto_fit"-->
+        <!--android:columnWidth="90dp"-->
+        <!--android:horizontalSpacing="10dp"-->
+        <!--android:verticalSpacing="10dp"-->
+        <!--android:gravity="center"-->
+        <!--android:stretchMode="columnWidth"-->
+        <!--android:layout_below="@+id/button_gallery"/>-->
+    <TextView
+        android:id="@+id/teks_4_uploadbarang"
+        android:text="@string/gambar_lainnya"
+        android:textColor="@color/grey"
+        android:textAllCaps="false"
+        android:textSize="@dimen/list_size"
+        style="@style/textStyle"
+        android:layout_alignBaseline="@+id/teks_3_uploadbarang"
+        android:layout_alignBottom="@+id/teks_3_uploadbarang"
+        android:layout_alignStart="@+id/image1" />
+
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image1"
+        android:layout_below="@+id/teks_3_uploadbarang"
+        android:layout_toEndOf="@+id/image0"
+        android:src="@color/bg_gray"
+        android:layout_marginStart="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/size1"
+        android:text=""
+        android:layout_below="@+id/image1"
+        android:layout_toEndOf="@+id/image0"
+        android:layout_marginStart="6dp"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image2"
+        android:layout_below="@+id/teks_3_uploadbarang"
+        android:layout_toEndOf="@+id/image1"
+        android:src="@color/bg_gray"
+        android:layout_marginStart="6dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/size2"
+        android:text=""
+        android:layout_below="@+id/image1"
+        android:layout_toEndOf="@+id/image1"
+        android:layout_marginStart="6dp"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image3"
+        android:layout_below="@+id/image1"
+        android:layout_toEndOf="@+id/image0"
+        android:src="@color/bg_gray"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/size3"
+        android:text=""
+        android:layout_below="@+id/image3"
+        android:layout_toEndOf="@+id/image0"
+        android:layout_marginStart="6dp"/>
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image4"
+        android:layout_below="@+id/image2"
+        android:layout_toEndOf="@+id/image3"
+        android:src="@color/bg_gray"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/size4"
+        android:text=""
+        android:layout_below="@+id/image3"
+        android:layout_toEndOf="@+id/image3"
+        android:layout_marginStart="6dp"/>
+
+    <LinearLayout
+        android:id="@+id/footer_uploadgambar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        style="@android:style/ButtonBar"
+        android:background="@color/grey_lighten_4">
+
+        <Button
+            android:id="@+id/button_gallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/upload_galeri"
+            android:textAllCaps="false"
+            android:textColor="@color/grey_darken"
+            android:backgroundTint="@color/grey_lighten_2"
+            android:onClick="uploadOnClick"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

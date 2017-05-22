@@ -21,9 +21,12 @@ public class EditTextDeskripsiActivity extends AppCompatActivity {
 
         // Get the widgets reference from XML layout
         final EditText et = (EditText) findViewById(R.id.deskripsibarang_form);
-
         //button back
-       buttonbackedittextDeskripsi = (ImageButton) findViewById(R.id.back_edittextDeskripsi_button);
+        buttonbackedittextDeskripsi = (ImageButton) findViewById(R.id.back_edittextDeskripsi_button);
+        //button simpan
+        buttonsimpanedittextDeskripsi = (Button) findViewById(R.id.simpan_edittextDeskripsi_button);
+
+
        buttonbackedittextDeskripsi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,8 +35,7 @@ public class EditTextDeskripsiActivity extends AppCompatActivity {
             }
         });
 
-        //button simpan
-        buttonsimpanedittextDeskripsi = (Button) findViewById(R.id.simpan_edittextDeskripsi_button);
+
         buttonsimpanedittextDeskripsi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

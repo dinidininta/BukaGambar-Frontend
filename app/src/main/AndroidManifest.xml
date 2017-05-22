@@ -23,7 +23,7 @@
         <activity android:name=".KategoriBarangActivity" />
         <activity android:name=".DeskripsiBarangActivity" />
         <activity android:name=".DetailBarangActivity" />
-        <activity android:name=".Test_Gallery_Activity" />
+        <activity android:name=".Upload_Gambar_Activity" />
         <activity android:name=".PengirimanBarangActivity" />
         <activity android:name=".GratisBiayaKirimActivity" />
         <activity android:name=".EditTextDeskripsiActivity"></activity>

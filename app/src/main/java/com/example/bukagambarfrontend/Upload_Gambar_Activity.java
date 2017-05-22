@@ -1,53 +1,68 @@
 package com.example.bukagambarfrontend;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 import droidninja.filepicker.FilePickerBuilder;
 import droidninja.filepicker.FilePickerConst;
 
-public class Test_Gallery_Activity extends AppCompatActivity {
+public class Upload_Gambar_Activity extends AppCompatActivity {
 
     ArrayList<String> filePaths;
     Bitmap bitmap;
     ImageView[] gambarProduk = new ImageView[5];
     TextView[] size = new TextView[5];
     GridView gridView;
+    ImageButton buttonCloseUploadGambar;
+    Button buttonSimpanUploadGambar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test__gallery_);
+        setContentView(R.layout.activity_upload__gambar_);
 
         gambarProduk[0] = (ImageView) findViewById(R.id.image0);
         gambarProduk[1] = (ImageView) findViewById(R.id.image1);
         gambarProduk[2] = (ImageView) findViewById(R.id.image2);
         gambarProduk[3] = (ImageView) findViewById(R.id.image3);
         gambarProduk[4] = (ImageView) findViewById(R.id.image4);
-
+        buttonCloseUploadGambar = (ImageButton) findViewById(R.id.close_uploadgambar_button);
+        buttonSimpanUploadGambar = (Button) findViewById(R.id.simpan_uploadgambar_button);
 //        gridView = (GridView) findViewById(R.id.grid_view);
-
         size[0] = (TextView) findViewById(R.id.size0);
         size[1] = (TextView) findViewById(R.id.size1);
         size[2] = (TextView) findViewById(R.id.size2);
         size[3] = (TextView) findViewById(R.id.size3);
         size[4] = (TextView) findViewById(R.id.size4);
+
+        buttonCloseUploadGambar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), StepSatuActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        buttonSimpanUploadGambar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), StepSatuActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -79,7 +94,7 @@ public class Test_Gallery_Activity extends AppCompatActivity {
                         }
                     }
 
-                    new AlertDialog.Builder(Test_Gallery_Activity.this).setTitle("Berhasil")
+                    new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Berhasil")
                             .setMessage(toShow)
                             .setPositiveButton("OK", new DialogInterface.OnClickListener(){
                                 @Override

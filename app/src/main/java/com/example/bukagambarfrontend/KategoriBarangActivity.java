@@ -31,16 +31,20 @@ public class KategoriBarangActivity extends AppCompatActivity {
         KategoriBarangListAdapter adapter = new KategoriBarangListAdapter(this, list_kategori);
         listView.setAdapter(adapter);
 
-        //adding Toolbar to Step satu
+        //Instansiasi Toolbar
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_kategoriActivity);
+        //button close
+        buttoncloseKategoriBarang = (ImageButton) findViewById(R.id.close_kategoribarang_button);
+        //button lanjutkan
+        buttonLanjutkanKategoriBarang = (Button) findViewById(R.id.lanjutkan_kategoribarang_button);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-        //button close
-        buttoncloseKategoriBarang = (ImageButton) findViewById(R.id.close_kategoribarang_button);
+
         buttoncloseKategoriBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,8 +53,7 @@ public class KategoriBarangActivity extends AppCompatActivity {
             }
         });
 
-        //button lanjutkan
-        buttonLanjutkanKategoriBarang = (Button) findViewById(R.id.lanjutkan_kategoribarang_button);
+
         buttonLanjutkanKategoriBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,14 +26,20 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
 
         //adding Toolbar to Step satu
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_deskripsiActivity);
+        //EditText Deskripsi
+        buttondeskripsiedit = (EditText) findViewById(R.id.editText_deskripsibarang);
+        //button close
+        buttonCloseDeskrispiBarang = (ImageButton) findViewById(R.id.close_deskripsibarang_button);
+        //button lanjutkan
+        buttonLanjutkanDeskripsiBarang = (Button) findViewById(R.id.lanjutkan_deskrispibarang_button);
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-        //EditText Deskripsi
-        buttondeskripsiedit = (EditText) findViewById(R.id.editText_deskripsibarang);
+
 
         buttondeskripsiedit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,8 +49,7 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
             }
         });
 
-        //button close
-        buttonCloseDeskrispiBarang = (ImageButton) findViewById(R.id.close_deskripsibarang_button);
+
 
         buttonCloseDeskrispiBarang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +59,6 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
             }
         });
 
-        //button lanjutkan
-        buttonLanjutkanDeskripsiBarang = (Button) findViewById(R.id.lanjutkan_deskrispibarang_button);
 
         buttonLanjutkanDeskripsiBarang.setOnClickListener(new View.OnClickListener() {
             @Override

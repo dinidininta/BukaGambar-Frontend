@@ -32,16 +32,24 @@ public class DetailBarangActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_barang);
 
-        //adding Toolbar to Step satu
+        //instansiasi Toolbar
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_detailActivity);
+        //instansiasi button lanjutkan
+        buttonlanjutkanDetailBarang = (Button) findViewById(R.id.lanjutkan_detailbarang_button);
+        //instansiasi button close
+        buttoncloseDetailBarang = (ImageButton) findViewById(R.id.close_detailbarang_button);
+        //instansiasi Gram
+        etgram = (EditText) findViewById(R.id.editText_gram);
+        //instansiasi Buah
+        etbuah = (EditText) findViewById(R.id.editText_buah);
+        //instansiasi Satuan
+        etsatuan = (PrefixEditText) findViewById(R.id.editText_satuan);
+
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
-
-        //button lanjutkan
-        buttonlanjutkanDetailBarang = (Button) findViewById(R.id.lanjutkan_detailbarang_button);
 
        buttonlanjutkanDetailBarang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,8 +59,7 @@ public class DetailBarangActivity extends AppCompatActivity {
             }
         });
 
-        //button close
-        buttoncloseDetailBarang = (ImageButton) findViewById(R.id.close_detailbarang_button);
+
         buttoncloseDetailBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,17 +70,14 @@ public class DetailBarangActivity extends AppCompatActivity {
 
         //suffix gram
         gram = new SuffixTextDrawable("Gram");
-        etgram = (EditText) findViewById(R.id.editText_gram);
         etgram.setCompoundDrawablesWithIntrinsicBounds(null, null, gram, null);
 
         //suffix buah
         buah = new SuffixTextDrawable("Buah");
-        etbuah = (EditText) findViewById(R.id.editText_buah);
         etbuah.setCompoundDrawablesWithIntrinsicBounds(null, null, buah, null);
 
         //prefix rupiah
 //        rupiah = new PrefixTextDrawable("Rp");
-        etsatuan = (PrefixEditText) findViewById(R.id.editText_satuan);
         //etsatuan.setCompoundDrawablesWithIntrinsicBounds(rupiah, null, null, null);
 //        etsatuan.setCompoundDrawablesRelative(rupiah, null, null, null);
     }
