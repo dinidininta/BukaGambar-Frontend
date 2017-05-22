@@ -61,10 +61,6 @@
         android:textSize="@dimen/list_size"
         style="@style/textStyle"/>
 
-
-
-
-
     <!--<Button-->
         <!--android:id="@+id/button_gallery"-->
         <!--android:layout_width="wrap_content"-->
@@ -77,12 +73,32 @@
 
     <TextView
         android:id="@+id/teks_3_uploadbarang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/start"
+        android:paddingEnd="@dimen/end"
+        android:layout_marginBottom="@dimen/bottom"
         android:layout_below="@id/teks_2_uploadgambar"
         android:text="@string/gambar_utama"
         android:textColor="@color/grey"
         android:textAllCaps="false"
         android:textSize="@dimen/list_size"
-        style="@style/textStyle"/>
+        android:fontFamily="sans-serif-light"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/bottom"
+        android:id="@+id/teks_4_uploadbarang"
+        android:text="@string/gambar_lainnya"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/grey"
+        android:textAllCaps="false"
+        android:textSize="@dimen/list_size"
+        android:layout_alignBaseline="@+id/teks_3_uploadbarang"
+        android:layout_alignBottom="@+id/teks_3_uploadbarang"
+        android:layout_alignStart="@+id/image1" />
+
 
 
     <ImageView
@@ -112,77 +128,65 @@
         <!--android:gravity="center"-->
         <!--android:stretchMode="columnWidth"-->
         <!--android:layout_below="@+id/button_gallery"/>-->
-    <TextView
-        android:id="@+id/teks_4_uploadbarang"
-        android:text="@string/gambar_lainnya"
-        android:textColor="@color/grey"
-        android:textAllCaps="false"
-        android:textSize="@dimen/list_size"
-        style="@style/textStyle"
-        android:layout_alignBaseline="@+id/teks_3_uploadbarang"
-        android:layout_alignBottom="@+id/teks_3_uploadbarang"
-        android:layout_alignStart="@+id/image1" />
 
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:id="@+id/image1"
-        android:layout_below="@+id/teks_3_uploadbarang"
-        android:layout_toEndOf="@+id/image0"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:src="@color/bg_gray"
+        android:layout_below="@+id/teks_4_uploadbarang"
+        android:layout_toEndOf="@+id/size1"
         android:layout_marginStart="6dp"/>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/size1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text=""
         android:layout_below="@+id/image1"
         android:layout_toEndOf="@+id/image0"
         android:layout_marginStart="6dp"/>
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
         android:id="@+id/image2"
-        android:layout_below="@+id/teks_3_uploadbarang"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/teks_4_uploadbarang"
         android:layout_toEndOf="@+id/image1"
         android:src="@color/bg_gray"
         android:layout_marginStart="6dp"/>
 
     <TextView
+        android:id="@+id/size2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/size2"
         android:text=""
         android:layout_below="@+id/image1"
         android:layout_toEndOf="@+id/image1"
         android:layout_marginStart="6dp"/>
 
     <ImageView
+        android:id="@+id/image3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:id="@+id/image3"
-        android:layout_below="@+id/image1"
-        android:layout_toEndOf="@+id/image0"
         android:src="@color/bg_gray"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_alignTop="@+id/image4"
+        android:layout_toStartOf="@+id/size2" />
 
     <TextView
+        android:id="@+id/size3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/size3"
         android:text=""
         android:layout_below="@+id/image3"
         android:layout_toEndOf="@+id/image0"
         android:layout_marginStart="6dp"/>
 
     <ImageView
+        android:id="@+id/image4"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:id="@+id/image4"
         android:layout_below="@+id/image2"
         android:layout_toEndOf="@+id/image3"
         android:src="@color/bg_gray"
@@ -190,9 +194,9 @@
         android:layout_marginTop="20dp"/>
 
     <TextView
+        android:id="@+id/size4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/size4"
         android:text=""
         android:layout_below="@+id/image3"
         android:layout_toEndOf="@+id/image3"

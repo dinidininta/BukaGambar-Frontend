@@ -17,9 +17,11 @@ import android.widget.Toast;
 
 public class StepSatuActivity extends AppCompatActivity {
 
-    Button simpanButton;
+    Button simpanDrafButton;
     ImageButton closeButton;
     Button lanjutkanButton;
+    Button jualButton;
+    Button tambahGambarButton;
 
     int[] judul = {R.string.nama_barang, R.string.kategori_barang, R.string.deskripsi_barang, R.string.detail_barang, R.string.pengiriman, R.string.harga_barang, R.string.kualitas_barang};
     int[] keterangan = {R.string.ket_nama_barang, R.string.ket_kategori_barang, R.string.ket_deskripsi_barang, R.string.ket_detail_barang, R.string.ket_pengiriman, R.string.ket_harga_barang, R.string.ket_kul_barang};
@@ -30,8 +32,12 @@ public class StepSatuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_satu);
 
-        //Instansiasi button simpan
-        simpanButton = (Button) findViewById(R.id.saveButton);
+        //Instansiasi button simpan draf
+        simpanDrafButton = (Button) findViewById(R.id.simpan_draf_Button);
+        //Instanisiasi button tambah gambar
+        tambahGambarButton = (Button) findViewById(R.id.tambahgambar_button);
+        //Instansiasi button jual
+        jualButton = (Button) findViewById(R.id.jual_Button);
         //Instansiasi button exit
         closeButton = (ImageButton) findViewById(R.id.close_button);
         //Instansiasi button lanjutkan
@@ -52,7 +58,16 @@ public class StepSatuActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        simpanButton.setOnClickListener(new View.OnClickListener() {
+//        simpanDrafButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), Upload_Gambar_Activity.class);
+//                startActivity(intent);
+//            }
+//        });
+
+
+        tambahGambarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), Upload_Gambar_Activity.class);

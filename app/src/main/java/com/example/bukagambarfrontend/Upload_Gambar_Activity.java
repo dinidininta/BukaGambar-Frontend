@@ -39,14 +39,17 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
         gambarProduk[2] = (ImageView) findViewById(R.id.image2);
         gambarProduk[3] = (ImageView) findViewById(R.id.image3);
         gambarProduk[4] = (ImageView) findViewById(R.id.image4);
-        buttonCloseUploadGambar = (ImageButton) findViewById(R.id.close_uploadgambar_button);
-        buttonSimpanUploadGambar = (Button) findViewById(R.id.simpan_uploadgambar_button);
 //        gridView = (GridView) findViewById(R.id.grid_view);
         size[0] = (TextView) findViewById(R.id.size0);
         size[1] = (TextView) findViewById(R.id.size1);
         size[2] = (TextView) findViewById(R.id.size2);
         size[3] = (TextView) findViewById(R.id.size3);
         size[4] = (TextView) findViewById(R.id.size4);
+
+
+        buttonCloseUploadGambar = (ImageButton) findViewById(R.id.close_uploadgambar_button);
+
+        buttonSimpanUploadGambar = (Button) findViewById(R.id.simpan_uploadgambar_button);
 
         buttonCloseUploadGambar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -56,9 +56,20 @@
         android:layout_alignParentBottom="true" style="@android:style/ButtonBar"
         android:background="@color/grey_lighten_4">
 
-        <Button android:id="@+id/saveButton" android:layout_width="0dp"
-            android:layout_height="wrap_content" android:layout_weight="1"
-            android:text="@string/simpan_button"
+        <Button
+            android:id="@+id/simpan_draf_Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/simpandraf_button"
+            android:textColor="@color/grey_darken"
+            android:backgroundTint="@color/bg_gray"/>
+        <Button
+            android:id="@+id/jual_Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/jual_button"
             android:textColor="@color/grey_lighten_5"
             android:backgroundTint="@color/pinkdarken2"/>
 

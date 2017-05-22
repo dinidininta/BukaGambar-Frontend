@@ -2,9 +2,80 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/tambahgambar_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tambah_gambar"
+        android:textAllCaps="false"
+        android:layout_below="@+id/hsv"
+        android:layout_centerHorizontal="true" />
+
+    <HorizontalScrollView
+        android:id="@+id/hsv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/start"
+        android:paddingEnd="@dimen/end"
+        android:layout_alignParentTop="true"
+        android:fillViewport="true"
+        android:measureAllChildren="false"
+        android:scrollbars="horizontal"
+        android:scrollbarStyle="insideOverlay">
+
+        <LinearLayout
+            android:id="@+id/innerLay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/image_1_konten"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/tile_padding"
+                android:src="@color/bg_gray"/>
+
+            <ImageView
+                android:id="@+id/image_2_konten"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/tile_padding"
+                android:src="@color/bg_gray"/>
+
+            <ImageView
+                android:id="@+id/image_3_konten"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/tile_padding"
+                android:src="@color/bg_gray"/>
+            <ImageView
+                android:id="@+id/image_4_konten"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/tile_padding"
+                android:src="@color/bg_gray"/>
+            <ImageView
+                android:id="@+id/image_5_konten"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/tile_padding"
+                android:src="@color/bg_gray"/>
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/tambahgambar_button"
         android:id="@+id/list_of_step_satu"/>
 
 </RelativeLayout>

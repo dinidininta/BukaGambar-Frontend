@@ -90,5 +90,6 @@
     <string name="gambar_utama">Gambar Utama</string>
     <string name="gambar_lainnya">Gambar Lainnya</string>
     <string name="upload_galeri">Upload dari Gallery</string>
+    <string name="tambah_gambar">Tambah Gambar</string>
 
 </resources>
