@@ -106,7 +106,7 @@
         android:layout_width="170dp"
         android:layout_height="170dp"
         android:layout_below="@+id/teks_3_uploadbarang"
-        android:src="@color/bg_gray"
+        android:src="@color/grey_lighten_2"
         android:layout_marginStart="10dp"/>
 
     <TextView
@@ -134,7 +134,7 @@
         android:id="@+id/image1"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@color/bg_gray"
+        android:src="@color/grey_lighten_2"
         android:layout_below="@+id/teks_4_uploadbarang"
         android:layout_toEndOf="@+id/size1"
         android:layout_marginStart="6dp"/>
@@ -154,7 +154,7 @@
         android:layout_height="80dp"
         android:layout_below="@+id/teks_4_uploadbarang"
         android:layout_toEndOf="@+id/image1"
-        android:src="@color/bg_gray"
+        android:src="@color/grey_lighten_2"
         android:layout_marginStart="6dp"/>
 
     <TextView
@@ -170,7 +170,7 @@
         android:id="@+id/image3"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@color/bg_gray"
+        android:src="@color/grey_lighten_2"
         android:layout_alignTop="@+id/image4"
         android:layout_toStartOf="@+id/size2" />
 
@@ -189,7 +189,7 @@
         android:layout_height="80dp"
         android:layout_below="@+id/image2"
         android:layout_toEndOf="@+id/image3"
-        android:src="@color/bg_gray"
+        android:src="@color/grey_lighten_2"
         android:layout_marginStart="6dp"
         android:layout_marginTop="20dp"/>
 

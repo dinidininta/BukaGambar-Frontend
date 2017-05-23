@@ -35,7 +35,7 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/tile_padding"
-                android:src="@color/bg_gray"/>
+                android:src="@color/grey_lighten_2"/>
 
             <ImageView
                 android:id="@+id/image_2_konten"
@@ -43,7 +43,7 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/tile_padding"
-                android:src="@color/bg_gray"/>
+                android:src="@color/grey_lighten_2"/>
 
             <ImageView
                 android:id="@+id/image_3_konten"
@@ -51,21 +51,21 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/tile_padding"
-                android:src="@color/bg_gray"/>
+                android:src="@color/grey_lighten_2"/>
             <ImageView
                 android:id="@+id/image_4_konten"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/tile_padding"
-                android:src="@color/bg_gray"/>
+                android:src="@color/grey_lighten_2"/>
             <ImageView
                 android:id="@+id/image_5_konten"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/tile_padding"
-                android:src="@color/bg_gray"/>
+                android:src="@color/grey_lighten_2"/>
 
 
         </LinearLayout>

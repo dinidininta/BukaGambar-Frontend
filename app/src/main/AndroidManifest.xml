@@ -27,7 +27,7 @@
         <activity android:name=".Upload_Gambar_Activity" />
         <activity android:name=".PengirimanBarangActivity" />
         <activity android:name=".GratisBiayaKirimActivity" />
-        <activity android:name=".EditTextDeskripsiActivity"></activity>
+        <activity android:name=".EditTextDeskripsiActivity"/>
         <activity android:name=".KategoriBarang.SubKategoriActivity"/>
     </application>
 
