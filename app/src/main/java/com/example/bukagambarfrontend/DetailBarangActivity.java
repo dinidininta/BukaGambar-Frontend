@@ -26,6 +26,8 @@ public class DetailBarangActivity extends AppCompatActivity {
     EditText etgram, etbuah;
     SuffixTextDrawable gram, buah;
     PrefixEditText etsatuan;
+    public static String detailbarang = "";
+    String beratbarang="", stokbarang="", hargabarang="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,14 +74,34 @@ public class DetailBarangActivity extends AppCompatActivity {
         gram = new SuffixTextDrawable("Gram");
         etgram.setCompoundDrawablesWithIntrinsicBounds(null, null, gram, null);
 
+        try{
+            beratbarang = etgram.getText().toString() + "g, ";
+        }catch (NullPointerException e){
+            beratbarang = "";
+        }
+
         //suffix buah
         buah = new SuffixTextDrawable("Buah");
         etbuah.setCompoundDrawablesWithIntrinsicBounds(null, null, buah, null);
+
+        try{
+            stokbarang = etbuah.getText().toString() + " Stok, ";
+        }catch (NullPointerException e){
+            stokbarang = "";
+        }
 
         //prefix rupiah
 //        rupiah = new PrefixTextDrawable("Rp");
         //etsatuan.setCompoundDrawablesWithIntrinsicBounds(rupiah, null, null, null);
 //        etsatuan.setCompoundDrawablesRelative(rupiah, null, null, null);
+
+        try{
+            hargabarang = "Rp. " + etsatuan.getText().toString() + ",-";
+        }catch (NullPointerException e){
+            hargabarang = "";
+        }
+
+        detailbarang = beratbarang + stokbarang + hargabarang;
     }
 
     private static class SuffixTextDrawable extends Drawable {

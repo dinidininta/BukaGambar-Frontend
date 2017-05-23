@@ -11,11 +11,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
+
 public class NamaBarangActivity extends AppCompatActivity {
 
     ImageButton buttonCloseNamaBarang;
     Button buttonLanjutkanNamaBarang;
     EditText namabarangET;
+    public static String nama_barang = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +49,6 @@ public class NamaBarangActivity extends AppCompatActivity {
             }
         });
 
-        buttonLanjutkanNamaBarang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), KategoriBarangActivity.class);
-                startActivity(intent);
-            }
-        });
-
         buttonLanjutkanNamaBarang.setEnabled(false);
 
 
@@ -80,6 +75,13 @@ public class NamaBarangActivity extends AppCompatActivity {
             }
         });
 
-
+        buttonLanjutkanNamaBarang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nama_barang = namabarangET.getText().toString();
+                Intent intent = new Intent(getApplicationContext(), KategoriBarangActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

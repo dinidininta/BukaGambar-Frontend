@@ -3,6 +3,7 @@
     package="com.example.bukagambarfrontend">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -20,13 +21,14 @@
         </activity>
         <activity android:name=".StepSatuActivity" />
         <activity android:name=".NamaBarangActivity" />
-        <activity android:name=".KategoriBarangActivity" />
+        <activity android:name=".KategoriBarang.KategoriBarangActivity" />
         <activity android:name=".DeskripsiBarangActivity" />
         <activity android:name=".DetailBarangActivity" />
         <activity android:name=".Upload_Gambar_Activity" />
         <activity android:name=".PengirimanBarangActivity" />
         <activity android:name=".GratisBiayaKirimActivity" />
         <activity android:name=".EditTextDeskripsiActivity"></activity>
+        <activity android:name=".KategoriBarang.SubKategoriActivity"/>
     </application>
 
 </manifest>

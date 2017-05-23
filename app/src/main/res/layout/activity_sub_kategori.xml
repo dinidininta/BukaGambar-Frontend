@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/grey_lighten_5">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:id="@+id/toolbar_subKategori"
+        android:background="@color/grey_lighten_4"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageButton
+            android:id="@+id/close_subkat_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="@dimen/exit_button_width"
+            android:layout_height="@dimen/exit_button_height"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="start"
+            android:src="@drawable/ic_close_black_24dp"
+            android:tint="@color/grey_darken" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toolbar_title_dynamic"
+            android:layout_gravity="center"
+            android:text="@string/judul_sub_kategori"
+            android:textSize="14sp"/>
+
+
+        <Button
+            android:id="@+id/simpan_subkat_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_gravity="end"
+            android:text="@string/simpan_button"
+            android:textAllCaps="false"
+            android:textColor="@color/pinkdarken2"
+            android:textSize="@dimen/text_size" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_start"
+        android:paddingEnd="@dimen/margin_end"
+        android:id="@+id/list_of_sub_kategori"
+        android:layout_below="@+id/toolbar_subKategori"/>
+
+</RelativeLayout>

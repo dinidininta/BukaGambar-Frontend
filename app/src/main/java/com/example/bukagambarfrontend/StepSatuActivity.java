@@ -2,6 +2,7 @@ package com.example.bukagambarfrontend;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +15,10 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StepSatuActivity extends AppCompatActivity {
 
@@ -23,9 +28,11 @@ public class StepSatuActivity extends AppCompatActivity {
     Button jualButton;
     Button tambahGambarButton;
 
-    int[] judul = {R.string.nama_barang, R.string.kategori_barang, R.string.deskripsi_barang, R.string.detail_barang, R.string.pengiriman, R.string.harga_barang, R.string.kualitas_barang};
-    int[] keterangan = {R.string.ket_nama_barang, R.string.ket_kategori_barang, R.string.ket_deskripsi_barang, R.string.ket_detail_barang, R.string.ket_pengiriman, R.string.ket_harga_barang, R.string.ket_kul_barang};
+    List<String> judul = new ArrayList<>();
+    List<String> keterangan = new ArrayList<>();
     ListView listView;
+    String namabarang, kategoribarang, deskripsibarang, detailbarang;
+    Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +74,48 @@ public class StepSatuActivity extends AppCompatActivity {
 //        });
 
 
+        res = getResources();
+
+        judul.add(res.getString(R.string.nama_barang));
+        judul.add(res.getString(R.string.kategori_barang));
+        judul.add(res.getString(R.string.deskripsi_barang));
+        judul.add(res.getString(R.string.detail_barang));
+        judul.add(res.getString(R.string.pengiriman));
+        judul.add(res.getString(R.string.harga_barang));
+        judul.add(res.getString(R.string.kualitas_barang));
+
+        namabarang = NamaBarangActivity.nama_barang;
+        if(namabarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_nama_barang));
+        }else {
+            keterangan.add(namabarang);
+        }
+
+        kategoribarang = KategoriBarangActivity.kategori_barang;
+        if(kategoribarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_kategori_barang));
+        }else {
+            keterangan.add(kategoribarang);
+        }
+
+        deskripsibarang = EditTextDeskripsiActivity.desc_barang;
+        if(deskripsibarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_deskripsi_barang));
+        }else {
+            keterangan.add(deskripsibarang);
+        }
+
+        detailbarang = DetailBarangActivity.detailbarang;
+        if(detailbarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_detail_barang));
+        }else {
+            keterangan.add(detailbarang);
+        }
+
+        keterangan.add(res.getString(R.string.ket_pengiriman));
+        keterangan.add(res.getString(R.string.ket_harga_barang));
+        keterangan.add(res.getString(R.string.ket_kul_barang));
+
         tambahGambarButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,12 +146,12 @@ public class StepSatuActivity extends AppCompatActivity {
 
     public static class StepSatuListAdapter extends BaseAdapter{
 
-        int[] judul_step;
-        int[] ket_step;
+        List<String> judul_step;
+        List<String> ket_step;
         Context context;
         private static LayoutInflater inflater=null;
 
-        public StepSatuListAdapter(Context mContext, int[] mJudul, int[] mKet){
+        public StepSatuListAdapter(Context mContext, List<String> mJudul, List<String> mKet){
             judul_step = mJudul;
             ket_step = mKet;
             context = mContext;
@@ -111,7 +160,7 @@ public class StepSatuActivity extends AppCompatActivity {
 
         @Override
         public int getCount(){
-            return judul_step.length;
+            return judul_step.size();
         }
 
         @Override
@@ -132,48 +181,40 @@ public class StepSatuActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, final View convertView, ViewGroup parent) {
             Holder holder = new Holder();
-            Intent intent = new Intent();
             View rowView;
             rowView = inflater.inflate(R.layout.list_step_satu_template, null);
             holder.judul_atribut = (TextView) rowView.findViewById(R.id.judul_atribut);
             holder.detail_atribut = (TextView) rowView.findViewById(R.id.detail_atribut);
-            holder.judul_atribut.setText(judul_step[position]);
-            holder.detail_atribut.setText(ket_step[position]);
+            holder.judul_atribut.setText(judul_step.get(position));
+            holder.detail_atribut.setText(ket_step.get(position));
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "You Clicked" + judul_step[position], Toast.LENGTH_LONG).show();
+                    String identifier = judul_step.get(position);
+                    Toast.makeText(context, "You Clicked" + identifier, Toast.LENGTH_LONG).show();
                     Intent intent;
-                    switch (judul_step[position]) {
-                        case 2131099712:
-                            intent = new Intent(context, NamaBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099701:
-                            intent = new Intent(context, KategoriBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099694:
-                            intent = new Intent(context, DeskripsiBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099695:
-                            intent = new Intent(context, DetailBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099713:
-                            intent = new Intent(context, PengirimanBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        default:
-                            intent = new Intent(context, NamaBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
+                    if(identifier.equals(context.getString(R.string.nama_barang))){
+                        intent = new Intent(context, NamaBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.kategori_barang))){
+                        intent = new Intent(context, KategoriBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.deskripsi_barang))){
+                        intent = new Intent(context, DeskripsiBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.detail_barang))){
+                        intent = new Intent(context, DetailBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.pengiriman))){
+                        intent = new Intent(context, PengirimanBarangActivity.class);
+                        context.startActivity(intent);
+                    }else {
+                        intent = new Intent(context, NamaBarangActivity.class);
+                        context.startActivity(intent);
                     }
-
                 }
             });
-return  rowView;
+            return  rowView;
 
         }
     }
