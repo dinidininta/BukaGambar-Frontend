@@ -95,8 +95,8 @@
         android:textColor="@color/grey"
         android:textAllCaps="false"
         android:textSize="@dimen/list_size"
-        android:layout_alignBaseline="@+id/teks_3_uploadbarang"
-        android:layout_alignBottom="@+id/teks_3_uploadbarang"
+        android:layout_toEndOf="@+id/teks_3_uploadbarang"
+        android:layout_below="@+id/teks_2_uploadgambar"
         android:layout_alignStart="@+id/image1" />
 
 
@@ -136,7 +136,7 @@
         android:layout_height="80dp"
         android:src="@color/grey_lighten_2"
         android:layout_below="@+id/teks_4_uploadbarang"
-        android:layout_toEndOf="@+id/size1"
+        android:layout_toEndOf="@+id/image0"
         android:layout_marginStart="6dp"/>
 
     <TextView
@@ -171,8 +171,10 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@color/grey_lighten_2"
-        android:layout_alignTop="@+id/image4"
-        android:layout_toStartOf="@+id/size2" />
+        android:layout_below="@+id/size1"
+        android:layout_toEndOf="@+id/image0"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:id="@+id/size3"
@@ -187,7 +189,7 @@
         android:id="@+id/image4"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_below="@+id/image2"
+        android:layout_below="@+id/size1"
         android:layout_toEndOf="@+id/image3"
         android:src="@color/grey_lighten_2"
         android:layout_marginStart="6dp"
@@ -198,7 +200,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=""
-        android:layout_below="@+id/image3"
+        android:layout_below="@+id/image4"
         android:layout_toEndOf="@+id/image3"
         android:layout_marginStart="6dp"/>
 

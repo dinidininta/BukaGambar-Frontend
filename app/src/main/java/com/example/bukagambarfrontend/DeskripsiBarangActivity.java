@@ -39,13 +39,7 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         tv3=(TextView)findViewById(R.id.teks_3_deskripsibarang);
         tv5=(TextView)findViewById(R.id.teks_5_deskripsibarang);
 
-
-        Typeface face2= Typeface.createFromAsset(getAssets(), "font/Roboto-Regular.ttf");
-        tv3.setTypeface(face2);
         tv3.setText(nb);
-        
-        Typeface face4= Typeface.createFromAsset(getAssets(), "font/Roboto-Regular.ttf");
-        tv5.setTypeface(face4);
         tv5.setText(kb + skb);
 
         //adding Toolbar to Step satu

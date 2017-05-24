@@ -15,12 +15,23 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.POJO.Provinces;
+
+import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RestAdapter;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+
 public class GratisBiayaKirimActivity extends AppCompatActivity {
 
     ImageButton buttonbackPengiriman;
     Button buttonsimpanpengiriman;
     String[] list_daerah;
     ListView listView;
+    public GratisBiayaListAdapter adapter;
+    public static String gratiskirim = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,28 +72,45 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
         toolbar.setSubtitle("");
 
 
-        list_daerah = getResources().getStringArray(R.array.daftar_daerah);
-        GratisBiayaListAdapter adapter = new GratisBiayaListAdapter(this, list_daerah);
-        listView.setAdapter(adapter);
-
+//        list_daerah = getResources().getStringArray(R.array.daftar_daerah);
+        getProvinces();
     }
 
+    private void getProvinces(){
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setEndpoint("https://api.bukalapak.com/v2")
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .build();
+        APIService apiService = restAdapter.create(APIService.class);
+        apiService.getProvinces(new Callback<Provinces>() {
+            @Override
+            public void success(Provinces provinces, Response response) {
+                adapter = new GratisBiayaListAdapter(GratisBiayaKirimActivity.this, provinces.getProvinces());
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+    }
 
     public static class GratisBiayaListAdapter extends BaseAdapter {
 
-        String[] daerah;
+        List<String> daerah;
         Context context;
         private static LayoutInflater inflater = null;
 
-        public GratisBiayaListAdapter(Context mContext, String[] mCat) {
-            daerah = mCat;
+        public GratisBiayaListAdapter(Context mContext, List<String> mPro) {
+            daerah = mPro;
             context = mContext;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
         @Override
         public int getCount() {
-            return daerah.length;
+            return daerah.size();
         }
 
         @Override
@@ -105,12 +133,12 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
             View rowView;
             rowView = inflater.inflate(R.layout.list_step_gratisbiayakirim, null);
             holder.atribut_list_daerah = (TextView) rowView.findViewById(R.id.atribut_list_gratisbiaya);
-            holder.atribut_list_daerah.setText(daerah[position]);
+            holder.atribut_list_daerah.setText(daerah.get(position));
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "You Clicked" + daerah[position], Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(context, "You Clicked" + daerah.get(position), Toast.LENGTH_LONG).show();
+                    gratiskirim = gratiskirim + ", " + daerah.get(position);
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

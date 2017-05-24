@@ -3,17 +3,22 @@ package com.example.bukagambarfrontend;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class PengirimanBarangActivity extends AppCompatActivity {
 
     Button simpanpengiriman;
     ImageButton closepengiriman;
     TextView gratistextbutton;
+    AppCompatCheckBox wajibasuransi;
+    public static String pengiriman = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,8 @@ public class PengirimanBarangActivity extends AppCompatActivity {
         closepengiriman = (ImageButton) findViewById(R.id.close_pengiriman_button);
         //button simpan
         simpanpengiriman = (Button) findViewById(R.id.simpan_pengiriman_button);
+        //checkbox asuransi
+        wajibasuransi = (AppCompatCheckBox) findViewById(R.id.appCompatCheckBox);
 
 
         setSupportActionBar(toolbar);
@@ -36,6 +43,18 @@ public class PengirimanBarangActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
+        Toast.makeText(this, DetailBarangActivity.detailbarang, Toast.LENGTH_LONG).show();
+
+        wajibasuransi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(!isChecked){
+                    pengiriman = "";
+                }else {
+                    pengiriman = "Wajib Asuransi";
+                }
+            }
+        });
 
         gratistextbutton.setOnClickListener(new View.OnClickListener()
         {

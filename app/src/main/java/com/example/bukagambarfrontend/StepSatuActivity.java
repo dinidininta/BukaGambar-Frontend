@@ -3,6 +3,7 @@ package com.example.bukagambarfrontend;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -12,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
+import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,11 +30,13 @@ public class StepSatuActivity extends AppCompatActivity {
     Button lanjutkanButton;
     Button jualButton;
     Button tambahGambarButton;
+    ImageView[] previewGambarProduk = new ImageView[5];
 
     List<String> judul = new ArrayList<>();
     List<String> keterangan = new ArrayList<>();
+    ArrayList<String> paths;
     ListView listView;
-    String namabarang, kategoribarang, deskripsibarang, detailbarang;
+    String namabarang, kategoribarang, deskripsibarang, detailbarang, pengirimanbarang;
     Resources res;
 
     @Override
@@ -53,6 +58,12 @@ public class StepSatuActivity extends AppCompatActivity {
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
         //Instansiasi ListView
         listView = (ListView) findViewById(R.id.list_of_step_satu);
+
+        previewGambarProduk[0] = (ImageView) findViewById(R.id.image_1_konten);
+        previewGambarProduk[1] = (ImageView) findViewById(R.id.image_2_konten);
+        previewGambarProduk[2] = (ImageView) findViewById(R.id.image_3_konten);
+        previewGambarProduk[3] = (ImageView) findViewById(R.id.image_4_konten);
+        previewGambarProduk[4] = (ImageView) findViewById(R.id.image_5_konten);
 
 
         setSupportActionBar(toolbar);
@@ -81,8 +92,13 @@ public class StepSatuActivity extends AppCompatActivity {
         judul.add(res.getString(R.string.deskripsi_barang));
         judul.add(res.getString(R.string.detail_barang));
         judul.add(res.getString(R.string.pengiriman));
-        judul.add(res.getString(R.string.harga_barang));
-        judul.add(res.getString(R.string.kualitas_barang));
+
+        paths = Upload_Gambar_Activity.filePaths;
+        if(!paths.isEmpty()){
+            for(int i=0; i<paths.size(); i++){
+                previewGambarProduk[i].setImageBitmap(BitmapFactory.decodeFile(paths.get(i)));
+            }
+        }
 
         namabarang = NamaBarangActivity.nama_barang;
         if(namabarang.isEmpty()){
@@ -91,7 +107,7 @@ public class StepSatuActivity extends AppCompatActivity {
             keterangan.add(namabarang);
         }
 
-        kategoribarang = KategoriBarangActivity.kategori_barang;
+        kategoribarang = KategoriBarangActivity.kategori_barang + SubKategoriActivity.sub_kat_barang;
         if(kategoribarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_kategori_barang));
         }else {
@@ -112,9 +128,12 @@ public class StepSatuActivity extends AppCompatActivity {
             keterangan.add(detailbarang);
         }
 
-        keterangan.add(res.getString(R.string.ket_pengiriman));
-        keterangan.add(res.getString(R.string.ket_harga_barang));
-        keterangan.add(res.getString(R.string.ket_kul_barang));
+        pengirimanbarang = PengirimanBarangActivity.pengiriman + GratisBiayaKirimActivity.gratiskirim;
+        if(pengirimanbarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_pengiriman));
+        }else {
+            keterangan.add(pengirimanbarang);
+        }
 
         tambahGambarButton.setOnClickListener(new View.OnClickListener() {
             @Override
