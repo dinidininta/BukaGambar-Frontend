@@ -2,6 +2,9 @@ package com.example.bukagambarfrontend;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -11,9 +14,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
+import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class StepSatuActivity extends AppCompatActivity {
 
@@ -22,10 +31,14 @@ public class StepSatuActivity extends AppCompatActivity {
     Button lanjutkanButton;
     Button jualButton;
     Button tambahGambarButton;
+    ImageView[] previewGambarProduk = new ImageView[5];
 
-    int[] judul = {R.string.nama_barang, R.string.kategori_barang, R.string.deskripsi_barang, R.string.detail_barang, R.string.pengiriman, R.string.harga_barang, R.string.kualitas_barang};
-    int[] keterangan = {R.string.ket_nama_barang, R.string.ket_kategori_barang, R.string.ket_deskripsi_barang, R.string.ket_detail_barang, R.string.ket_pengiriman, R.string.ket_harga_barang, R.string.ket_kul_barang};
+    List<String> judul = new ArrayList<>();
+    List<String> keterangan = new ArrayList<>();
+    ArrayList<String> paths;
     ListView listView;
+    String namabarang, kategoribarang, deskripsibarang, detailbarang, pengirimanbarang;
+    Resources res;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +60,12 @@ public class StepSatuActivity extends AppCompatActivity {
         //Instansiasi ListView
         listView = (ListView) findViewById(R.id.list_of_step_satu);
 
+        previewGambarProduk[0] = (ImageView) findViewById(R.id.image_1_konten);
+        previewGambarProduk[1] = (ImageView) findViewById(R.id.image_2_konten);
+        previewGambarProduk[2] = (ImageView) findViewById(R.id.image_3_konten);
+        previewGambarProduk[3] = (ImageView) findViewById(R.id.image_4_konten);
+        previewGambarProduk[4] = (ImageView) findViewById(R.id.image_5_konten);
+
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -66,6 +85,56 @@ public class StepSatuActivity extends AppCompatActivity {
 //            }
 //        });
 
+
+        res = getResources();
+
+        judul.add(res.getString(R.string.nama_barang));
+        judul.add(res.getString(R.string.kategori_barang));
+        judul.add(res.getString(R.string.deskripsi_barang));
+        judul.add(res.getString(R.string.detail_barang));
+        judul.add(res.getString(R.string.pengiriman));
+
+        paths = Upload_Gambar_Activity.filePaths;
+        if(!paths.isEmpty()){
+            for(int i=0; i<paths.size(); i++){
+                previewGambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(paths.get(i), 300, 300));
+            }
+        }
+
+        namabarang = NamaBarangActivity.nama_barang;
+        if(namabarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_nama_barang));
+        }else {
+            keterangan.add(namabarang);
+        }
+
+        kategoribarang = KategoriBarangActivity.kategori_barang + SubKategoriActivity.sub_kat_barang;
+        if(kategoribarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_kategori_barang));
+        }else {
+            keterangan.add(kategoribarang);
+        }
+
+        deskripsibarang = EditTextDeskripsiActivity.desc_barang;
+        if(deskripsibarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_deskripsi_barang));
+        }else {
+            keterangan.add(deskripsibarang);
+        }
+
+        detailbarang = DetailBarangActivity.detailbarang;
+        if(detailbarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_detail_barang));
+        }else {
+            keterangan.add(detailbarang);
+        }
+
+        pengirimanbarang = PengirimanBarangActivity.pengiriman + GratisBiayaKirimActivity.gratiskirim;
+        if(pengirimanbarang.isEmpty()){
+            keterangan.add(res.getString(R.string.ket_pengiriman));
+        }else {
+            keterangan.add(pengirimanbarang);
+        }
 
         tambahGambarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,12 +166,12 @@ public class StepSatuActivity extends AppCompatActivity {
 
     public static class StepSatuListAdapter extends BaseAdapter{
 
-        int[] judul_step;
-        int[] ket_step;
+        List<String> judul_step;
+        List<String> ket_step;
         Context context;
         private static LayoutInflater inflater=null;
 
-        public StepSatuListAdapter(Context mContext, int[] mJudul, int[] mKet){
+        public StepSatuListAdapter(Context mContext, List<String> mJudul, List<String> mKet){
             judul_step = mJudul;
             ket_step = mKet;
             context = mContext;
@@ -111,7 +180,7 @@ public class StepSatuActivity extends AppCompatActivity {
 
         @Override
         public int getCount(){
-            return judul_step.length;
+            return judul_step.size();
         }
 
         @Override
@@ -132,49 +201,79 @@ public class StepSatuActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, final View convertView, ViewGroup parent) {
             Holder holder = new Holder();
-            Intent intent = new Intent();
             View rowView;
             rowView = inflater.inflate(R.layout.list_step_satu_template, null);
             holder.judul_atribut = (TextView) rowView.findViewById(R.id.judul_atribut);
             holder.detail_atribut = (TextView) rowView.findViewById(R.id.detail_atribut);
-            holder.judul_atribut.setText(judul_step[position]);
-            holder.detail_atribut.setText(ket_step[position]);
+            holder.judul_atribut.setText(judul_step.get(position));
+            holder.detail_atribut.setText(ket_step.get(position));
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "You Clicked" + judul_step[position], Toast.LENGTH_LONG).show();
+                    String identifier = judul_step.get(position);
+                    Toast.makeText(context, "You Clicked" + identifier, Toast.LENGTH_LONG).show();
                     Intent intent;
-                    switch (judul_step[position]) {
-                        case 2131099712:
-                            intent = new Intent(context, NamaBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099701:
-                            intent = new Intent(context, KategoriBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099694:
-                            intent = new Intent(context, DeskripsiBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099695:
-                            intent = new Intent(context, DetailBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        case 2131099713:
-                            intent = new Intent(context, PengirimanBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
-                        default:
-                            intent = new Intent(context, NamaBarangActivity.class);
-                            context.startActivity(intent);
-                            break;
+                    if(identifier.equals(context.getString(R.string.nama_barang))){
+                        intent = new Intent(context, NamaBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.kategori_barang))){
+                        intent = new Intent(context, KategoriBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.deskripsi_barang))){
+                        intent = new Intent(context, DeskripsiBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.detail_barang))){
+                        intent = new Intent(context, DetailBarangActivity.class);
+                        context.startActivity(intent);
+                    }else if(identifier.equals(context.getString(R.string.pengiriman))){
+                        intent = new Intent(context, PengirimanBarangActivity.class);
+                        context.startActivity(intent);
+                    }else {
+                        intent = new Intent(context, NamaBarangActivity.class);
+                        context.startActivity(intent);
                     }
-
                 }
             });
-return  rowView;
+            return  rowView;
 
         }
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(String path, int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeFile(path, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeFile(path, options);
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) >= reqHeight
+                    && (halfWidth / inSampleSize) >= reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
     }
 }

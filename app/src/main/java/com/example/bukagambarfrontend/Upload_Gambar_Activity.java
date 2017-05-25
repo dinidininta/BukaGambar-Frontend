@@ -21,13 +21,14 @@ import droidninja.filepicker.FilePickerConst;
 
 public class Upload_Gambar_Activity extends AppCompatActivity {
 
-    ArrayList<String> filePaths;
+    public static ArrayList<String> filePaths = new ArrayList<>(); ;
     Bitmap bitmap;
     ImageView[] gambarProduk = new ImageView[5];
     TextView[] size = new TextView[5];
     GridView gridView;
     ImageButton buttonCloseUploadGambar;
     Button buttonSimpanUploadGambar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,6 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                 if(resultCode==RESULT_OK && data!=null)
                 {
                     BitmapFactory.Options options = new BitmapFactory.Options();
-                    filePaths = new ArrayList<>();
                     filePaths = data.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_PHOTOS);
                     //use them anywhere
                     String toShow = "";
@@ -93,7 +93,7 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                             toShow = toShow + "\n" + filePaths.get(i);
                             size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
                             options.inJustDecodeBounds = false;
-                            gambarProduk[i].setImageBitmap(BitmapFactory.decodeFile(filePaths.get(i), options));
+                            gambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(i), 300, 300));
                         }
                     }
 

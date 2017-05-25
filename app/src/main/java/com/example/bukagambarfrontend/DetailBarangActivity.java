@@ -10,12 +10,14 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.Selection;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
@@ -26,6 +28,9 @@ public class DetailBarangActivity extends AppCompatActivity {
     EditText etgram, etbuah;
     SuffixTextDrawable gram, buah;
     PrefixEditText etsatuan;
+    AppCompatCheckBox cbbaru;
+    String statusbarang = "";
+    public static String detailbarang = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,16 +49,42 @@ public class DetailBarangActivity extends AppCompatActivity {
         etbuah = (EditText) findViewById(R.id.editText_buah);
         //instansiasi Satuan
         etsatuan = (PrefixEditText) findViewById(R.id.editText_satuan);
-
+        cbbaru = (AppCompatCheckBox) findViewById(R.id.baru_checkBox);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-       buttonlanjutkanDetailBarang.setOnClickListener(new View.OnClickListener() {
+        //suffix gram
+        gram = new SuffixTextDrawable("Gram");
+        etgram.setCompoundDrawablesWithIntrinsicBounds(null, null, gram, null);
+
+
+        //suffix buah
+        buah = new SuffixTextDrawable("Buah");
+        etbuah.setCompoundDrawablesWithIntrinsicBounds(null, null, buah, null);
+
+        cbbaru.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // checkbox status is changed from uncheck to checked.
+                if (!isChecked) {
+                    // barang baru
+                    statusbarang = "Baru";
+
+                } else {
+                    // barang bekas
+                    statusbarang = "Bekas";
+                }
+            }
+        });
+
+
+        buttonlanjutkanDetailBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                detailbarang = checkIfWeightEmpty(etgram.getText().toString()) + checkIfStockEmpty(etbuah.getText().toString()) + checkIfPriceEmpty(etsatuan.getText().toString()) + statusbarang;
                 Intent intent = new Intent(getApplicationContext(), PengirimanBarangActivity.class);
                 startActivity(intent);
             }
@@ -67,20 +98,32 @@ public class DetailBarangActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        //suffix gram
-        gram = new SuffixTextDrawable("Gram");
-        etgram.setCompoundDrawablesWithIntrinsicBounds(null, null, gram, null);
-
-        //suffix buah
-        buah = new SuffixTextDrawable("Buah");
-        etbuah.setCompoundDrawablesWithIntrinsicBounds(null, null, buah, null);
-
-        //prefix rupiah
-//        rupiah = new PrefixTextDrawable("Rp");
-        //etsatuan.setCompoundDrawablesWithIntrinsicBounds(rupiah, null, null, null);
-//        etsatuan.setCompoundDrawablesRelative(rupiah, null, null, null);
     }
+
+    private String checkIfWeightEmpty(String weight){
+        String beratbarang="";
+        if(!weight.isEmpty()){
+            beratbarang = weight + " g, ";
+        }
+        return beratbarang;
+    }
+
+    private String checkIfStockEmpty(String stock){
+        String stokbarang="";
+        if(!stock.isEmpty()){
+            stokbarang = stock + " Stok, ";
+        }
+        return stokbarang;
+    }
+
+    private String checkIfPriceEmpty(String price){
+        String hargabarang="";
+        if(!price.isEmpty()){
+            hargabarang = "Rp " + price + ",-, ";
+        }
+        return hargabarang;
+    }
+
 
     private static class SuffixTextDrawable extends Drawable {
 

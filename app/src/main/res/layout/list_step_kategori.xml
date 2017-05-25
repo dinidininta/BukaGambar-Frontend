@@ -19,7 +19,7 @@
         android:id="@+id/chevron_step_satu"
         style="?android:attr/borderlessButtonStyle"
         android:src="@drawable/ic_chevron_right_black_24dp"
-        android:tint="@color/grey"
+        android:tint="@color/grey_darken"
         android:layout_alignBottom="@+id/atribut_list_kategori"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/atribut_list_kategori"/>
