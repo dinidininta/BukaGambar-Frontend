@@ -91,5 +91,9 @@
     <string name="gambar_lainnya">Gambar Lainnya</string>
     <string name="upload_galeri">Upload dari Gallery</string>
     <string name="tambah_gambar">Tambah Gambar</string>
+    <string name="unggahan_selesai">Unggahan Selesai</string>
+    <string name="foto_palsu">Foto kamu teridentifikasi milik orang lain</string>
+    <string name="upload_lain">Silahkan upload foto lain</string>
+    <string name="upload_selesai">Unggahan Selesai</string>
 
 </resources>

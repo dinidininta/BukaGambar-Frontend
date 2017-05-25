@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/image_dialogrejected"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/tile_padding"
+        android:src="@color/bg_gray"/>
+
+    <TextView
+        android:id="@+id/alert_foto_palsu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/start"
+        android:paddingEnd="@dimen/end"
+        android:layout_marginBottom="@dimen/bottom"
+        android:text="@string/foto_palsu"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"/>
+
+
+    <View
+        style="@style/Divider"
+        android:id="@+id/dialogaccept_1_divider_Div_1"
+        android:layout_marginBottom="@dimen/bottom"/>
+
+
+    <TextView
+        android:id="@+id/zlert_upload_lain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/start"
+        android:paddingEnd="@dimen/end"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/upload_lain"
+        android:textSize="@dimen/text_size_normal"
+        android:textStyle="normal"/>
+
+</LinearLayout>
