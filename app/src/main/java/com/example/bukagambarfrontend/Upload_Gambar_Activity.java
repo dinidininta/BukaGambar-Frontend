@@ -93,7 +93,7 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                             toShow = toShow + "\n" + filePaths.get(i);
                             size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
                             options.inJustDecodeBounds = false;
-                            gambarProduk[i].setImageBitmap(BitmapFactory.decodeFile(filePaths.get(i), options));
+                            gambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(i), 300, 300));
                         }
                     }
 
