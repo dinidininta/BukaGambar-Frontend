@@ -1,10 +1,13 @@
 package com.example.bukagambarfrontend;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -75,6 +78,25 @@ public class StepSatuActivity extends AppCompatActivity {
         //toolbar.setLogo(R.drawable.ic_toolbar);
         StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
         listView.setAdapter(adapter);
+
+
+        jualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getSupportFragmentManager();
+                DialogSukses dialogSukses = new DialogSukses();
+                dialogSukses.show(fm, "Berhasil");
+//                new AlertDialog.Builder(StepSatuActivity.this)
+//                        .setTitle("Gagal")
+//                        .setMessage("Foto kamu teridentifikasi milik orang lain")
+//                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        }).show();
+            }
+        });
 
 
 //        simpanDrafButton.setOnClickListener(new View.OnClickListener() {

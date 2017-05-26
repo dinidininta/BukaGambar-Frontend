@@ -96,5 +96,6 @@
     <string name="foto_palsu">Foto kamu teridentifikasi milik orang lain</string>
     <string name="upload_lain">Silahkan upload foto lain</string>
     <string name="upload_selesai">Unggahan Selesai</string>
+    <string name="OK">OK</string>
 
 </resources>

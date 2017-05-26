@@ -28,10 +28,7 @@
         <activity android:name=".PengirimanBarangActivity" />
         <activity android:name=".GratisBiayaKirimActivity" />
         <activity android:name=".EditTextDeskripsiActivity"/>
-<<<<<<< HEAD
-=======
         <activity android:name=".KategoriBarang.SubKategoriActivity"/>
->>>>>>> b723522858ddc0253ac23d4b098d2fe4dabf4e05
     </application>
 
 </manifest>
