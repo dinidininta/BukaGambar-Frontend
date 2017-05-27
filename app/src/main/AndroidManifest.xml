@@ -22,12 +22,12 @@
         <activity android:name=".StepSatuActivity" />
         <activity android:name=".NamaBarangActivity" />
         <activity android:name=".KategoriBarang.KategoriBarangActivity" />
-        <activity android:name=".DeskripsiBarangActivity" />
-        <activity android:name=".DetailBarangActivity" />
+        <activity android:name=".DeskripsiBarang.DeskripsiBarangActivity" />
+        <activity android:name=".DetailBarang.DetailBarangActivity" />
         <activity android:name=".Upload_Gambar_Activity" />
-        <activity android:name=".PengirimanBarangActivity" />
-        <activity android:name=".GratisBiayaKirimActivity" />
-        <activity android:name=".EditTextDeskripsiActivity"/>
+        <activity android:name=".Pengiriman.PengirimanBarangActivity" />
+        <activity android:name=".Pengiriman.GratisBiayaKirimActivity" />
+        <activity android:name=".DeskripsiBarang.EditTextDeskripsiActivity"/>
         <activity android:name=".KategoriBarang.SubKategoriActivity"/>
     </application>
 

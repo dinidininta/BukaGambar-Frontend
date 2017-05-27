@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.Pengiriman;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,10 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
+import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.StepSatuActivity;
 
 public class PengirimanBarangActivity extends AppCompatActivity {
 

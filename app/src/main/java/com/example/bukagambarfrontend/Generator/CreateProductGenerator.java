@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.Generator;
 
 import android.util.Base64;
 
@@ -6,10 +6,10 @@ import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
 
 /**
- * Created by WIN8 on 5/26/2017.
+ * Created by WIN8 on 5/27/2017.
  */
 
-public class ServiceGenerator {
+public class CreateProductGenerator {
 
     public static final String API_BASE_URL = "https://api.bukalapak.com/v2";
 
@@ -33,7 +33,7 @@ public class ServiceGenerator {
                 @Override
                 public void intercept(RequestFacade request) {
                     request.addHeader("Authorization", basic);
-//                    request.addHeader("Accept", "application/json");
+                    request.addHeader("Content-Type", "application/json");
                 }
             });
         }

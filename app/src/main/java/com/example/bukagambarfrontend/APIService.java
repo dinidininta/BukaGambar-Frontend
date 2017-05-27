@@ -1,10 +1,10 @@
 package com.example.bukagambarfrontend;
 
-import com.example.bukagambarfrontend.POJO.ImageResponse;
-import com.example.bukagambarfrontend.POJO.ProductResponse.ProductResponse;
-import com.example.bukagambarfrontend.POJO.Products.ProductJson;
-import com.example.bukagambarfrontend.POJO.Provinces;
-import com.example.bukagambarfrontend.POJO.Category_.RootObject;
+import com.example.bukagambarfrontend.POJO.ImagePOJO.ImageResponse;
+import com.example.bukagambarfrontend.POJO.ProductResponsePOJO.ProductResponse;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.ProductJson;
+import com.example.bukagambarfrontend.POJO.ProvincesPOJO.Provinces;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
 
 import retrofit.Callback;
 import retrofit.http.Body;

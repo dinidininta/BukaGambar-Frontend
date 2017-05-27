@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DetailBarang;
 
 import android.content.Context;
 import android.graphics.Canvas;

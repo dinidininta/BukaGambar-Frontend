@@ -16,8 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.APIService;
-import com.example.bukagambarfrontend.POJO.Category_.Child;
-import com.example.bukagambarfrontend.POJO.Category_.RootObject;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.Child;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
 import com.example.bukagambarfrontend.R;
 
 import java.util.ArrayList;

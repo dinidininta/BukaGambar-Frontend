@@ -1,21 +1,22 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DeskripsiBarang;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.graphics.Typeface;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
+import com.example.bukagambarfrontend.NamaBarangActivity;
+import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.StepSatuActivity;
 
 public class DeskripsiBarangActivity extends AppCompatActivity {
 

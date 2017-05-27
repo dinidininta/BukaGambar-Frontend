@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DetailBarang;
 
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -12,14 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.bukagambarfrontend.Pengiriman.PengirimanBarangActivity;
+import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.StepSatuActivity;
 
 public class DetailBarangActivity extends AppCompatActivity {
 

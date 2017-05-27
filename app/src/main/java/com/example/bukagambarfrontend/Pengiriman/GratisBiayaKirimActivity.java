@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.Pengiriman;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bukagambarfrontend.POJO.Provinces;
+import com.example.bukagambarfrontend.APIService;
+import com.example.bukagambarfrontend.POJO.ProvincesPOJO.Provinces;
+import com.example.bukagambarfrontend.R;
 
 import java.util.List;
 

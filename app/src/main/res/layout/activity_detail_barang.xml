@@ -80,7 +80,7 @@
         style="@style/textStyle"/>
 
 
-    <com.example.bukagambarfrontend.PrefixEditText
+    <com.example.bukagambarfrontend.DetailBarang.PrefixEditText
         android:id="@+id/editText_satuan"
         style="@style/textStyle"
         android:layout_height="wrap_content"

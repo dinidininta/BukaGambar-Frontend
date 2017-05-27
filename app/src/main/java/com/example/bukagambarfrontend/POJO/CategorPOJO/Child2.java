@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend.POJO.Category_;
+package com.example.bukagambarfrontend.POJO.CategorPOJO;
 
 /**
  * Created by WIN8 on 5/22/2017.

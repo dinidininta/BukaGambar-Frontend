@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DialogFragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -7,11 +7,14 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 
+import com.example.bukagambarfrontend.R;
+
 /**
  * Created by WIN8 on 5/25/2017.
  */
 
-public class DialogAccept extends DialogFragment {
+public class DialogReject extends DialogFragment {
+
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class DialogAccept extends DialogFragment {
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.dialog_accepted, null))
+        builder.setView(inflater.inflate(R.layout.dialog_rejected, null))
                 .setTitle("Berhasil")
                 // Add action buttons
                 .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {

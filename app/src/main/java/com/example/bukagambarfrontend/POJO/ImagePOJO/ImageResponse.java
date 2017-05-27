@@ -1,9 +1,9 @@
-package com.example.bukagambarfrontend.POJO.ProductResponse;
+package com.example.bukagambarfrontend.POJO.ImagePOJO;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductResponse {
+public class ImageResponse {
 
     @SerializedName("status")
     @Expose
@@ -11,12 +11,9 @@ public class ProductResponse {
     @SerializedName("id")
     @Expose
     private String id;
-    @SerializedName("product_detail")
-    @Expose
-    private ProductDetail productDetail;
     @SerializedName("message")
     @Expose
-    private String message;
+    private Object message;
 
     public String getStatus() {
         return status;
@@ -34,20 +31,11 @@ public class ProductResponse {
         this.id = id;
     }
 
-    public ProductDetail getProductDetail() {
-        return productDetail;
-    }
-
-    public void setProductDetail(ProductDetail productDetail) {
-        this.productDetail = productDetail;
-    }
-
-    public String getMessage() {
+    public Object getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(Object message) {
         this.message = message;
     }
-
 }

@@ -1,13 +1,10 @@
 package com.example.bukagambarfrontend;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -21,12 +18,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.bukagambarfrontend.DeskripsiBarang.DeskripsiBarangActivity;
+import com.example.bukagambarfrontend.DeskripsiBarang.EditTextDeskripsiActivity;
+import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
+import com.example.bukagambarfrontend.Generator.CreateProductGenerator;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
-import com.example.bukagambarfrontend.POJO.ProductResponse.ProductResponse;
-import com.example.bukagambarfrontend.POJO.Products.Product;
-import com.example.bukagambarfrontend.POJO.Products.ProductDetailAttributes;
-import com.example.bukagambarfrontend.POJO.Products.ProductJson;
+import com.example.bukagambarfrontend.POJO.ProductResponsePOJO.ProductResponse;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.Product;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.ProductDetailAttributes;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.ProductJson;
+import com.example.bukagambarfrontend.Pengiriman.GratisBiayaKirimActivity;
+import com.example.bukagambarfrontend.Pengiriman.PengirimanBarangActivity;
 
 import java.util.ArrayList;
 import java.util.List;

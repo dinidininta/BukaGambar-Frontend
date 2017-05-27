@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend.POJO.Products;
+package com.example.bukagambarfrontend.POJO.ProductsPOJO;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;
