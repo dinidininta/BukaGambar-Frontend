@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend.POJO;
+package com.example.bukagambarfrontend.POJO.Category_;
 
 import java.util.ArrayList;
 

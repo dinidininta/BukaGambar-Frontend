@@ -16,12 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.APIService;
-import com.example.bukagambarfrontend.POJO.Category;
-import com.example.bukagambarfrontend.POJO.Child;
-import com.example.bukagambarfrontend.POJO.RootObject;
+import com.example.bukagambarfrontend.POJO.Category_.Child;
+import com.example.bukagambarfrontend.POJO.Category_.RootObject;
 import com.example.bukagambarfrontend.R;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -37,6 +34,7 @@ import retrofit.client.Response;
 public class SubKategoriActivity extends AppCompatActivity {
 
     public static String sub_kat_barang = "";
+    public static String id_kat = "";
     Button buttonSimpanSubkat;
     ImageButton backSubkat;
     ListView listView;
@@ -122,6 +120,7 @@ public class SubKategoriActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     Toast.makeText(getContext(), "You Clicked" + child.getName(), Toast.LENGTH_LONG).show();
                     sub_kat_barang = " / "+child.getName();
+                    id_kat = String.valueOf(child.getId());
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

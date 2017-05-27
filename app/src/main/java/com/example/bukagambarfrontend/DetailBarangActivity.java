@@ -31,6 +31,11 @@ public class DetailBarangActivity extends AppCompatActivity {
     AppCompatCheckBox cbbaru;
     String statusbarang = "";
     public static String detailbarang = "";
+    public static String beratbarang = "";
+    public static String stokbarang = "";
+    public static String hargabarang = "";
+    public static String status = "";
+    public static boolean stat = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +77,12 @@ public class DetailBarangActivity extends AppCompatActivity {
                 if (!isChecked) {
                     // barang baru
                     statusbarang = "Baru";
+                    stat = true;
 
                 } else {
                     // barang bekas
                     statusbarang = "Bekas";
+                    stat = false;
                 }
             }
         });
@@ -84,7 +91,11 @@ public class DetailBarangActivity extends AppCompatActivity {
         buttonlanjutkanDetailBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                detailbarang = checkIfWeightEmpty(etgram.getText().toString()) + checkIfStockEmpty(etbuah.getText().toString()) + checkIfPriceEmpty(etsatuan.getText().toString()) + statusbarang;
+                //detailbarang = checkIfWeightEmpty(etgram.getText().toString()) + checkIfStockEmpty(etbuah.getText().toString()) + checkIfPriceEmpty(etsatuan.getText().toString()) + statusbarang;
+                beratbarang = checkIfWeightEmpty(etgram.getText().toString());
+                stokbarang = checkIfStockEmpty(etbuah.getText().toString());
+                hargabarang = checkIfPriceEmpty(etsatuan.getText().toString());
+                status = statusbarang;
                 Intent intent = new Intent(getApplicationContext(), PengirimanBarangActivity.class);
                 startActivity(intent);
             }
@@ -103,7 +114,7 @@ public class DetailBarangActivity extends AppCompatActivity {
     private String checkIfWeightEmpty(String weight){
         String beratbarang="";
         if(!weight.isEmpty()){
-            beratbarang = weight + " g, ";
+            beratbarang = weight + " g";
         }
         return beratbarang;
     }
@@ -111,7 +122,7 @@ public class DetailBarangActivity extends AppCompatActivity {
     private String checkIfStockEmpty(String stock){
         String stokbarang="";
         if(!stock.isEmpty()){
-            stokbarang = stock + " Stok, ";
+            stokbarang = stock + " Stok";
         }
         return stokbarang;
     }
@@ -119,7 +130,7 @@ public class DetailBarangActivity extends AppCompatActivity {
     private String checkIfPriceEmpty(String price){
         String hargabarang="";
         if(!price.isEmpty()){
-            hargabarang = "Rp " + price + ",-, ";
+            hargabarang = "Rp " + price + ",-";
         }
         return hargabarang;
     }

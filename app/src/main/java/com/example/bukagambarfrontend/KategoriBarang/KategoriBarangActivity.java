@@ -1,11 +1,7 @@
 package com.example.bukagambarfrontend.KategoriBarang;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -23,9 +18,8 @@ import android.widget.Toast;
 import com.example.bukagambarfrontend.APIService;
 import com.example.bukagambarfrontend.DeskripsiBarangActivity;
 import com.example.bukagambarfrontend.NamaBarangActivity;
-import com.example.bukagambarfrontend.POJO.Category;
-import com.example.bukagambarfrontend.POJO.Child;
-import com.example.bukagambarfrontend.POJO.RootObject;
+import com.example.bukagambarfrontend.POJO.Category_.Category;
+import com.example.bukagambarfrontend.POJO.Category_.RootObject;
 import com.example.bukagambarfrontend.R;
 import com.example.bukagambarfrontend.StepSatuActivity;
 

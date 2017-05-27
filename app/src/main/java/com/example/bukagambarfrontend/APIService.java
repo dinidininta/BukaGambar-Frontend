@@ -1,11 +1,13 @@
 package com.example.bukagambarfrontend;
 
+import com.example.bukagambarfrontend.POJO.ImageResponse;
+import com.example.bukagambarfrontend.POJO.ProductResponse.ProductResponse;
+import com.example.bukagambarfrontend.POJO.Products.ProductJson;
 import com.example.bukagambarfrontend.POJO.Provinces;
-import com.example.bukagambarfrontend.POJO.RootObject;
+import com.example.bukagambarfrontend.POJO.Category_.RootObject;
 
 import retrofit.Callback;
-import retrofit.client.Response;
-import retrofit.http.Field;
+import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Multipart;
 import retrofit.http.POST;
@@ -27,6 +29,9 @@ public interface APIService {
    // @Field("nama_p") String nama_p, @Field("cat_id") String cat_id,
 
     @Multipart
-    @POST("/upload.php")
-    void uploadFoto(@Part("file") TypedFile file, Callback<Response> cb);
+    @POST("/images.json")
+    void uploadFoto(@Part("file") TypedFile file, Callback<ImageResponse> cb);
+
+    @POST("/products.json")
+    void uploadProduk(@Body ProductJson productJson, Callback<ProductResponse> cb);
 }

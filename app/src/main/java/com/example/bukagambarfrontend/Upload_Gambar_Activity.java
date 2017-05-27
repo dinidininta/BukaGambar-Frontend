@@ -18,7 +18,9 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.bukagambarfrontend.POJO.ImageResponse;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -44,7 +46,9 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
     GridView gridView;
     ImageButton buttonCloseUploadGambar;
     Button buttonSimpanUploadGambar;
-    static String API_BASE_URL = "http://bshare.id/inginwisuda";
+    String API_BASE_URL = "http://bshare.id/inginwisuda";
+    String userId = "31616631";
+    String token = "BRybSh10q4tRd7K1p8ll";
     //ImageView rejectedImage;
 
     @Override
@@ -117,6 +121,8 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         }
                     }
 
+                    uploadToServer(filePaths.get(0));
+
                     FragmentManager fm = getSupportFragmentManager();
                     DialogAccept dialogAccept = new DialogAccept();
                     dialogAccept.show(fm, "Berhasil");
@@ -146,16 +152,14 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 
     public void uploadToServer(String path){
         TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint(API_BASE_URL)
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-        APIService service = restAdapter.create(APIService.class);
-        service.uploadFoto(typedFile, new Callback<Response>() {
+        APIService service = ServiceGenerator.createService(APIService.class, userId, token);
+        service.uploadFoto(typedFile, new Callback<ImageResponse>() {
             @Override
-            public void success(Response response, Response response2) {
-                String json = new String(((TypedByteArray) response.getBody()).getBytes());
-                Log.e("Success", json);
+            public void success(ImageResponse imageResponse, Response response) {
+                String id = "id: " + imageResponse.getId();
+                String status = "status: " + imageResponse.getStatus();
+                String message = "message: " + String.valueOf(imageResponse.getMessage());
+                Toast.makeText(getApplicationContext(), id + "\n" + status + "\n" + message, Toast.LENGTH_LONG).show();
             }
 
             @Override

@@ -23,9 +23,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
+import com.example.bukagambarfrontend.POJO.ProductResponse.ProductResponse;
+import com.example.bukagambarfrontend.POJO.Products.Product;
+import com.example.bukagambarfrontend.POJO.Products.ProductDetailAttributes;
+import com.example.bukagambarfrontend.POJO.Products.ProductJson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class StepSatuActivity extends AppCompatActivity {
 
@@ -35,12 +43,14 @@ public class StepSatuActivity extends AppCompatActivity {
     Button jualButton;
     Button tambahGambarButton;
     ImageView[] previewGambarProduk = new ImageView[5];
+    String userId = "31615831";
+    String token = "qIWIiAyCESmfAJU25UK";
 
     List<String> judul = new ArrayList<>();
     List<String> keterangan = new ArrayList<>();
     ArrayList<String> paths;
     ListView listView;
-    String namabarang, kategoribarang, deskripsibarang, detailbarang, pengirimanbarang;
+    String namabarang, kategoribarang, deskripsibarang, detailbarang, pengirimanbarang, hargabarang, stokbarang, beratbarang, statusbarang;
     Resources res;
 
     @Override
@@ -59,7 +69,7 @@ public class StepSatuActivity extends AppCompatActivity {
         //Instansiasi button lanjutkan
         lanjutkanButton = (Button) findViewById(R.id.lanjutkan_1_button);
         //Instansiasi Toolbar
-        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
+        final Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
         //Instansiasi ListView
         listView = (ListView) findViewById(R.id.list_of_step_satu);
 
@@ -78,25 +88,6 @@ public class StepSatuActivity extends AppCompatActivity {
         //toolbar.setLogo(R.drawable.ic_toolbar);
         StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
         listView.setAdapter(adapter);
-
-
-        jualButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fm = getSupportFragmentManager();
-                DialogSukses dialogSukses = new DialogSukses();
-                dialogSukses.show(fm, "Berhasil");
-//                new AlertDialog.Builder(StepSatuActivity.this)
-//                        .setTitle("Gagal")
-//                        .setMessage("Foto kamu teridentifikasi milik orang lain")
-//                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                            }
-//                        }).show();
-            }
-        });
 
 
 //        simpanDrafButton.setOnClickListener(new View.OnClickListener() {
@@ -145,10 +136,14 @@ public class StepSatuActivity extends AppCompatActivity {
         }
 
         detailbarang = DetailBarangActivity.detailbarang;
-        if(detailbarang.isEmpty()){
+        hargabarang = DetailBarangActivity.hargabarang;
+        beratbarang = DetailBarangActivity.beratbarang;
+        stokbarang = DetailBarangActivity.stokbarang;
+        statusbarang = DetailBarangActivity.status;
+        if(hargabarang.isEmpty() && beratbarang.isEmpty() && stokbarang.isEmpty() && statusbarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_detail_barang));
         }else {
-            keterangan.add(detailbarang);
+            keterangan.add(beratbarang + ", " + stokbarang + ", " + hargabarang + ", " + statusbarang);
         }
 
         pengirimanbarang = PengirimanBarangActivity.pengiriman + GratisBiayaKirimActivity.gratiskirim;
@@ -181,6 +176,58 @@ public class StepSatuActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NamaBarangActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        jualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<Integer> free = new ArrayList<Integer>();
+                free.add(2);
+                free.add(3);
+                free.add(4);
+                ProductDetailAttributes attr = new ProductDetailAttributes();
+                attr.setBrand("Asus");
+                Product newProd = new Product();
+                newProd.setName(namabarang);
+                newProd.setDescriptionBb(deskripsibarang);
+                newProd.setCategoryId("1513");
+                newProd.setNegotiable("true");
+                newProd.setPrice("125000");
+                newProd.setNew(String.valueOf(DetailBarangActivity.stat));
+                newProd.setStock("2");
+                newProd.setWeight("12");
+                newProd.setProductDetailAttributes(attr);
+                newProd.setFreeShipping(free);
+                final ProductJson productJson = new ProductJson();
+                productJson.setProduct(newProd);
+                productJson.setImages("1259879712");
+                productJson.setForceInsurance("");
+                APIService service = CreateProductGenerator.createService(APIService.class, userId, token);
+                service.uploadProduk(productJson, new Callback<ProductResponse>() {
+                    @Override
+                    public void success(ProductResponse productResponse, Response response) {
+                        Toast.makeText(getApplicationContext(), productResponse.getStatus() + "\n" + productResponse.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+                });
+//                FragmentManager fm = getSupportFragmentManager();
+//                DialogSukses dialogSukses = new DialogSukses();
+//                dialogSukses.show(fm, "Berhasil");
+//                new AlertDialog.Builder(StepSatuActivity.this)
+//                        .setTitle("Gagal")
+//                        .setMessage("Foto kamu teridentifikasi milik orang lain")
+//                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        }).show();
             }
         });
 

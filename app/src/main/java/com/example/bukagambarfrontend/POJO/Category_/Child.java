@@ -1,10 +1,12 @@
-package com.example.bukagambarfrontend.POJO;
+package com.example.bukagambarfrontend.POJO.Category_;
+
+import java.util.ArrayList;
 
 /**
  * Created by WIN8 on 5/22/2017.
  */
 
-public class Child2 {
+public class Child {
 
     private int id;
 
@@ -23,4 +25,10 @@ public class Child2 {
     public String getUrl() { return this.url; }
 
     public void setUrl(String url) { this.url = url; }
+
+    private ArrayList<Child2> children;
+
+    public ArrayList<Child2> getChildren() { return this.children; }
+
+    public void setChildren(ArrayList<Child2> children) { this.children = children; }
 }
