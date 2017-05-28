@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DeskripsiBarang;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.bukagambarfrontend.R;
 
 public class EditTextDeskripsiActivity extends AppCompatActivity {
 
@@ -55,7 +57,7 @@ public class EditTextDeskripsiActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(et.getText().toString().length() < 30){
                     new AlertDialog.Builder(EditTextDeskripsiActivity.this)
-                            .setMessage("Deskripsi minimal 30 kata")
+                            .setMessage("Deskripsi minimal 30 karakter")
                             .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

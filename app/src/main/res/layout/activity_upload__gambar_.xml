@@ -109,13 +109,13 @@
         android:src="@color/grey_lighten_2"
         android:layout_marginStart="10dp"/>
 
-    <TextView
-        android:id="@+id/size0"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@+id/image0"
-        android:layout_marginStart="10dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/size0"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=""-->
+        <!--android:layout_below="@+id/image0"-->
+        <!--android:layout_marginStart="10dp"/>-->
 
     <!--<GridView-->
         <!--android:layout_width="wrap_content"-->
@@ -139,14 +139,14 @@
         android:layout_toEndOf="@+id/image0"
         android:layout_marginStart="6dp"/>
 
-    <TextView
-        android:id="@+id/size1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@+id/image1"
-        android:layout_toEndOf="@+id/image0"
-        android:layout_marginStart="6dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/size1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=""-->
+        <!--android:layout_below="@+id/image1"-->
+        <!--android:layout_toEndOf="@+id/image0"-->
+        <!--android:layout_marginStart="6dp"/>-->
 
     <ImageView
         android:id="@+id/image2"
@@ -157,52 +157,52 @@
         android:src="@color/grey_lighten_2"
         android:layout_marginStart="6dp"/>
 
-    <TextView
-        android:id="@+id/size2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@+id/image1"
-        android:layout_toEndOf="@+id/image1"
-        android:layout_marginStart="6dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/size2"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=""-->
+        <!--android:layout_below="@+id/image1"-->
+        <!--android:layout_toEndOf="@+id/image1"-->
+        <!--android:layout_marginStart="6dp"/>-->
 
     <ImageView
         android:id="@+id/image3"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@color/grey_lighten_2"
-        android:layout_below="@+id/size1"
+        android:layout_below="@+id/image1"
         android:layout_toEndOf="@+id/image0"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/size3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@+id/image3"
-        android:layout_toEndOf="@+id/image0"
-        android:layout_marginStart="6dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/size3"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=""-->
+        <!--android:layout_below="@+id/image3"-->
+        <!--android:layout_toEndOf="@+id/image0"-->
+        <!--android:layout_marginStart="6dp"/>-->
 
     <ImageView
         android:id="@+id/image4"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_below="@+id/size1"
+        android:layout_below="@+id/image2"
         android:layout_toEndOf="@+id/image3"
         android:src="@color/grey_lighten_2"
         android:layout_marginStart="6dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/size4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:layout_below="@+id/image4"
-        android:layout_toEndOf="@+id/image3"
-        android:layout_marginStart="6dp"/>
+    <!--<TextView-->
+        <!--android:id="@+id/size4"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text=""-->
+        <!--android:layout_below="@+id/image4"-->
+        <!--android:layout_toEndOf="@+id/image3"-->
+        <!--android:layout_marginStart="6dp"/>-->
 
     <LinearLayout
         android:id="@+id/footer_uploadgambar"

@@ -1,17 +1,16 @@
-package com.example.bukagambarfrontend.POJO;
+package com.example.bukagambarfrontend.POJO.ImagePOJO;
 
-import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Provinces {
+public class ImageResponse {
 
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("provinces")
+    @SerializedName("id")
     @Expose
-    private List<String> provinces = null;
+    private String id;
     @SerializedName("message")
     @Expose
     private Object message;
@@ -24,12 +23,12 @@ public class Provinces {
         this.status = status;
     }
 
-    public List<String> getProvinces() {
-        return provinces;
+    public String getId() {
+        return id;
     }
 
-    public void setProvinces(List<String> provinces) {
-        this.provinces = provinces;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Object getMessage() {
@@ -39,5 +38,4 @@ public class Provinces {
     public void setMessage(Object message) {
         this.message = message;
     }
-
 }

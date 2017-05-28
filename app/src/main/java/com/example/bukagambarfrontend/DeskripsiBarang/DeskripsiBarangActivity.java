@@ -1,21 +1,23 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DeskripsiBarang;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.graphics.Typeface;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
+import com.example.bukagambarfrontend.KategoriBarang.ChildKategoriActivity;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
+import com.example.bukagambarfrontend.NamaBarangActivity;
+import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.StepSatuActivity;
 
 public class DeskripsiBarangActivity extends AppCompatActivity {
 
@@ -32,6 +34,7 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         String nb = NamaBarangActivity.nama_barang;
         String kb = KategoriBarangActivity.kategori_barang;
         String skb = SubKategoriActivity.sub_kat_barang;
+        String ckb = ChildKategoriActivity.child_kat_barang;
 
         Toast.makeText(this, nb + " " + kb, Toast.LENGTH_LONG).show();
 
@@ -40,7 +43,7 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         tv5=(TextView)findViewById(R.id.teks_5_deskripsibarang);
 
         tv3.setText(nb);
-        tv5.setText(kb + skb);
+        tv5.setText(kb + " / " + skb + " / " + ckb);
 
         //adding Toolbar to Step satu
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_deskripsiActivity);

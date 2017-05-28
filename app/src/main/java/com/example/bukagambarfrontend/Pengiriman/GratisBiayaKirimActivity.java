@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.Pengiriman;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,8 +15,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bukagambarfrontend.POJO.Provinces;
+import com.example.bukagambarfrontend.APIService;
+import com.example.bukagambarfrontend.POJO.ProvincesPOJO.Provinces;
+import com.example.bukagambarfrontend.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
@@ -28,10 +31,10 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
 
     ImageButton buttonbackPengiriman;
     Button buttonsimpanpengiriman;
-    String[] list_daerah;
     ListView listView;
     public GratisBiayaListAdapter adapter;
-    public static String gratiskirim = "";
+    public static List<String> gratiskirim = new ArrayList<>();
+    public static List<Integer> code =  new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,7 +89,11 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
         apiService.getProvinces(new Callback<Provinces>() {
             @Override
             public void success(Provinces provinces, Response response) {
-                adapter = new GratisBiayaListAdapter(GratisBiayaKirimActivity.this, provinces.getProvinces());
+                List<String> area = provinces.getProvinces();
+                area.add(0, "Seluruh Indonesia");
+                area.add(1, "Pulau Jawa");
+                area.add(2, "Jabodetabek");
+                adapter = new GratisBiayaListAdapter(GratisBiayaKirimActivity.this, area);
                 listView.setAdapter(adapter);
             }
 
@@ -97,13 +104,13 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
         });
     }
 
-    public static class GratisBiayaListAdapter extends BaseAdapter {
+    class GratisBiayaListAdapter extends BaseAdapter {
 
         List<String> daerah;
         Context context;
-        private static LayoutInflater inflater = null;
+        private LayoutInflater inflater = null;
 
-        public GratisBiayaListAdapter(Context mContext, List<String> mPro) {
+        GratisBiayaListAdapter(Context mContext, List<String> mPro) {
             daerah = mPro;
             context = mContext;
             inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -124,7 +131,7 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
             return position;
         }
 
-        public class Holder {
+        class Holder {
             TextView atribut_list_daerah;
         }
 
@@ -139,7 +146,8 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(context, "You Clicked" + daerah.get(position), Toast.LENGTH_LONG).show();
-                    gratiskirim = gratiskirim + ", " + daerah.get(position);
+                    gratiskirim.add(daerah.get(position));
+                    code.add(position);
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

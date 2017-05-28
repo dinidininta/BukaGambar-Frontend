@@ -8,7 +8,7 @@
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:id="@+id/toolbar_subKategori"
+        android:id="@+id/toolbar_childKategori"
         android:background="@color/grey_lighten_4"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp"
@@ -16,7 +16,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <ImageButton
-            android:id="@+id/close_subkat_button"
+            android:id="@+id/close_ckat_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="@dimen/exit_button_width"
             android:layout_height="@dimen/exit_button_height"
@@ -28,14 +28,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/toolbar_title_dynamic"
+            android:id="@+id/toolbar_title_child"
             android:layout_gravity="center"
             android:text="@string/judul_sub_kategori"
             android:textSize="14sp"/>
 
 
         <Button
-            android:id="@+id/simpan_subkat_button"
+            android:id="@+id/simpan_ckat_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="?attr/actionBarSize"
@@ -48,8 +48,8 @@
     </android.support.v7.widget.Toolbar>
 
     <ListView
-        android:id="@+id/list_of_sub_kategori"
+        android:id="@+id/list_of_child_kategori"
         style="@style/textStyle"
-        android:layout_below="@+id/toolbar_subKategori"/>
+        android:layout_below="@+id/toolbar_childKategori"/>
 
 </RelativeLayout>

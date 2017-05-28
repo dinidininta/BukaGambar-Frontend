@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.Pengiriman;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,13 +12,17 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
+import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.StepSatuActivity;
+
 public class PengirimanBarangActivity extends AppCompatActivity {
 
     Button simpanpengiriman;
     ImageButton closepengiriman;
     TextView gratistextbutton;
     AppCompatCheckBox wajibasuransi;
-    public static String pengiriman = "";
+    public static String asuransi = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +47,15 @@ public class PengirimanBarangActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-        Toast.makeText(this, DetailBarangActivity.detailbarang, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, DetailBarangActivity.beratbarang, Toast.LENGTH_LONG).show();
 
         wajibasuransi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(!isChecked){
-                    pengiriman = "";
+                    asuransi = "";
                 }else {
-                    pengiriman = "Wajib Asuransi";
+                    asuransi = "on";
                 }
             }
         });

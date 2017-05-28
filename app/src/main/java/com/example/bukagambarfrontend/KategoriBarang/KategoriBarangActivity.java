@@ -1,11 +1,7 @@
 package com.example.bukagambarfrontend.KategoriBarang;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -13,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -21,12 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.APIService;
-import com.example.bukagambarfrontend.DeskripsiBarangActivity;
+import com.example.bukagambarfrontend.DeskripsiBarang.DeskripsiBarangActivity;
 import com.example.bukagambarfrontend.NamaBarangActivity;
-import com.example.bukagambarfrontend.POJO.Category;
-import com.example.bukagambarfrontend.POJO.Child;
-import com.example.bukagambarfrontend.POJO.RootObject;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.Category;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
 import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.StepSatuActivity;
 
 import java.util.ArrayList;
@@ -89,11 +84,11 @@ public class KategoriBarangActivity extends AppCompatActivity {
     }
 
     private void getCategory(){
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.bukalapak.com/v2")
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-        APIService apiService = restAdapter.create(APIService.class);
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setEndpoint("https://api.bukalapak.com/v2")
+//                .setLogLevel(RestAdapter.LogLevel.FULL)
+//                .build();
+        APIService apiService = BukalapakGenerator.createService(APIService.class);
         apiService.getCategory(new Callback<RootObject>() {
             @Override
             public void success(RootObject rootObject, Response response) {
@@ -108,9 +103,9 @@ public class KategoriBarangActivity extends AppCompatActivity {
         });
     }
 
-    public static class KategoriBarangListAdapter extends ArrayAdapter<Category> {
+    class KategoriBarangListAdapter extends ArrayAdapter<Category> {
 
-        public KategoriBarangListAdapter(Context mContext, ArrayList<Category> mCat) {
+        KategoriBarangListAdapter(Context mContext, ArrayList<Category> mCat) {
             super(mContext, 0, mCat);
         }
 
@@ -128,8 +123,8 @@ public class KategoriBarangActivity extends AppCompatActivity {
                     Toast.makeText(getContext(), "You Clicked " + category.getName() + " " + position, Toast.LENGTH_LONG).show();
                     kategori_barang = category.getName();
                     id_kategori_barang = position;
-                    Intent intent = new Intent(getContext(), SubKategoriActivity.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(KategoriBarangActivity.this, SubKategoriActivity.class);
+                    KategoriBarangActivity.this.startActivity(intent);
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

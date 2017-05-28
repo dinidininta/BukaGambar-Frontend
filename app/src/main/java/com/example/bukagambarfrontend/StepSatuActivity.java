@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,11 +19,27 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.bukagambarfrontend.DeskripsiBarang.DeskripsiBarangActivity;
+import com.example.bukagambarfrontend.DeskripsiBarang.EditTextDeskripsiActivity;
+import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
+import com.example.bukagambarfrontend.KategoriBarang.ChildKategoriActivity;
+import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
+import com.example.bukagambarfrontend.POJO.ProductResponsePOJO.ProductResponse;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.Product;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.ProductDetailAttributes;
+import com.example.bukagambarfrontend.POJO.ProductsPOJO.ProductJson;
+import com.example.bukagambarfrontend.Pengiriman.GratisBiayaKirimActivity;
+import com.example.bukagambarfrontend.Pengiriman.PengirimanBarangActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class StepSatuActivity extends AppCompatActivity {
 
@@ -32,12 +49,15 @@ public class StepSatuActivity extends AppCompatActivity {
     Button jualButton;
     Button tambahGambarButton;
     ImageView[] previewGambarProduk = new ImageView[5];
+    String userId = "31615831";
+    String token = "qIWIiAyCESmfAJU25UK";
 
     List<String> judul = new ArrayList<>();
     List<String> keterangan = new ArrayList<>();
     ArrayList<String> paths;
     ListView listView;
-    String namabarang, kategoribarang, deskripsibarang, detailbarang, pengirimanbarang;
+    String namabarang, kategoribarang, subkategoribarang, childkategoribarang, deskripsibarang,
+            beratbarang, hargabarang, stokbarang, statusbarang, asuransibarang, gratiskirimbarang, gambarbarang;
     Resources res;
 
     @Override
@@ -56,9 +76,15 @@ public class StepSatuActivity extends AppCompatActivity {
         //Instansiasi button lanjutkan
         lanjutkanButton = (Button) findViewById(R.id.lanjutkan_1_button);
         //Instansiasi Toolbar
-        Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
+        final Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_stepsatu);
         //Instansiasi ListView
         listView = (ListView) findViewById(R.id.list_of_step_satu);
+
+        ProductDetailAttributes attr = new ProductDetailAttributes();
+        attr.setBrand("Asus");
+
+        Product newProd = new Product();
+        final ProductJson productJson = new ProductJson();
 
         previewGambarProduk[0] = (ImageView) findViewById(R.id.image_1_konten);
         previewGambarProduk[1] = (ImageView) findViewById(R.id.image_2_konten);
@@ -73,8 +99,6 @@ public class StepSatuActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
         //toolbar.setLogo(R.drawable.ic_toolbar);
-        StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
-        listView.setAdapter(adapter);
 
 
 //        simpanDrafButton.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +123,9 @@ public class StepSatuActivity extends AppCompatActivity {
             for(int i=0; i<paths.size(); i++){
                 previewGambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(paths.get(i), 300, 300));
             }
+            gambarbarang = TextUtils.join(", ", Upload_Gambar_Activity.images);
+            productJson.setImages(gambarbarang);
+            Toast.makeText(getApplicationContext(), gambarbarang, Toast.LENGTH_LONG).show();
         }
 
         namabarang = NamaBarangActivity.nama_barang;
@@ -106,13 +133,22 @@ public class StepSatuActivity extends AppCompatActivity {
             keterangan.add(res.getString(R.string.ket_nama_barang));
         }else {
             keterangan.add(namabarang);
+            newProd.setName(namabarang);
         }
 
-        kategoribarang = KategoriBarangActivity.kategori_barang + SubKategoriActivity.sub_kat_barang;
-        if(kategoribarang.isEmpty()){
+        kategoribarang = KategoriBarangActivity.kategori_barang;
+        subkategoribarang = SubKategoriActivity.sub_kat_barang;
+        childkategoribarang = ChildKategoriActivity.child_kat_barang;
+        if(kategoribarang.isEmpty() && subkategoribarang.isEmpty() && childkategoribarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_kategori_barang));
-        }else {
+        }else if (!kategoribarang.isEmpty() && subkategoribarang.isEmpty() && childkategoribarang.isEmpty()){
             keterangan.add(kategoribarang);
+        }else if (!kategoribarang.isEmpty() && !subkategoribarang.isEmpty() && childkategoribarang.isEmpty()){
+            keterangan.add(kategoribarang + " / " + subkategoribarang);
+            newProd.setCategoryId(String.valueOf(SubKategoriActivity.id_sub_kat));
+        }else if (!kategoribarang.isEmpty() && !subkategoribarang.isEmpty() && !childkategoribarang.isEmpty()){
+            keterangan.add(kategoribarang + " / " + subkategoribarang + " / " + childkategoribarang);
+            newProd.setCategoryId(String.valueOf(ChildKategoriActivity.id_child_barang));
         }
 
         deskripsibarang = EditTextDeskripsiActivity.desc_barang;
@@ -120,21 +156,37 @@ public class StepSatuActivity extends AppCompatActivity {
             keterangan.add(res.getString(R.string.ket_deskripsi_barang));
         }else {
             keterangan.add(deskripsibarang);
+            newProd.setDescriptionBb(deskripsibarang);
         }
 
-        detailbarang = DetailBarangActivity.detailbarang;
-        if(detailbarang.isEmpty()){
+        hargabarang = DetailBarangActivity.hargabarang;
+        beratbarang = DetailBarangActivity.beratbarang;
+        stokbarang = DetailBarangActivity.stokbarang;
+        statusbarang = DetailBarangActivity.status;
+        if(hargabarang.isEmpty() && beratbarang.isEmpty() && stokbarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_detail_barang));
         }else {
-            keterangan.add(detailbarang);
+            keterangan.add(beratbarang + "g, " + stokbarang + " Stok, " + "Rp " + hargabarang + ",-, " + statusbarang);
+            newProd.setWeight(beratbarang);
+            newProd.setStock(stokbarang);
+            newProd.setPrice(hargabarang);
+            newProd.setNew(String.valueOf(DetailBarangActivity.stat));
         }
 
-        pengirimanbarang = PengirimanBarangActivity.pengiriman + GratisBiayaKirimActivity.gratiskirim;
-        if(pengirimanbarang.isEmpty()){
+        asuransibarang = PengirimanBarangActivity.asuransi;
+        gratiskirimbarang = TextUtils.join(", ", GratisBiayaKirimActivity.gratiskirim);
+        if(asuransibarang.isEmpty() && gratiskirimbarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_pengiriman));
-        }else {
-            keterangan.add(pengirimanbarang);
+        }else if (!asuransibarang.isEmpty() && gratiskirimbarang.isEmpty()){
+            keterangan.add(asuransibarang);
+        }else if(!asuransibarang.isEmpty() && !gratiskirimbarang.isEmpty()){
+            keterangan.add("Wajib Asuransi, " + gratiskirimbarang);
+            newProd.setFreeShipping(GratisBiayaKirimActivity.code);
         }
+
+
+        productJson.setForceInsurance(asuransibarang);
+        productJson.setProduct(newProd);
 
         tambahGambarButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,6 +196,8 @@ public class StepSatuActivity extends AppCompatActivity {
             }
         });
 
+        StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
+        listView.setAdapter(adapter);
 
         closeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,16 +216,47 @@ public class StepSatuActivity extends AppCompatActivity {
             }
         });
 
+        jualButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                APIService service = BukalapakGenerator.createService(APIService.class, userId, token);
+                service.uploadProduk(productJson, new Callback<ProductResponse>() {
+                    @Override
+                    public void success(ProductResponse productResponse, Response response) {
+                        Toast.makeText(getApplicationContext(), productResponse.getStatus() + "\n" + productResponse.getMessage(),
+                                Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+                });
+//                FragmentManager fm = getSupportFragmentManager();
+//                DialogSukses dialogSukses = new DialogSukses();
+//                dialogSukses.show(fm, "Berhasil");
+//                new AlertDialog.Builder(StepSatuActivity.this)
+//                        .setTitle("Gagal")
+//                        .setMessage("Foto kamu teridentifikasi milik orang lain")
+//                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//
+//                            }
+//                        }).show();
+            }
+        });
+
     }
 
-    public static class StepSatuListAdapter extends BaseAdapter{
+    class StepSatuListAdapter extends BaseAdapter{
 
         List<String> judul_step;
         List<String> ket_step;
         Context context;
-        private static LayoutInflater inflater=null;
+        private LayoutInflater inflater=null;
 
-        public StepSatuListAdapter(Context mContext, List<String> mJudul, List<String> mKet){
+        StepSatuListAdapter(Context mContext, List<String> mJudul, List<String> mKet){
             judul_step = mJudul;
             ket_step = mKet;
             context = mContext;
@@ -193,7 +278,7 @@ public class StepSatuActivity extends AppCompatActivity {
             return position;
         }
 
-        public class Holder{
+        class Holder{
             TextView judul_atribut;
             TextView detail_atribut;
         }

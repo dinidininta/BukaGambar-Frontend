@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend;
+package com.example.bukagambarfrontend.DetailBarang;
 
 import android.content.Intent;
 import android.graphics.Canvas;
@@ -12,14 +12,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.support.v7.widget.Toolbar;
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.bukagambarfrontend.Pengiriman.PengirimanBarangActivity;
+import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.StepSatuActivity;
 
 public class DetailBarangActivity extends AppCompatActivity {
 
@@ -29,8 +30,11 @@ public class DetailBarangActivity extends AppCompatActivity {
     SuffixTextDrawable gram, buah;
     PrefixEditText etsatuan;
     AppCompatCheckBox cbbaru;
-    String statusbarang = "";
-    public static String detailbarang = "";
+    public static String beratbarang = "";
+    public static String stokbarang = "";
+    public static String hargabarang = "";
+    public static String status = "Baru";
+    public static boolean stat = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,17 +69,20 @@ public class DetailBarangActivity extends AppCompatActivity {
         buah = new SuffixTextDrawable("Buah");
         etbuah.setCompoundDrawablesWithIntrinsicBounds(null, null, buah, null);
 
+        cbbaru.setChecked(true);
         cbbaru.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // checkbox status is changed from uncheck to checked.
                 if (!isChecked) {
-                    // barang baru
-                    statusbarang = "Baru";
+                    // barang bekas
+                    status = "Bekas";
+                    stat = false;
 
                 } else {
-                    // barang bekas
-                    statusbarang = "Bekas";
+                    // barang baru
+                    status = "Baru";
+                    stat = true;
                 }
             }
         });
@@ -84,7 +91,10 @@ public class DetailBarangActivity extends AppCompatActivity {
         buttonlanjutkanDetailBarang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                detailbarang = checkIfWeightEmpty(etgram.getText().toString()) + checkIfStockEmpty(etbuah.getText().toString()) + checkIfPriceEmpty(etsatuan.getText().toString()) + statusbarang;
+                //detailbarang = checkIfWeightEmpty(etgram.getText().toString()) + checkIfStockEmpty(etbuah.getText().toString()) + checkIfPriceEmpty(etsatuan.getText().toString()) + statusbarang;
+                beratbarang = checkIfWeightEmpty(etgram.getText().toString());
+                stokbarang = checkIfStockEmpty(etbuah.getText().toString());
+                hargabarang = checkIfPriceEmpty(etsatuan.getText().toString());
                 Intent intent = new Intent(getApplicationContext(), PengirimanBarangActivity.class);
                 startActivity(intent);
             }
@@ -101,27 +111,24 @@ public class DetailBarangActivity extends AppCompatActivity {
     }
 
     private String checkIfWeightEmpty(String weight){
-        String beratbarang="";
         if(!weight.isEmpty()){
-            beratbarang = weight + " g, ";
+            return weight;
         }
-        return beratbarang;
+        return "0";
     }
 
     private String checkIfStockEmpty(String stock){
-        String stokbarang="";
         if(!stock.isEmpty()){
-            stokbarang = stock + " Stok, ";
+            return stock;
         }
-        return stokbarang;
+        return "0";
     }
 
     private String checkIfPriceEmpty(String price){
-        String hargabarang="";
         if(!price.isEmpty()){
-            hargabarang = "Rp " + price + ",-, ";
+            return price;
         }
-        return hargabarang;
+        return "0";
     }
 
 
