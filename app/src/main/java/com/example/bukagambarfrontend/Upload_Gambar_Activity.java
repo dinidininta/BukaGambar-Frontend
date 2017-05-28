@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.DialogFragments.DialogLoading;
 import com.example.bukagambarfrontend.POJO.ImagePOJO.CompareResponse;
 import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.ServiceGenerator.CompareImageGenerator;
@@ -23,6 +25,7 @@ import com.example.bukagambarfrontend.POJO.ImagePOJO.ImageResponse;
 import com.squareup.okhttp.RequestBody;
 
 import java.io.File;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +37,7 @@ import retrofit.client.Response;
 import retrofit.mime.TypedFile;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Func2;
 import rx.schedulers.Schedulers;
 
 public class Upload_Gambar_Activity extends AppCompatActivity {
@@ -49,6 +53,8 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
     String token = "BRybSh10q4tRd7K1p8ll";
     String imageID = "";
     public static List<String> images = new ArrayList<>();
+    DialogLoading loading;
+    FragmentManager fm;
     //ImageView rejectedImage;
 
     @Override
@@ -62,14 +68,10 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
         gambarProduk[3] = (ImageView) findViewById(R.id.image3);
         gambarProduk[4] = (ImageView) findViewById(R.id.image4);
 
-        //rejectedImage = (ImageView) findViewById(R.id.image_dialogrejected);
-//        gridView = (GridView) findViewById(R.id.grid_view);
-//        size[0] = (TextView) findViewById(R.id.size0);
-//        size[1] = (TextView) findViewById(R.id.size1);
-//        size[2] = (TextView) findViewById(R.id.size2);
-//        size[3] = (TextView) findViewById(R.id.size3);
-//        size[4] = (TextView) findViewById(R.id.size4);
+        loading = new DialogLoading();
+        fm = getSupportFragmentManager();
 
+        //rejectedImage = (ImageView) findViewById(R.id.image_dialogrejected);
 
         buttonCloseUploadGambar = (ImageButton) findViewById(R.id.close_uploadgambar_button);
 
@@ -116,11 +118,11 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                             gambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(i), 300, 300));
                             //toShow = toShow + "\n" + filePaths.get(i);
                             //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
-                            if(i == filePaths.size()-1){
-                                uploadToServer(filePaths);
-                                //doCompare(filePaths, "adaptor asus x202e", "177");
-                                break;
-                            }
+//                            if(i == filePaths.size()-1){
+//
+//
+//                                break;
+//                            }
 
                         }else{
                             //uploadToServer(filePaths.get(i));
@@ -135,8 +137,9 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int id) {
                                         }
                                     }).show();
-                            break;
+                            return;
                         }
+
                     }
 
                     //Toast.makeText(getApplicationContext(), "id: " + TextUtils.join(", ", images), Toast.LENGTH_LONG).show();
@@ -158,6 +161,9 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 //                                }
 //                            }).create().show();
                 }
+                loading.show(fm, "Loading");
+                doCompare(filePaths, NamaBarangActivity.nama_barang, "177");
+                //uploadToServer(filePaths);
         }
     }
 
@@ -168,23 +174,26 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
             service.uploadFoto(typedFile)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .retry(new Func2<Integer, Throwable, Boolean>() {
+                        @Override
+                        public Boolean call(Integer integer, Throwable throwable) {
+                            return integer < 3 && throwable instanceof SocketTimeoutException;
+                        }
+                    })
                     .subscribe(new Subscriber<ImageResponse>() {
                         @Override
                         public void onCompleted() {
-
+                            loading.dismiss();
                         }
 
                         @Override
                         public void onError(Throwable e) {
-                            Log.e("GithubDemo", e.getMessage());
-                            new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Gagal")
-                                    .setMessage("Terjadi kesalahan, coba lagi dalam beberapa saat")
-                                    .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
+                            //Log.e("GithubDemo", e.getMessage());
+                            try {
+                                Log.e("GithubDemo", e.getMessage());
+                            }catch (Exception exception){
 
-                                        }
-                                    }).show();
+                            }
                         }
 
                         @Override
@@ -195,35 +204,8 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
         }
     }
 
-//    public void uploadToServer(String path){
-//        TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
-//        APIService service = BukalapakGenerator.createServiceWithoutHeader(APIService.class, userId, token);
-//        service.uploadFoto(typedFile, new Callback<ImageResponse>() {
-//            @Override
-//            public void success(ImageResponse imageResponse, Response response) {
-//                String id = "id: " + imageResponse.getId();
-//                images.add(id);
-//                String status = "status: " + imageResponse.getStatus();
-//                String message = "message: " + String.valueOf(imageResponse.getMessage());
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//
-//            }
-//        });
-//    }
-
-//    private void setImageID(String id){
-//        this.imageID = id;
-//    }
-//
-//    private String getImageID(){
-//        return this.imageID;
-//    }
 
     public void uploadOnClick(View view) {
-        images = null;
         FilePickerBuilder.getInstance().setMaxCount(5)
                 .setSelectedFiles(filePaths)
                 .setActivityTheme(R.style.FilePickerTheme)
@@ -237,6 +219,12 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
             service.compareFoto(typedFile, nama, category)
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
+                    .retry(new Func2<Integer, Throwable, Boolean>() {
+                        @Override
+                        public Boolean call(Integer integer, Throwable throwable) {
+                            return integer < 3 && throwable instanceof SocketTimeoutException;
+                        }
+                    })
                     .subscribe(new Subscriber<CompareResponse>() {
                         @Override
                         public void onCompleted() {
@@ -245,7 +233,11 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 
                         @Override
                         public void onError(Throwable e) {
+                            try {
+                                Log.e("GithubDemo", e.getMessage());
+                            }catch (Exception exception){
 
+                            }
                         }
 
                         @Override
@@ -254,7 +246,6 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         }
                     });
         }
-        Toast.makeText(getApplicationContext(), TextUtils.join(", ", images), Toast.LENGTH_LONG).show();
     }
 
     public static Bitmap decodeSampledBitmapFromResource(String path, int reqWidth, int reqHeight) {

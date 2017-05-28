@@ -44,6 +44,7 @@
     <string name="s3_kategoribarang">Handphone / Aksesoris handphone / Screen Guard</string>
     <string name="s4_kategoribarang">Handphone / Aksesoris handphone / Aksesoris Lain</string>
     <string name="s5_kategoribarang">Handphone / HP &amp; Smartphone</string>
+    <string name="loading">Harap tunggu...</string>
     <string name="T4_kategoribarang">Semua Kategori</string>
     <string-array name="daftar_kategori">
         <item name="s6_kategoribarang">Perawatan &amp; Kecantikan</item>
