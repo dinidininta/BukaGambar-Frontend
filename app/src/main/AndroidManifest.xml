@@ -25,18 +25,11 @@
         <activity android:name=".DeskripsiBarang.DeskripsiBarangActivity" />
         <activity android:name=".DetailBarang.DetailBarangActivity" />
         <activity android:name=".Upload_Gambar_Activity" />
-<<<<<<< HEAD
-        <activity android:name=".PengirimanBarangActivity" />
-        <activity android:name=".GratisBiayaKirimActivity" />
-        <activity android:name=".EditTextDeskripsiActivity"/>
         <activity android:name=".KategoriBarang.SubKategoriActivity"/>
-=======
         <activity android:name=".Pengiriman.PengirimanBarangActivity" />
         <activity android:name=".Pengiriman.GratisBiayaKirimActivity" />
         <activity android:name=".DeskripsiBarang.EditTextDeskripsiActivity" />
-        <activity android:name=".KategoriBarang.SubKategoriActivity" />
-        <activity android:name=".KategoriBarang.ChildKategoriActivity"></activity>
->>>>>>> 9aa79247266cc550650ef329da9e7de184c663da
+        <activity android:name=".KategoriBarang.ChildKategoriActivity"/>
     </application>
 
 </manifest>
