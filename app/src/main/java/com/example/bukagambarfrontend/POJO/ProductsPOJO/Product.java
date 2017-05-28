@@ -1,8 +1,11 @@
 package com.example.bukagambarfrontend.POJO.ProductsPOJO;
 
+import java.util.HashMap;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.json.JSONObject;
 
 public class Product {
 
@@ -33,9 +36,12 @@ public class Product {
     @SerializedName("free_shipping")
     @Expose
     private List<Integer> freeShipping = null;
+//    @SerializedName("product_detail_attributes")
+//    @Expose
+//    private ProductDetailAttributes productDetailAttributes;
     @SerializedName("product_detail_attributes")
     @Expose
-    private ProductDetailAttributes productDetailAttributes;
+    private JSONObject productDetailAttributes;
 
     public String getCategoryId() {
         return categoryId;
@@ -109,11 +115,19 @@ public class Product {
         this.freeShipping = freeShipping;
     }
 
-    public ProductDetailAttributes getProductDetailAttributes() {
+//    public ProductDetailAttributes getProductDetailAttributes() {
+//        return productDetailAttributes;
+//    }
+//
+//    public void setProductDetailAttributes(ProductDetailAttributes productDetailAttributes) {
+//        this.productDetailAttributes = productDetailAttributes;
+//    }
+
+        public JSONObject getProductDetailAttributes() {
         return productDetailAttributes;
     }
 
-    public void setProductDetailAttributes(ProductDetailAttributes productDetailAttributes) {
+    public void setProductDetailAttributes(JSONObject productDetailAttributes) {
         this.productDetailAttributes = productDetailAttributes;
     }
 

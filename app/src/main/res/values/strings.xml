@@ -26,7 +26,7 @@
     <string name="kualitas_barang">Kualitas Barang</string>
     <string name="ket_kul_barang">Tuliskan kualitas barang yang dijual</string>
     <string name="spek_barang">Spesifikasi Barang</string>
-    <string name="ket_spek_barang">Kualitas Barang</string>
+    <string name="ket_spek_barang">"Atur spesifikasi barang yang dijual"</string>
     <string name="T1_namabarang">Masukkan nama barang jualan kamu</string>
     <string name="T2_namabarang">Nama barang ini akan muncul di daftar barang jualan kamu</string>
     <string name="hint_namabarang">Contoh, iPhone 5S Gold 16GB</string>
@@ -36,6 +36,8 @@
     <string name="hint_deskripsibarang">Tulis deskripsi barang di sini</string>
     <string name="T1_kategoribarang">Pilih kategori jualan kamu</string>
     <string name="T2_kategoribarang">Pilih kategori sesuai dengan nama barang jualan kamu</string>
+    <string name="T1_spekbarang">Atur spesifikasi barang jualan kamu</string>
+    <string name="T2_spekbarang">Pilih spesifikasi terkait barang jualan kamu, seperti merek, fitur, dimensi, dll</string>
     <string name="T3_kategoribarang">Saran Kategori</string>
     <string name="s1_kategoribarang">Handphone / Aksesoris handphone / Casing &amp; Cover</string>
     <string name="s2_kategoribarang">Handphone / Spare Part &amp; Tools Handphone</string>

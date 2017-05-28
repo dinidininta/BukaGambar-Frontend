@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
+import retrofit.client.OkClient;
 
 /**
  * Created by WIN8 on 5/27/2017.
@@ -20,7 +21,8 @@ public class BukalapakGenerator {
 
     private static RestAdapter.Builder builder = new RestAdapter.Builder()
             .setEndpoint(API_BASE_URL)
-            .setLogLevel(RestAdapter.LogLevel.FULL);
+            .setLogLevel(RestAdapter.LogLevel.FULL)
+            .setClient(new OkClient(HttpTimeout.getTimeout()));
 
     public static <S> S createService(Class<S> serviceClass) {
         return createService(serviceClass, null, null);

@@ -36,8 +36,11 @@ import com.example.bukagambarfrontend.POJO.ProductsPOJO.ProductJson;
 import com.example.bukagambarfrontend.Pengiriman.GratisBiayaKirimActivity;
 import com.example.bukagambarfrontend.Pengiriman.PengirimanBarangActivity;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -61,7 +64,10 @@ public class StepSatuActivity extends AppCompatActivity {
     static List<Attribute> attributes;
     String namabarang, kategoribarang, subkategoribarang, childkategoribarang, deskripsibarang,
             beratbarang, hargabarang, stokbarang, statusbarang, asuransibarang, gratiskirimbarang, gambarbarang;
+    Map<String, String> spesifikasibarang;
     Resources res;
+
+    StepSatuListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,6 +196,11 @@ public class StepSatuActivity extends AppCompatActivity {
             newProd.setFreeShipping(GratisBiayaKirimActivity.code);
         }
 
+        Map<String, String> spesifikasi = SpesifikasiActivity.mapOfAtrributes;
+        if(!spesifikasi.isEmpty()){
+            JSONObject json = new JSONObject(spesifikasi);
+            newProd.setProductDetailAttributes(json);
+        }
 
         productJson.setForceInsurance(asuransibarang);
         productJson.setProduct(newProd);
@@ -202,7 +213,7 @@ public class StepSatuActivity extends AppCompatActivity {
             }
         });
 
-        StepSatuListAdapter adapter = new StepSatuListAdapter(this, judul, keterangan);
+        adapter = new StepSatuListAdapter(this, judul, keterangan);
         listView.setAdapter(adapter);
 
         closeButton.setOnClickListener(new View.OnClickListener() {
@@ -260,10 +271,21 @@ public class StepSatuActivity extends AppCompatActivity {
         service.getCategoryAttributes(catId, new Callback<CategoryAttributes>() {
             @Override
             public void success(CategoryAttributes categoryAttributes, Response response) {
+                List<String> attValue = new ArrayList<String>();
                 if(categoryAttributes.getAttributes() != null){
                     attributes = categoryAttributes.getAttributes();
-                    judul.add(4, "Spesifikasi Barang");
-                    keterangan.add(4, "Atur spesifikasi barang yang dijual");
+                    spesifikasibarang = SpesifikasiActivity.mapOfAtrributes;
+                    if(spesifikasibarang.isEmpty()){
+                        adapter.setStepList(res.getString(R.string.spek_barang), res.getString(R.string.ket_spek_barang), 4);
+                    }
+                    else{
+                        for(Map.Entry<String, String> entry : spesifikasibarang.entrySet()){
+                            attValue.add(entry.getValue());
+                        }
+                        adapter.setStepList(res.getString(R.string.spek_barang), TextUtils.join(", ", attValue), 4);
+                    }
+//                    judul.add(4, "Spesifikasi Barang");
+//                    keterangan.add(4, "Atur spesifikasi barang yang dijual");
                 }
             }
 
@@ -346,6 +368,11 @@ public class StepSatuActivity extends AppCompatActivity {
             });
             return  rowView;
 
+        }
+        public void setStepList(String judul, String ket, int index){
+            judul_step.add(index, judul);
+            ket_step.add(index, ket);
+            notifyDataSetChanged();
         }
     }
 

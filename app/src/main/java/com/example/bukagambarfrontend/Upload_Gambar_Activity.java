@@ -117,15 +117,15 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                             //toShow = toShow + "\n" + filePaths.get(i);
                             //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
                             if(i == filePaths.size()-1){
-                                //uploadToServer(filePaths);
-                                doCompare(filePaths, "adaptor asus x202e", "177");
+                                uploadToServer(filePaths);
+                                //doCompare(filePaths, "adaptor asus x202e", "177");
                                 break;
                             }
 
                         }else{
                             //uploadToServer(filePaths.get(i));
 
-                            String toShow = "Resolusi gambar ke" + i + "tidak memenuhi aturan minimal 300 x 300.\n" +
+                            String toShow = "Resolusi gambar ke-" + i + " tidak memenuhi aturan minimal 300 x 300.\n" +
                                     "Silahkan upload ulang gambar yang baru";
                             //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
                             new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Kesalahan resolusi")
@@ -177,6 +177,14 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         @Override
                         public void onError(Throwable e) {
                             Log.e("GithubDemo", e.getMessage());
+                            new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Gagal")
+                                    .setMessage("Terjadi kesalahan, coba lagi dalam beberapa saat")
+                                    .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+
+                                        }
+                                    }).show();
                         }
 
                         @Override

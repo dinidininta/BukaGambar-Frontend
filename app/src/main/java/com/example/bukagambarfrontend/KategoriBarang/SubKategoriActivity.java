@@ -132,6 +132,7 @@ public class SubKategoriActivity extends AppCompatActivity {
                     sub_kat_barang = child.getName();
                     id_sub_kat = child.getId();
                     identifier =  position;
+                    chevron.setVisibility(View.VISIBLE);
                     chevron.setImageResource(R.drawable.ic_check_black_24dp);
                     if(children != null){
                         Intent intent = new Intent(SubKategoriActivity.this, ChildKategoriActivity.class);
