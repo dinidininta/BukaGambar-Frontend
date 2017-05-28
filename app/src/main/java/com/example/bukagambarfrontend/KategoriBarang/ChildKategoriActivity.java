@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.APIService;
+import com.example.bukagambarfrontend.DeskripsiBarang.DeskripsiBarangActivity;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Child;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Child2;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
@@ -59,7 +61,7 @@ public class ChildKategoriActivity extends AppCompatActivity {
         simpanCKat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SubKategoriActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DeskripsiBarangActivity.class);
                 startActivity(intent);
             }
         });
@@ -104,6 +106,7 @@ public class ChildKategoriActivity extends AppCompatActivity {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_child2_kategori, parent, false);
             }
             TextView atribut_list_kategori = (TextView) convertView.findViewById(R.id.atribut_child_kategori);
+            final ImageButton chevron_child2 = (ImageButton) convertView.findViewById(R.id.chevron_child);
             atribut_list_kategori.setText(child2.getName());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -111,6 +114,8 @@ public class ChildKategoriActivity extends AppCompatActivity {
                     Toast.makeText(getContext(), "You Clicked" + child2.getName(), Toast.LENGTH_LONG).show();
                     child_kat_barang = child2.getName();
                     id_child_barang = child2.getId();
+                    chevron_child2.setVisibility(View.VISIBLE);
+                    chevron_child2.setImageResource(R.drawable.ic_check_black_24dp);
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

@@ -16,9 +16,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.POJO.ImagePOJO.CompareResponse;
 import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.ServiceGenerator.CompareImageGenerator;
 import com.example.bukagambarfrontend.POJO.ImagePOJO.ImageResponse;
+import com.squareup.okhttp.RequestBody;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -115,7 +117,8 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                             //toShow = toShow + "\n" + filePaths.get(i);
                             //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
                             if(i == filePaths.size()-1){
-                                uploadToServer(filePaths);
+                                //uploadToServer(filePaths);
+                                doCompare(filePaths, "adaptor asus x202e", "177");
                                 break;
                             }
 
@@ -212,32 +215,39 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 //    }
 
     public void uploadOnClick(View view) {
+        images = null;
         FilePickerBuilder.getInstance().setMaxCount(5)
                 .setSelectedFiles(filePaths)
                 .setActivityTheme(R.style.FilePickerTheme)
                 .pickPhoto(this);
     }
 
-//    public void doCompare(final String path, final int index){
-//        TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
-//        APIService service = CompareImageGenerator.createService(APIService.class);
-//        service.uploadFoto(typedFile, new Callback<ImageResponse>() {
-//            @Override
-//            public void success(ImageResponse imageResponse, Response response) {
-//                String status = "status: " + imageResponse.getStatus();
-//                if(status.equals("Asli")){
-//                    uploadToServer(path);
-//                    gambarProduk[index].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(index), 300, 300));
-//                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//
-//            }
-//        });
-//    }
+    public void doCompare(List<String> listOfPaths, String nama, String category){
+        APIService service = CompareImageGenerator.createService(APIService.class);
+        for(String path : listOfPaths){
+            TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
+            service.compareFoto(typedFile, nama, category)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<CompareResponse>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+
+                        }
+
+                        @Override
+                        public void onNext(CompareResponse compareResponse) {
+                            images.add(compareResponse.getStatus());
+                        }
+                    });
+        }
+        Toast.makeText(getApplicationContext(), TextUtils.join(", ", images), Toast.LENGTH_LONG).show();
+    }
 
     public static Bitmap decodeSampledBitmapFromResource(String path, int reqWidth, int reqHeight) {
 

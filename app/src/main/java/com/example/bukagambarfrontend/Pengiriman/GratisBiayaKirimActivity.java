@@ -133,20 +133,23 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
 
         class Holder {
             TextView atribut_list_daerah;
+            ImageButton chevron_free;
         }
 
         @Override
         public View getView(final int position, final View convertView, ViewGroup parent) {
-            Holder holder = new Holder();
+            final Holder holder = new Holder();
             View rowView;
             rowView = inflater.inflate(R.layout.list_step_gratisbiayakirim, null);
             holder.atribut_list_daerah = (TextView) rowView.findViewById(R.id.atribut_list_gratisbiaya);
+            holder.chevron_free = (ImageButton) rowView.findViewById(R.id.chevron_free_cities);
             holder.atribut_list_daerah.setText(daerah.get(position));
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(context, "You Clicked" + daerah.get(position), Toast.LENGTH_LONG).show();
                     gratiskirim.add(daerah.get(position));
+                    holder.chevron_free.setVisibility(View.VISIBLE);
                     code.add(position);
 //                    switch (position) {
 //                        case 0:

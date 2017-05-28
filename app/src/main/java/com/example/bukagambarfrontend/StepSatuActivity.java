@@ -24,6 +24,8 @@ import com.example.bukagambarfrontend.DeskripsiBarang.DeskripsiBarangActivity;
 import com.example.bukagambarfrontend.DeskripsiBarang.EditTextDeskripsiActivity;
 import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.ChildKategoriActivity;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.Attribute;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.CategoryAttributes;
 import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
@@ -56,6 +58,7 @@ public class StepSatuActivity extends AppCompatActivity {
     List<String> keterangan = new ArrayList<>();
     ArrayList<String> paths;
     ListView listView;
+    static List<Attribute> attributes;
     String namabarang, kategoribarang, subkategoribarang, childkategoribarang, deskripsibarang,
             beratbarang, hargabarang, stokbarang, statusbarang, asuransibarang, gratiskirimbarang, gambarbarang;
     Resources res;
@@ -146,9 +149,12 @@ public class StepSatuActivity extends AppCompatActivity {
         }else if (!kategoribarang.isEmpty() && !subkategoribarang.isEmpty() && childkategoribarang.isEmpty()){
             keterangan.add(kategoribarang + " / " + subkategoribarang);
             newProd.setCategoryId(String.valueOf(SubKategoriActivity.id_sub_kat));
+            addSpesifikasi(String.valueOf(SubKategoriActivity.id_sub_kat));
         }else if (!kategoribarang.isEmpty() && !subkategoribarang.isEmpty() && !childkategoribarang.isEmpty()){
             keterangan.add(kategoribarang + " / " + subkategoribarang + " / " + childkategoribarang);
             newProd.setCategoryId(String.valueOf(ChildKategoriActivity.id_child_barang));
+            addSpesifikasi(String.valueOf(ChildKategoriActivity.id_child_barang));
+            Toast.makeText(this, String.valueOf(ChildKategoriActivity.id_child_barang), Toast.LENGTH_LONG).show();
         }
 
         deskripsibarang = EditTextDeskripsiActivity.desc_barang;
@@ -249,6 +255,25 @@ public class StepSatuActivity extends AppCompatActivity {
 
     }
 
+    void addSpesifikasi(String catId){
+        APIService service = BukalapakGenerator.createService(APIService.class);
+        service.getCategoryAttributes(catId, new Callback<CategoryAttributes>() {
+            @Override
+            public void success(CategoryAttributes categoryAttributes, Response response) {
+                if(categoryAttributes.getAttributes() != null){
+                    attributes = categoryAttributes.getAttributes();
+                    judul.add(4, "Spesifikasi Barang");
+                    keterangan.add(4, "Atur spesifikasi barang yang dijual");
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
+    }
+
     class StepSatuListAdapter extends BaseAdapter{
 
         List<String> judul_step;
@@ -313,8 +338,8 @@ public class StepSatuActivity extends AppCompatActivity {
                     }else if(identifier.equals(context.getString(R.string.pengiriman))){
                         intent = new Intent(context, PengirimanBarangActivity.class);
                         context.startActivity(intent);
-                    }else {
-                        intent = new Intent(context, NamaBarangActivity.class);
+                    }else if(identifier.equals(context.getString(R.string.spek_barang))){
+                        intent = new Intent(context, SpesifikasiActivity.class);
                         context.startActivity(intent);
                     }
                 }

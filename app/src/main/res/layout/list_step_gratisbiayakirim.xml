@@ -12,4 +12,15 @@
         android:layout_marginBottom="@dimen/top"
         android:layout_marginTop="@dimen/bottom"/>
 
+    <ImageButton
+        android:layout_width="@dimen/cards_button_width"
+        android:layout_height="@dimen/cards_button_height"
+        android:id="@+id/chevron_free_cities"
+        style="?android:attr/borderlessButtonStyle"
+        android:src="@drawable/ic_check_black_24dp"
+        android:layout_alignBottom="@+id/atribut_list_gratisbiaya"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/atribut_list_gratisbiaya"
+        android:visibility="invisible"/>
+
 </RelativeLayout>

@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.APIService;
+import com.example.bukagambarfrontend.DeskripsiBarang.DeskripsiBarangActivity;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Child;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Child2;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
@@ -66,7 +67,7 @@ public class SubKategoriActivity extends AppCompatActivity {
         buttonSimpanSubkat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), KategoriBarangActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DeskripsiBarangActivity.class);
                 startActivity(intent);
             }
         });
@@ -119,7 +120,7 @@ public class SubKategoriActivity extends AppCompatActivity {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_child2_kategori, parent, false);
             }
             TextView atribut_list_kategori = (TextView) convertView.findViewById(R.id.atribut_child_kategori);
-            ImageView chevron =  (ImageView) convertView.findViewById(R.id.chevron_child);
+            final ImageButton chevron =  (ImageButton) convertView.findViewById(R.id.chevron_child);
             if(children != null){
                 chevron.setVisibility(View.VISIBLE);
             }
@@ -131,6 +132,7 @@ public class SubKategoriActivity extends AppCompatActivity {
                     sub_kat_barang = child.getName();
                     id_sub_kat = child.getId();
                     identifier =  position;
+                    chevron.setImageResource(R.drawable.ic_check_black_24dp);
                     if(children != null){
                         Intent intent = new Intent(SubKategoriActivity.this, ChildKategoriActivity.class);
                         SubKategoriActivity.this.startActivity(intent);

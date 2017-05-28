@@ -2,6 +2,7 @@ package com.example.bukagambarfrontend.KategoriBarang;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -116,6 +117,7 @@ public class KategoriBarangActivity extends AppCompatActivity {
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_step_kategori, parent, false);
             }
             TextView atribut_list_kategori = (TextView) convertView.findViewById(R.id.atribut_list_kategori);
+            final ImageButton chevron_list = (ImageButton) convertView.findViewById(R.id.chevron_step_kategori);
             atribut_list_kategori.setText(category.getName());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -123,6 +125,7 @@ public class KategoriBarangActivity extends AppCompatActivity {
                     Toast.makeText(getContext(), "You Clicked " + category.getName() + " " + position, Toast.LENGTH_LONG).show();
                     kategori_barang = category.getName();
                     id_kategori_barang = position;
+                    chevron_list.setImageResource(R.drawable.ic_check_black_24dp);
                     Intent intent = new Intent(KategoriBarangActivity.this, SubKategoriActivity.class);
                     KategoriBarangActivity.this.startActivity(intent);
 //                    switch (position) {
