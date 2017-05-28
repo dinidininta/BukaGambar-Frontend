@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_bukagambar"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_bukagambar"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -28,10 +28,7 @@
         <activity android:name=".PengirimanBarangActivity" />
         <activity android:name=".GratisBiayaKirimActivity" />
         <activity android:name=".EditTextDeskripsiActivity"/>
-<<<<<<< HEAD
-=======
         <activity android:name=".KategoriBarang.SubKategoriActivity"/>
->>>>>>> b723522858ddc0253ac23d4b098d2fe4dabf4e05
     </application>
 
 </manifest>
