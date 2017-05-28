@@ -89,10 +89,6 @@
         android:textSize="@dimen/list_size"
         style="@style/textStyle"/>
 
-
-    <!--<View style="@style/Divider"/>-->
-
-
     <LinearLayout
         style="@style/textStyle"
         android:layout_gravity="center"

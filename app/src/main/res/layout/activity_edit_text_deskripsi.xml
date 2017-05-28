@@ -54,5 +54,4 @@
         android:inputType="textCapSentences|textMultiLine"
         style="@style/textStyle"/>
 
-
 </RelativeLayout>
