@@ -57,7 +57,7 @@ public class EditTextDeskripsiActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(et.getText().toString().length() < 30){
                     new AlertDialog.Builder(EditTextDeskripsiActivity.this)
-                            .setMessage("Deskripsi minimal 30 kata")
+                            .setMessage("Deskripsi minimal 30 karakter")
                             .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {

@@ -13,6 +13,7 @@ import retrofit.http.Multipart;
 import retrofit.http.POST;
 import retrofit.http.Part;
 import retrofit.mime.TypedFile;
+import rx.Observable;
 
 /**
  * Created by WIN8 on 5/22/2017.
@@ -29,9 +30,18 @@ public interface APIService {
    // @Field("nama_p") String nama_p, @Field("cat_id") String cat_id,
 
     @Multipart
+    @POST("/api")
+    void compareFoto(@Part("file") TypedFile file, Callback<ImageResponse> cb);
+
+//    @Multipart
+//    @POST("/images.json")
+//    void uploadFoto(@Part("file") TypedFile file, Callback<ImageResponse> cb);
+
+    @Multipart
     @POST("/images.json")
-    void uploadFoto(@Part("file") TypedFile file, Callback<ImageResponse> cb);
+    Observable<ImageResponse> uploadFoto(@Part("file") TypedFile file);
 
     @POST("/products.json")
     void uploadProduk(@Body ProductJson productJson, Callback<ProductResponse> cb);
+
 }

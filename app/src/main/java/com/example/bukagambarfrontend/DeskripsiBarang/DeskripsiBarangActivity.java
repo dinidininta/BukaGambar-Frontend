@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.DetailBarang.DetailBarangActivity;
+import com.example.bukagambarfrontend.KategoriBarang.ChildKategoriActivity;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
 import com.example.bukagambarfrontend.NamaBarangActivity;
@@ -33,6 +34,7 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         String nb = NamaBarangActivity.nama_barang;
         String kb = KategoriBarangActivity.kategori_barang;
         String skb = SubKategoriActivity.sub_kat_barang;
+        String ckb = ChildKategoriActivity.child_kat_barang;
 
         Toast.makeText(this, nb + " " + kb, Toast.LENGTH_LONG).show();
 
@@ -41,7 +43,7 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         tv5=(TextView)findViewById(R.id.teks_5_deskripsibarang);
 
         tv3.setText(nb);
-        tv5.setText(kb + skb);
+        tv5.setText(kb + " / " + skb + " / " + ckb);
 
         //adding Toolbar to Step satu
         Toolbar toolbar =(Toolbar) findViewById(R.id.toolbar_deskripsiActivity);

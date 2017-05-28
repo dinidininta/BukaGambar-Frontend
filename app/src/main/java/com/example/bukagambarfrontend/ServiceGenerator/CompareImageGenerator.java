@@ -1,4 +1,4 @@
-package com.example.bukagambarfrontend.Generator;
+package com.example.bukagambarfrontend.ServiceGenerator;
 
 import android.util.Base64;
 
@@ -9,9 +9,9 @@ import retrofit.RestAdapter;
  * Created by WIN8 on 5/26/2017.
  */
 
-public class ServiceGenerator {
+public class CompareImageGenerator {
 
-    public static final String API_BASE_URL = "https://api.bukalapak.com/v2";
+    private static final String API_BASE_URL = "http://bshare.id";
 
     private static RestAdapter.Builder builder = new RestAdapter.Builder()
             .setEndpoint(API_BASE_URL)
@@ -33,7 +33,7 @@ public class ServiceGenerator {
                 @Override
                 public void intercept(RequestFacade request) {
                     request.addHeader("Authorization", basic);
-//                    request.addHeader("Accept", "application/json");
+//                    request.addHeader("Content-Type", "application/json");
                 }
             });
         }

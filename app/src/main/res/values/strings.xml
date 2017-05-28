@@ -25,6 +25,8 @@
     <string name="ket_harga_barang">Tuliskan harga barang yang dijual</string>
     <string name="kualitas_barang">Kualitas Barang</string>
     <string name="ket_kul_barang">Tuliskan kualitas barang yang dijual</string>
+    <string name="spek_barang">Spesifikasi Barang</string>
+    <string name="ket_spek_barang">Kualitas Barang</string>
     <string name="T1_namabarang">Masukkan nama barang jualan kamu</string>
     <string name="T2_namabarang">Nama barang ini akan muncul di daftar barang jualan kamu</string>
     <string name="hint_namabarang">Contoh, iPhone 5S Gold 16GB</string>

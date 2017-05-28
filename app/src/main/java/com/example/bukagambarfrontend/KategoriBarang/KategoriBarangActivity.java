@@ -21,6 +21,7 @@ import com.example.bukagambarfrontend.NamaBarangActivity;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Category;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
 import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.StepSatuActivity;
 
 import java.util.ArrayList;
@@ -83,11 +84,11 @@ public class KategoriBarangActivity extends AppCompatActivity {
     }
 
     private void getCategory(){
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.bukalapak.com/v2")
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-        APIService apiService = restAdapter.create(APIService.class);
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setEndpoint("https://api.bukalapak.com/v2")
+//                .setLogLevel(RestAdapter.LogLevel.FULL)
+//                .build();
+        APIService apiService = BukalapakGenerator.createService(APIService.class);
         apiService.getCategory(new Callback<RootObject>() {
             @Override
             public void success(RootObject rootObject, Response response) {
@@ -102,9 +103,9 @@ public class KategoriBarangActivity extends AppCompatActivity {
         });
     }
 
-    public static class KategoriBarangListAdapter extends ArrayAdapter<Category> {
+    class KategoriBarangListAdapter extends ArrayAdapter<Category> {
 
-        public KategoriBarangListAdapter(Context mContext, ArrayList<Category> mCat) {
+        KategoriBarangListAdapter(Context mContext, ArrayList<Category> mCat) {
             super(mContext, 0, mCat);
         }
 
@@ -122,8 +123,8 @@ public class KategoriBarangActivity extends AppCompatActivity {
                     Toast.makeText(getContext(), "You Clicked " + category.getName() + " " + position, Toast.LENGTH_LONG).show();
                     kategori_barang = category.getName();
                     id_kategori_barang = position;
-                    Intent intent = new Intent(getContext(), SubKategoriActivity.class);
-                    getContext().startActivity(intent);
+                    Intent intent = new Intent(KategoriBarangActivity.this, SubKategoriActivity.class);
+                    KategoriBarangActivity.this.startActivity(intent);
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

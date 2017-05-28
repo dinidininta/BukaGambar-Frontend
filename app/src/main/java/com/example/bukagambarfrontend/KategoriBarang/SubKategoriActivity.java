@@ -11,16 +11,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.APIService;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Child;
+import com.example.bukagambarfrontend.POJO.CategorPOJO.Child2;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.RootObject;
 import com.example.bukagambarfrontend.R;
+import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -34,7 +38,8 @@ import retrofit.client.Response;
 public class SubKategoriActivity extends AppCompatActivity {
 
     public static String sub_kat_barang = "";
-    public static String id_kat = "";
+    public static int identifier = 0;
+    public static int id_sub_kat = 0;
     Button buttonSimpanSubkat;
     ImageButton backSubkat;
     ListView listView;
@@ -74,17 +79,16 @@ public class SubKategoriActivity extends AppCompatActivity {
             }
         });
 
-        getSubCategory();
+        getSubCategory(KategoriBarangActivity.id_kategori_barang);
 
     }
 
-    public void getSubCategory(){
-        final int id = KategoriBarangActivity.id_kategori_barang;
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.bukalapak.com/v2")
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .build();
-        final APIService apiService = restAdapter.create(APIService.class);
+    public void getSubCategory(final int id){
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setEndpoint("https://api.bukalapak.com/v2")
+//                .setLogLevel(RestAdapter.LogLevel.FULL)
+//                .build();
+        final APIService apiService = BukalapakGenerator.createService(APIService.class);
         apiService.getCategory(new Callback<RootObject>() {
             @Override
             public void success(RootObject rootObject, Response response) {
@@ -101,7 +105,7 @@ public class SubKategoriActivity extends AppCompatActivity {
 
 
 
-    public static class SubKategoriBarangListAdapter extends ArrayAdapter<Child> {
+    class SubKategoriBarangListAdapter extends ArrayAdapter<Child> {
 
         SubKategoriBarangListAdapter(Context mContext, ArrayList<Child> mCatChild) {
             super(mContext, 0, mCatChild);
@@ -110,17 +114,27 @@ public class SubKategoriActivity extends AppCompatActivity {
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             final Child child = getItem(position);
+            final List<Child2> children = child.getChildren();
             if(convertView == null){
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_step_kategori, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_child2_kategori, parent, false);
             }
-            TextView atribut_list_kategori = (TextView) convertView.findViewById(R.id.atribut_list_kategori);
+            TextView atribut_list_kategori = (TextView) convertView.findViewById(R.id.atribut_child_kategori);
+            ImageView chevron =  (ImageView) convertView.findViewById(R.id.chevron_child);
+            if(children != null){
+                chevron.setVisibility(View.VISIBLE);
+            }
             atribut_list_kategori.setText(child.getName());
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getContext(), "You Clicked" + child.getName(), Toast.LENGTH_LONG).show();
-                    sub_kat_barang = " / "+child.getName();
-                    id_kat = String.valueOf(child.getId());
+                    sub_kat_barang = child.getName();
+                    id_sub_kat = child.getId();
+                    identifier =  position;
+                    if(children != null){
+                        Intent intent = new Intent(SubKategoriActivity.this, ChildKategoriActivity.class);
+                        SubKategoriActivity.this.startActivity(intent);
+                    }
 //                    switch (position) {
 //                        case 0:
 //                            Intent intent = new Intent(context, StepSatuActivity.class);

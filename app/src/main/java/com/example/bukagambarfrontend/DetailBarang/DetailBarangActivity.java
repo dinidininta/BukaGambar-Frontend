@@ -30,12 +30,10 @@ public class DetailBarangActivity extends AppCompatActivity {
     SuffixTextDrawable gram, buah;
     PrefixEditText etsatuan;
     AppCompatCheckBox cbbaru;
-    String statusbarang = "";
-    public static String detailbarang = "";
     public static String beratbarang = "";
     public static String stokbarang = "";
     public static String hargabarang = "";
-    public static String status = "";
+    public static String status = "Baru";
     public static boolean stat = true;
 
     @Override
@@ -71,19 +69,20 @@ public class DetailBarangActivity extends AppCompatActivity {
         buah = new SuffixTextDrawable("Buah");
         etbuah.setCompoundDrawablesWithIntrinsicBounds(null, null, buah, null);
 
+        cbbaru.setChecked(true);
         cbbaru.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // checkbox status is changed from uncheck to checked.
                 if (!isChecked) {
-                    // barang baru
-                    statusbarang = "Baru";
-                    stat = true;
+                    // barang bekas
+                    status = "Bekas";
+                    stat = false;
 
                 } else {
-                    // barang bekas
-                    statusbarang = "Bekas";
-                    stat = false;
+                    // barang baru
+                    status = "Baru";
+                    stat = true;
                 }
             }
         });
@@ -96,7 +95,6 @@ public class DetailBarangActivity extends AppCompatActivity {
                 beratbarang = checkIfWeightEmpty(etgram.getText().toString());
                 stokbarang = checkIfStockEmpty(etbuah.getText().toString());
                 hargabarang = checkIfPriceEmpty(etsatuan.getText().toString());
-                status = statusbarang;
                 Intent intent = new Intent(getApplicationContext(), PengirimanBarangActivity.class);
                 startActivity(intent);
             }
@@ -113,27 +111,24 @@ public class DetailBarangActivity extends AppCompatActivity {
     }
 
     private String checkIfWeightEmpty(String weight){
-        String beratbarang="";
         if(!weight.isEmpty()){
-            beratbarang = weight + " g";
+            return weight;
         }
-        return beratbarang;
+        return "0";
     }
 
     private String checkIfStockEmpty(String stock){
-        String stokbarang="";
         if(!stock.isEmpty()){
-            stokbarang = stock + " Stok";
+            return stock;
         }
-        return stokbarang;
+        return "0";
     }
 
     private String checkIfPriceEmpty(String price){
-        String hargabarang="";
         if(!price.isEmpty()){
-            hargabarang = "Rp " + price + ",-";
+            return price;
         }
-        return hargabarang;
+        return "0";
     }
 
 

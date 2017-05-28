@@ -1,11 +1,14 @@
 package com.example.bukagambarfrontend;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -13,12 +16,13 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.bukagambarfrontend.DialogFragments.DialogAccept;
-import com.example.bukagambarfrontend.Generator.ServiceGenerator;
+import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
+import com.example.bukagambarfrontend.ServiceGenerator.CompareImageGenerator;
 import com.example.bukagambarfrontend.POJO.ImagePOJO.ImageResponse;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import droidninja.filepicker.FilePickerBuilder;
 import droidninja.filepicker.FilePickerConst;
@@ -26,6 +30,9 @@ import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import retrofit.mime.TypedFile;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 public class Upload_Gambar_Activity extends AppCompatActivity {
 
@@ -36,9 +43,10 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
     GridView gridView;
     ImageButton buttonCloseUploadGambar;
     Button buttonSimpanUploadGambar;
-    String API_BASE_URL = "http://bshare.id/inginwisuda";
     String userId = "31616631";
     String token = "BRybSh10q4tRd7K1p8ll";
+    String imageID = "";
+    public static List<String> images = new ArrayList<>();
     //ImageView rejectedImage;
 
     @Override
@@ -93,29 +101,48 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                     BitmapFactory.Options options = new BitmapFactory.Options();
                     filePaths = data.getStringArrayListExtra(FilePickerConst.KEY_SELECTED_PHOTOS);
                     //use them anywhere
-                    String toShow = "";
                     for (int i=0; i<filePaths.size(); i++){
                         options.inJustDecodeBounds = true;
                         BitmapFactory.decodeFile(filePaths.get(i), options);
                         int imageHeight = options.outHeight;
                         int imageWidth = options.outWidth;
-                        if(imageHeight < 300 || imageWidth < 300){
-                            toShow = toShow + "\n" + "Resolusi gambar minimal 300 x 300";
-                            //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
-                        }else{
-                            toShow = toShow + "\n" + filePaths.get(i);
-                            //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
+                        if(imageHeight > 300 || imageWidth > 300){
                             options.inJustDecodeBounds = false;
-                            gambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(i), 300, 300));
+                            //doCompare(filePaths.get(i), i);
                             //uploadToServer(filePaths.get(i));
+//                            images.add(getImageID());
+                            gambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(i), 300, 300));
+                            //toShow = toShow + "\n" + filePaths.get(i);
+                            //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
+                            if(i == filePaths.size()-1){
+                                uploadToServer(filePaths);
+                                break;
+                            }
+
+                        }else{
+                            //uploadToServer(filePaths.get(i));
+
+                            String toShow = "Resolusi gambar ke" + i + "tidak memenuhi aturan minimal 300 x 300.\n" +
+                                    "Silahkan upload ulang gambar yang baru";
+                            //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
+                            new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Kesalahan resolusi")
+                                    .setMessage(toShow)
+                                    .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener(){
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int id) {
+                                        }
+                                    }).show();
+                            break;
                         }
                     }
 
-                    uploadToServer(filePaths.get(0));
+                    //Toast.makeText(getApplicationContext(), "id: " + TextUtils.join(", ", images), Toast.LENGTH_LONG).show();
 
-                    FragmentManager fm = getSupportFragmentManager();
-                    DialogAccept dialogAccept = new DialogAccept();
-                    dialogAccept.show(fm, "Berhasil");
+//                    uploadToServer(filePaths.get(0));
+//
+//                    FragmentManager fm = getSupportFragmentManager();
+//                    DialogAccept dialogAccept = new DialogAccept();
+//                    dialogAccept.show(fm, "Berhasil");
 
 //                    AlertDialog.Builder builder = new AlertDialog.Builder(Upload_Gambar_Activity.this);
 //                    LayoutInflater inflater = Upload_Gambar_Activity.this.getLayoutInflater();
@@ -127,37 +154,62 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 //
 //                                }
 //                            }).create().show();
-
-
-//                    new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Berhasil")
-//                            .setMessage(toShow)
-//                            .setPositiveButton("OK", new DialogInterface.OnClickListener(){
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int id) {
-//                                }
-//                            }).show();
                 }
         }
     }
 
-    public void uploadToServer(String path){
-        TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
-        APIService service = ServiceGenerator.createService(APIService.class, userId, token);
-        service.uploadFoto(typedFile, new Callback<ImageResponse>() {
-            @Override
-            public void success(ImageResponse imageResponse, Response response) {
-                String id = "id: " + imageResponse.getId();
-                String status = "status: " + imageResponse.getStatus();
-                String message = "message: " + String.valueOf(imageResponse.getMessage());
-                Toast.makeText(getApplicationContext(), id + "\n" + status + "\n" + message, Toast.LENGTH_LONG).show();
-            }
+    public void uploadToServer(List<String> listOfPath){
+        APIService service = BukalapakGenerator.createServiceWithoutHeader(APIService.class, userId, token);
+        for(String path : listOfPath){
+            TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
+            service.uploadFoto(typedFile)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<ImageResponse>() {
+                        @Override
+                        public void onCompleted() {
 
-            @Override
-            public void failure(RetrofitError error) {
+                        }
 
-            }
-        });
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.e("GithubDemo", e.getMessage());
+                        }
+
+                        @Override
+                        public void onNext(ImageResponse imageResponse) {
+                            images.add(imageResponse.getId());
+                        }
+                    });
+        }
     }
+
+//    public void uploadToServer(String path){
+//        TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
+//        APIService service = BukalapakGenerator.createServiceWithoutHeader(APIService.class, userId, token);
+//        service.uploadFoto(typedFile, new Callback<ImageResponse>() {
+//            @Override
+//            public void success(ImageResponse imageResponse, Response response) {
+//                String id = "id: " + imageResponse.getId();
+//                images.add(id);
+//                String status = "status: " + imageResponse.getStatus();
+//                String message = "message: " + String.valueOf(imageResponse.getMessage());
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//
+//            }
+//        });
+//    }
+
+//    private void setImageID(String id){
+//        this.imageID = id;
+//    }
+//
+//    private String getImageID(){
+//        return this.imageID;
+//    }
 
     public void uploadOnClick(View view) {
         FilePickerBuilder.getInstance().setMaxCount(5)
@@ -165,6 +217,27 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                 .setActivityTheme(R.style.FilePickerTheme)
                 .pickPhoto(this);
     }
+
+//    public void doCompare(final String path, final int index){
+//        TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
+//        APIService service = CompareImageGenerator.createService(APIService.class);
+//        service.uploadFoto(typedFile, new Callback<ImageResponse>() {
+//            @Override
+//            public void success(ImageResponse imageResponse, Response response) {
+//                String status = "status: " + imageResponse.getStatus();
+//                if(status.equals("Asli")){
+//                    uploadToServer(path);
+//                    gambarProduk[index].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(index), 300, 300));
+//                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_LONG).show();
+//                }
+//            }
+//
+//            @Override
+//            public void failure(RetrofitError error) {
+//
+//            }
+//        });
+//    }
 
     public static Bitmap decodeSampledBitmapFromResource(String path, int reqWidth, int reqHeight) {
 

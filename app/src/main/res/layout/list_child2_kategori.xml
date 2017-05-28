@@ -5,7 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/atribut_list_kategori"
+        android:id="@+id/atribut_child_kategori"
         android:text="@string/s1_kategoribarang"
         android:textSize="@dimen/text_size_normal"
         android:layout_alignParentTop="true"
@@ -16,12 +16,13 @@
     <ImageButton
         android:layout_width="@dimen/cards_button_width"
         android:layout_height="@dimen/cards_button_height"
-        android:id="@+id/chevron_step_kategori"
+        android:id="@+id/chevron_child"
         style="?android:attr/borderlessButtonStyle"
         android:src="@drawable/ic_chevron_right_black_24dp"
         android:tint="@color/grey_darken"
-        android:layout_alignBottom="@+id/atribut_list_kategori"
+        android:layout_alignBottom="@+id/atribut_child_kategori"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/atribut_list_kategori"/>
+        android:layout_alignTop="@+id/atribut_child_kategori"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
