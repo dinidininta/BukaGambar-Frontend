@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class CompareResponse {
+
     @SerializedName("status")
     @Expose
     private String status;

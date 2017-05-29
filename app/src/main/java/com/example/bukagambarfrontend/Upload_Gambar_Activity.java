@@ -10,14 +10,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.bukagambarfrontend.DialogFragments.DialogAccept;
 import com.example.bukagambarfrontend.DialogFragments.DialogLoading;
+import com.example.bukagambarfrontend.DialogFragments.DialogReject;
 import com.example.bukagambarfrontend.KategoriBarang.ChildKategoriActivity;
 import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
 import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
@@ -54,8 +58,9 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
     Button buttonSimpanUploadGambar;
     String userId = "31616631";
     String token = "BRybSh10q4tRd7K1p8ll";
-    String imageID = "";
-    public static List<String> images = new ArrayList<>();
+    public List<String> images = new ArrayList<>();
+    public static List<String> imagesID = new ArrayList<>();
+    List<String> location = new ArrayList<String>();
     DialogLoading loading;
     FragmentManager fm;
     //ImageView rejectedImage;
@@ -74,8 +79,6 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
         loading = new DialogLoading();
         fm = getSupportFragmentManager();
 
-        //rejectedImage = (ImageView) findViewById(R.id.image_dialogrejected);
-
         buttonCloseUploadGambar = (ImageButton) findViewById(R.id.close_uploadgambar_button);
 
         buttonSimpanUploadGambar = (Button) findViewById(R.id.simpan_uploadgambar_button);
@@ -87,6 +90,8 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        buttonSimpanUploadGambar.setEnabled(false);
 
         buttonSimpanUploadGambar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,24 +120,12 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         int imageWidth = options.outWidth;
                         if(imageHeight > 300 || imageWidth > 300){
                             options.inJustDecodeBounds = false;
-                            //doCompare(filePaths.get(i), i);
-                            //uploadToServer(filePaths.get(i));
-//                            images.add(getImageID());
                             gambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(filePaths.get(i), 300, 300));
-                            //toShow = toShow + "\n" + filePaths.get(i);
-                            //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
-//                            if(i == filePaths.size()-1){
-//
-//
-//                                break;
-//                            }
 
                         }else{
-                            //uploadToServer(filePaths.get(i));
 
                             String toShow = "Resolusi gambar ke-" + i + " tidak memenuhi aturan minimal 300 x 300.\n" +
                                     "Silahkan upload ulang gambar yang baru";
-                            //size[i].setText(String.valueOf(imageHeight) + " x " + String.valueOf(imageWidth));
                             new AlertDialog.Builder(Upload_Gambar_Activity.this).setTitle("Kesalahan resolusi")
                                     .setMessage(toShow)
                                     .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener(){
@@ -144,37 +137,16 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         }
 
                     }
-
-                    //Toast.makeText(getApplicationContext(), "id: " + TextUtils.join(", ", images), Toast.LENGTH_LONG).show();
-
-//                    uploadToServer(filePaths.get(0));
-//
-//                    FragmentManager fm = getSupportFragmentManager();
-//                    DialogAccept dialogAccept = new DialogAccept();
-//                    dialogAccept.show(fm, "Berhasil");
-
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(Upload_Gambar_Activity.this);
-//                    LayoutInflater inflater = Upload_Gambar_Activity.this.getLayoutInflater();
-//                    View dialogView = inflater.inflate(R.layout.dialog_rejected, null);
-//                    builder.setView(dialogView)
-//                            .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-//                                @Override
-//                                public void onClick(DialogInterface dialog, int which) {
-//
-//                                }
-//                            }).create().show();
                 }
 
-//                if(ChildKategoriActivity.id_child_barang == 0 &&
-//                        SubKategoriActivity.id_sub_kat != 0){
-//                    loading.show(fm, "Loading");
-//                    doCompare(filePaths, NamaBarangActivity.nama_barang, String.valueOf(SubKategoriActivity.id_sub_kat));
-//                }else if(ChildKategoriActivity.id_child_barang != 0){
-//                    loading.show(fm, "Loading");
-//                    doCompare(filePaths, NamaBarangActivity.nama_barang, String.valueOf(ChildKategoriActivity.id_child_barang));
-//                }
-                loading.show(fm, "Loading");
-                uploadToServer(filePaths);
+                if(ChildKategoriActivity.id_child_barang == 0 &&
+                        SubKategoriActivity.id_sub_kat != 0){
+                    loading.show(fm, "Loading");
+                    doCompare(filePaths, NamaBarangActivity.nama_barang, String.valueOf(SubKategoriActivity.id_sub_kat));
+                }else if(ChildKategoriActivity.id_child_barang != 0){
+                    loading.show(fm, "Loading");
+                    doCompare(filePaths, NamaBarangActivity.nama_barang, String.valueOf(ChildKategoriActivity.id_child_barang));
+                }
         }
     }
 
@@ -195,6 +167,10 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         @Override
                         public void onCompleted() {
                             loading.dismiss();
+                            FragmentManager fm = getSupportFragmentManager();
+                            DialogAccept dialogAccept = new DialogAccept();
+                            dialogAccept.show(fm, "Berhasil");
+                            buttonSimpanUploadGambar.setEnabled(true);
                         }
 
                         @Override
@@ -209,7 +185,7 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 
                         @Override
                         public void onNext(ImageResponse imageResponse) {
-                            images.add(imageResponse.getId());
+                            imagesID.add(imageResponse.getId());
                         }
                     });
         }
@@ -225,7 +201,7 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 
     public void doCompare(List<String> listOfPaths, String nama, String category){
         APIService service = CompareImageGenerator.createService(APIService.class);
-        for(String path : listOfPaths){
+        for(final String path : listOfPaths){
             TypedFile typedFile = new TypedFile("multipart/form-data", new File(path));
             service.compareFoto(typedFile, nama, category)
                     .subscribeOn(Schedulers.newThread())
@@ -240,6 +216,31 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         @Override
                         public void onCompleted() {
                             loading.dismiss();
+                            Toast.makeText(Upload_Gambar_Activity.this, TextUtils.join(", ", images) + "\n"
+                                    + TextUtils.join(", ", location), Toast.LENGTH_LONG).show();
+                            for(int i = 0; i < images.size(); i++){
+                                if(images.get(i).equals("palsu")){
+                                    AlertDialog.Builder alert = new AlertDialog.Builder(Upload_Gambar_Activity.this);
+                                    LayoutInflater factory = LayoutInflater.from(Upload_Gambar_Activity.this);
+                                    final View view = factory.inflate(R.layout.dialog_rejected, null);
+                                    ImageView imageView = (ImageView) view.findViewById(R.id.image_dialogrejected);
+                                    imageView.setImageBitmap(decodeSampledBitmapFromResource(location.get(i), 300, 300));
+
+                                    alert.setView(view);
+                                    alert.setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+                                    alert.show();
+                                    break;
+                                }
+                            }
+                            if(!images.contains("palsu")){
+                                loading.show(fm, "Loading");
+                                uploadToServer(location);
+                            }
                         }
 
                         @Override
@@ -254,6 +255,7 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                         @Override
                         public void onNext(CompareResponse compareResponse) {
                             images.add(compareResponse.getStatus());
+                            location.add(path);
                         }
                     });
         }

@@ -75,8 +75,6 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-
-//        list_daerah = getResources().getStringArray(R.array.daftar_daerah);
         getProvinces();
     }
 
@@ -147,16 +145,9 @@ public class GratisBiayaKirimActivity extends AppCompatActivity {
             rowView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "You Clicked" + daerah.get(position), Toast.LENGTH_LONG).show();
                     gratiskirim.add(daerah.get(position));
                     holder.chevron_free.setVisibility(View.VISIBLE);
                     code.add(position);
-//                    switch (position) {
-//                        case 0:
-//                            Intent intent = new Intent(context, StepSatuActivity.class);
-//                            context.startActivity(intent);
-//
-//                    }
 
                 }
             });

@@ -58,7 +58,6 @@ public class KategoriBarangActivity extends AppCompatActivity {
         toolbar.setSubtitle("");
 
         String nb = NamaBarangActivity.nama_barang;
-        Toast.makeText(this, nb, Toast.LENGTH_SHORT).show();
 
 
         //button close
@@ -85,10 +84,6 @@ public class KategoriBarangActivity extends AppCompatActivity {
     }
 
     private void getCategory(){
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setEndpoint("https://api.bukalapak.com/v2")
-//                .setLogLevel(RestAdapter.LogLevel.FULL)
-//                .build();
         APIService apiService = BukalapakGenerator.createService(APIService.class);
         apiService.getCategory(new Callback<RootObject>() {
             @Override
@@ -122,18 +117,11 @@ public class KategoriBarangActivity extends AppCompatActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "You Clicked " + category.getName() + " " + position, Toast.LENGTH_LONG).show();
                     kategori_barang = category.getName();
                     id_kategori_barang = position;
                     chevron_list.setImageResource(R.drawable.ic_check_black_24dp);
                     Intent intent = new Intent(KategoriBarangActivity.this, SubKategoriActivity.class);
                     KategoriBarangActivity.this.startActivity(intent);
-//                    switch (position) {
-//                        case 0:
-//                            Intent intent = new Intent(context, StepSatuActivity.class);
-//                            context.startActivity(intent);
-//
-//                    }
 
                 }
             });

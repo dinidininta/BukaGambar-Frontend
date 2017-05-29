@@ -135,7 +135,7 @@ public class StepSatuActivity extends AppCompatActivity {
             for(int i=0; i<paths.size(); i++){
                 previewGambarProduk[i].setImageBitmap(decodeSampledBitmapFromResource(paths.get(i), 300, 300));
             }
-            gambarbarang = TextUtils.join(", ", Upload_Gambar_Activity.images);
+            gambarbarang = TextUtils.join(", ", Upload_Gambar_Activity.imagesID);
             productJson.setImages(gambarbarang);
             Toast.makeText(getApplicationContext(), gambarbarang, Toast.LENGTH_LONG).show();
         }
@@ -163,7 +163,6 @@ public class StepSatuActivity extends AppCompatActivity {
             keterangan.add(kategoribarang + " / " + subkategoribarang + " / " + childkategoribarang);
             newProd.setCategoryId(String.valueOf(ChildKategoriActivity.id_child_barang));
             addSpesifikasi(String.valueOf(ChildKategoriActivity.id_child_barang));
-            Toast.makeText(this, String.valueOf(ChildKategoriActivity.id_child_barang), Toast.LENGTH_LONG).show();
         }
 
         if(namabarang.isEmpty() && SubKategoriActivity.id_sub_kat == 0 &&
@@ -269,8 +268,6 @@ public class StepSatuActivity extends AppCompatActivity {
                                     }
                                 }).show();
 
-//                        Toast.makeText(getApplicationContext(), productResponse.getStatus() + "\n" + productResponse.getMessage(),
-//                                Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -278,18 +275,6 @@ public class StepSatuActivity extends AppCompatActivity {
 
                     }
                 });
-//                FragmentManager fm = getSupportFragmentManager();
-//                DialogSukses dialogSukses = new DialogSukses();
-//                dialogSukses.show(fm, "Berhasil");
-//                new AlertDialog.Builder(StepSatuActivity.this)
-//                        .setTitle("Gagal")
-//                        .setMessage("Foto kamu teridentifikasi milik orang lain")
-//                        .setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//
-//                            }
-//                        }).show();
             }
         });
 
@@ -373,7 +358,6 @@ public class StepSatuActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String identifier = judul_step.get(position);
-                    Toast.makeText(context, "You Clicked" + identifier, Toast.LENGTH_LONG).show();
                     Intent intent;
                     if(identifier.equals(context.getString(R.string.nama_barang))){
                         intent = new Intent(context, NamaBarangActivity.class);

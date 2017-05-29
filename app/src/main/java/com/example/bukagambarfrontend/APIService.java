@@ -33,20 +33,10 @@ public interface APIService {
     @GET("/address/provinces.json")
     void getProvinces(Callback<Provinces> cb);
 
-   // @Field("nama_p") String nama_p, @Field("cat_id") String cat_id,
-
-//    @Multipart
-//    @POST("/api")
-//    void compareFoto(@Part("file") TypedFile file, Callback<ImageResponse> cb);
-
     @Multipart
     @POST("/api")
     Observable<CompareResponse> compareFoto(@Part("file") TypedFile file, @Part("nama_p") String nama_p,
                                             @Part("cat_id") String cat_id);
-
-//    @Multipart
-//    @POST("/images.json")
-//    void uploadFoto(@Part("file") TypedFile file, Callback<ImageResponse> cb);
 
     @Multipart
     @POST("/images.json")

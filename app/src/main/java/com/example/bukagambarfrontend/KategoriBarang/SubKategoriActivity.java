@@ -85,10 +85,6 @@ public class SubKategoriActivity extends AppCompatActivity {
     }
 
     public void getSubCategory(final int id){
-//        RestAdapter restAdapter = new RestAdapter.Builder()
-//                .setEndpoint("https://api.bukalapak.com/v2")
-//                .setLogLevel(RestAdapter.LogLevel.FULL)
-//                .build();
         final APIService apiService = BukalapakGenerator.createService(APIService.class);
         apiService.getCategory(new Callback<RootObject>() {
             @Override
@@ -128,7 +124,6 @@ public class SubKategoriActivity extends AppCompatActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "You Clicked" + child.getName(), Toast.LENGTH_LONG).show();
                     sub_kat_barang = child.getName();
                     id_sub_kat = child.getId();
                     identifier =  position;
@@ -138,12 +133,6 @@ public class SubKategoriActivity extends AppCompatActivity {
                         Intent intent = new Intent(SubKategoriActivity.this, ChildKategoriActivity.class);
                         SubKategoriActivity.this.startActivity(intent);
                     }
-//                    switch (position) {
-//                        case 0:
-//                            Intent intent = new Intent(context, StepSatuActivity.class);
-//                            context.startActivity(intent);
-//
-//                    }
 
                 }
             });

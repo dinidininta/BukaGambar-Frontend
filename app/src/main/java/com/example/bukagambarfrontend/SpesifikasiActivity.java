@@ -1,12 +1,20 @@
 package com.example.bukagambarfrontend;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.os.StrictMode;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +27,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.bukagambarfrontend.DialogFragments.DialogCheckbox;
 import com.example.bukagambarfrontend.POJO.CategorPOJO.Attribute;
 
 import java.util.ArrayList;
@@ -31,9 +41,12 @@ public class SpesifikasiActivity extends AppCompatActivity {
 
     List<Attribute> attrs;
     public static Map<String, String> mapOfAtrributes = new HashMap<>();
+    public static String title;
+    public static String[] options;
     int j = 0;
     Button simpanSpesifikasi;
     ImageButton closeSpesifikasi;
+    public static List<String> choices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +82,7 @@ public class SpesifikasiActivity extends AppCompatActivity {
         LinearLayout layout = (LinearLayout) findViewById(R.id.inside_spesifikasi);
 
         attrs = StepSatuActivity.attributes;
-        for(Attribute a : attrs){
+        for(final Attribute a : attrs){
             if(a.getInputType().equals("select") || a.getInputType().equals("combo_select")){
                 final Attribute at = a;
                 TextView text = new TextView(this);
@@ -132,19 +145,28 @@ public class SpesifikasiActivity extends AppCompatActivity {
                 RadioButton checked = (RadioButton) findViewById(radioId);
                 mapOfAtrributes.put(a.getFieldName(), checked.getText().toString());
             }else if(a.getInputType().equals("boolean") || a.getInputType().equals("check_boxes")){
+                title = a.getDisplayName();
+                String field = a.getFieldName();
+                options = a.getOptions().toArray(new String[0]);
                 ListView listView = new ListView(this);
                 listView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
                 List<String> content = new ArrayList<>();
+                content.add(a.getDisplayName());
                 ArrayAdapter<String> adapter =  new ArrayAdapter<String>(this,
-                        R.layout.list_step_kategori, content);
+                        android.R.layout.simple_list_item_1, content);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                        FragmentManager fm = getSupportFragmentManager();
+                        DialogCheckbox dc = new DialogCheckbox();
+                        dc.show(fm, "Checkbox");
                     }
                 });
                 layout.addView(listView);
+                if(choices != null){
+                    mapOfAtrributes.put(field, TextUtils.join(", ", choices));
+                }
             }
         }
     }

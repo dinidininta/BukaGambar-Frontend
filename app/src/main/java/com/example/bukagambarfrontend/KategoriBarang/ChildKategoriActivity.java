@@ -111,17 +111,10 @@ public class ChildKategoriActivity extends AppCompatActivity {
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getContext(), "You Clicked" + child2.getName(), Toast.LENGTH_LONG).show();
                     child_kat_barang = child2.getName();
                     id_child_barang = child2.getId();
                     chevron_child2.setVisibility(View.VISIBLE);
                     chevron_child2.setImageResource(R.drawable.ic_check_black_24dp);
-//                    switch (position) {
-//                        case 0:
-//                            Intent intent = new Intent(context, StepSatuActivity.class);
-//                            context.startActivity(intent);
-//
-//                    }
 
                 }
             });

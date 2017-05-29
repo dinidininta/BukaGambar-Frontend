@@ -36,8 +36,6 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         String skb = SubKategoriActivity.sub_kat_barang;
         String ckb = ChildKategoriActivity.child_kat_barang;
 
-        Toast.makeText(this, nb + " " + kb, Toast.LENGTH_LONG).show();
-
         //set font
         tv3=(TextView)findViewById(R.id.teks_3_deskripsibarang);
         tv5=(TextView)findViewById(R.id.teks_5_deskripsibarang);
@@ -60,14 +58,6 @@ public class DeskripsiBarangActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-
-
-//        try {
-//            String db = EditTextDeskripsiActivity.desc_barang;
-//            buttondeskripsiedit.setText(db);
-//        }catch (NullPointerException e){
-//
-//        }
 
         buttondeskripsiedit.setOnClickListener(new View.OnClickListener() {
             @Override

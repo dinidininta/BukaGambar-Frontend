@@ -27,12 +27,6 @@ public class EditTextDeskripsiActivity extends AppCompatActivity {
         // Get the widgets reference from XML layout
         et = (EditText) findViewById(R.id.deskripsibarang_form);
 
-//        try {
-//            et.setText(desc_barang);
-//        }catch (NullPointerException e){
-//
-//        }
-
         if(!desc_barang.isEmpty()){
             et.setText(desc_barang);
         }
@@ -71,30 +65,5 @@ public class EditTextDeskripsiActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-//        /*
-//            This will provide Scroll option for EditText,
-//            but it will not show the scroll bar on EditText
-//        */
-//        et2.setScroller(new Scroller(getApplicationContext()));
-//        et2.setVerticalScrollBarEnabled(true);
-//
-//        /*
-//            setMinLines (int minlines)
-//                Makes the TextView at least this many lines tall.
-//                Setting this value overrides any other (minimum) height
-//                setting. A single line TextView will set this value to 1.
-//         */
-//        // Set the minimum lines to display on EditText
-//        et2.setMinLines(2);
-//
-//        /*
-//            setMaxLines (int maxlines)
-//                Makes the TextView at most this many lines tall.
-//                Setting this value overrides any other (maximum) height setting.
-//         */
-//        // Set the maximum lines to display on EditText
-//        et2.setMaxLines(2);
     }
 }

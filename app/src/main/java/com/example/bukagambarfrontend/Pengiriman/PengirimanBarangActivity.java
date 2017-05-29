@@ -47,8 +47,6 @@ public class PengirimanBarangActivity extends AppCompatActivity {
         toolbar.setTitle("");
         toolbar.setSubtitle("");
 
-        Toast.makeText(this, DetailBarangActivity.beratbarang, Toast.LENGTH_LONG).show();
-
         wajibasuransi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
