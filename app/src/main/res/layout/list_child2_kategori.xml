@@ -8,6 +8,7 @@
         android:id="@+id/atribut_child_kategori"
         android:text="@string/s1_kategoribarang"
         android:textSize="@dimen/text_size_normal"
+        android:textColor="@color/grey"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="@dimen/top"

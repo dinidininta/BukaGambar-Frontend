@@ -1,10 +1,12 @@
 package com.example.bukagambarfrontend;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -125,6 +127,7 @@ public class StepSatuActivity extends AppCompatActivity {
         judul.add(res.getString(R.string.kategori_barang));
         judul.add(res.getString(R.string.deskripsi_barang));
         judul.add(res.getString(R.string.detail_barang));
+        //judul.add(res.getString(R.string.spek_barang));
         judul.add(res.getString(R.string.pengiriman));
 
         paths = Upload_Gambar_Activity.filePaths;
@@ -163,6 +166,30 @@ public class StepSatuActivity extends AppCompatActivity {
             Toast.makeText(this, String.valueOf(ChildKategoriActivity.id_child_barang), Toast.LENGTH_LONG).show();
         }
 
+        if(namabarang.isEmpty() && SubKategoriActivity.id_sub_kat == 0 &&
+                ChildKategoriActivity.id_child_barang == 0){
+            tambahGambarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new AlertDialog.Builder(StepSatuActivity.this).setMessage("Silahkan lengkapi keterangan produk terlebih dahulu")
+                            .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            }).show();
+                }
+            });
+        }else{
+            tambahGambarButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getApplicationContext(), Upload_Gambar_Activity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
         deskripsibarang = EditTextDeskripsiActivity.desc_barang;
         if(deskripsibarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_deskripsi_barang));
@@ -190,7 +217,7 @@ public class StepSatuActivity extends AppCompatActivity {
         if(asuransibarang.isEmpty() && gratiskirimbarang.isEmpty()){
             keterangan.add(res.getString(R.string.ket_pengiriman));
         }else if (!asuransibarang.isEmpty() && gratiskirimbarang.isEmpty()){
-            keterangan.add(asuransibarang);
+            keterangan.add("Wajib Asuransi");
         }else if(!asuransibarang.isEmpty() && !gratiskirimbarang.isEmpty()){
             keterangan.add("Wajib Asuransi, " + gratiskirimbarang);
             newProd.setFreeShipping(GratisBiayaKirimActivity.code);
@@ -204,14 +231,6 @@ public class StepSatuActivity extends AppCompatActivity {
 
         productJson.setForceInsurance(asuransibarang);
         productJson.setProduct(newProd);
-
-        tambahGambarButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Upload_Gambar_Activity.class);
-                startActivity(intent);
-            }
-        });
 
         adapter = new StepSatuListAdapter(this, judul, keterangan);
         listView.setAdapter(adapter);
@@ -240,8 +259,18 @@ public class StepSatuActivity extends AppCompatActivity {
                 service.uploadProduk(productJson, new Callback<ProductResponse>() {
                     @Override
                     public void success(ProductResponse productResponse, Response response) {
-                        Toast.makeText(getApplicationContext(), productResponse.getStatus() + "\n" + productResponse.getMessage(),
-                                Toast.LENGTH_LONG).show();
+                        new AlertDialog.Builder(StepSatuActivity.this)
+                                .setTitle(productResponse.getStatus())
+                                .setMessage(productResponse.getMessage())
+                                .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+
+                                    }
+                                }).show();
+
+//                        Toast.makeText(getApplicationContext(), productResponse.getStatus() + "\n" + productResponse.getMessage(),
+//                                Toast.LENGTH_LONG).show();
                     }
 
                     @Override
@@ -277,15 +306,16 @@ public class StepSatuActivity extends AppCompatActivity {
                     spesifikasibarang = SpesifikasiActivity.mapOfAtrributes;
                     if(spesifikasibarang.isEmpty()){
                         adapter.setStepList(res.getString(R.string.spek_barang), res.getString(R.string.ket_spek_barang), 4);
+                        adapter.notifyDataSetChanged();
                     }
                     else{
                         for(Map.Entry<String, String> entry : spesifikasibarang.entrySet()){
                             attValue.add(entry.getValue());
                         }
                         adapter.setStepList(res.getString(R.string.spek_barang), TextUtils.join(", ", attValue), 4);
+                        adapter.notifyDataSetChanged();
                     }
-//                    judul.add(4, "Spesifikasi Barang");
-//                    keterangan.add(4, "Atur spesifikasi barang yang dijual");
+
                 }
             }
 
@@ -312,7 +342,7 @@ public class StepSatuActivity extends AppCompatActivity {
 
         @Override
         public int getCount(){
-            return judul_step.size();
+            return ket_step.size();
         }
 
         @Override

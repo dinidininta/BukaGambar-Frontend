@@ -18,6 +18,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.bukagambarfrontend.DialogFragments.DialogLoading;
+import com.example.bukagambarfrontend.KategoriBarang.ChildKategoriActivity;
+import com.example.bukagambarfrontend.KategoriBarang.KategoriBarangActivity;
+import com.example.bukagambarfrontend.KategoriBarang.SubKategoriActivity;
 import com.example.bukagambarfrontend.POJO.ImagePOJO.CompareResponse;
 import com.example.bukagambarfrontend.ServiceGenerator.BukalapakGenerator;
 import com.example.bukagambarfrontend.ServiceGenerator.CompareImageGenerator;
@@ -161,9 +164,17 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
 //                                }
 //                            }).create().show();
                 }
+
+//                if(ChildKategoriActivity.id_child_barang == 0 &&
+//                        SubKategoriActivity.id_sub_kat != 0){
+//                    loading.show(fm, "Loading");
+//                    doCompare(filePaths, NamaBarangActivity.nama_barang, String.valueOf(SubKategoriActivity.id_sub_kat));
+//                }else if(ChildKategoriActivity.id_child_barang != 0){
+//                    loading.show(fm, "Loading");
+//                    doCompare(filePaths, NamaBarangActivity.nama_barang, String.valueOf(ChildKategoriActivity.id_child_barang));
+//                }
                 loading.show(fm, "Loading");
-                doCompare(filePaths, NamaBarangActivity.nama_barang, "177");
-                //uploadToServer(filePaths);
+                uploadToServer(filePaths);
         }
     }
 
@@ -228,7 +239,7 @@ public class Upload_Gambar_Activity extends AppCompatActivity {
                     .subscribe(new Subscriber<CompareResponse>() {
                         @Override
                         public void onCompleted() {
-
+                            loading.dismiss();
                         }
 
                         @Override
